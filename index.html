@@ -6,6 +6,12 @@
     <title>MG Maxus 7 (e-MPV): รายงานวิจัยเชิงลึกและวิศวกรรมต้นทุน 2026</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // MG brand theme: remap accent palettes (blue/sky/indigo) to MG red
+        const mgRed = { 50: '#FEF2F3', 100: '#FDE3E5', 200: '#FBCBD0', 300: '#F7A1AA', 400: '#F06B79', 500: '#E43C4F', 600: '#C8102E', 700: '#A80D27', 800: '#8C0F25', 900: '#771124', 950: '#42040F' };
+        tailwind.config = { theme: { extend: { colors: { blue: mgRed, sky: mgRed, indigo: mgRed } } } };
+    </script>
+    <meta name="theme-color" content="#C8102E">
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Google Fonts: Kanit -->
@@ -623,7 +629,7 @@
                         {
                             label: 'ไทย (Thailand Model X)',
                             data: [100, 100, 60, 66, 90, 0],
-                            backgroundColor: '#2563EB',
+                            backgroundColor: '#C8102E',
                             borderRadius: 6
                         },
                         {
@@ -678,7 +684,7 @@
                     datasets: [{
                         data: [40, 9, 16, 8, 9, 7, 11],
                         backgroundColor: [
-                            '#2563EB', // Blue
+                            '#C8102E', // MG Red
                             '#06B6D4', // Cyan
                             '#64748B', // Slate
                             '#F59E0B', // Amber
@@ -738,8 +744,8 @@
                         backgroundColor: [
                             '#94A3B8',
                             '#10B981', // Highlight Thailand Campaign
-                            '#3B82F6',
-                            '#6366F1',
+                            '#F06B79',
+                            '#A80D27',
                             '#8B5CF6'
                         ],
                         borderRadius: 8
@@ -793,7 +799,7 @@
                         {
                             label: 'ราคาซื้อขายจริงประมาณการ (บาท)',
                             data: [1200000, 1280000, 1399000],
-                            backgroundColor: ['#F59E0B', '#2563EB', '#64748B'],
+                            backgroundColor: ['#F59E0B', '#C8102E', '#64748B'],
                             borderRadius: 8,
                             yAxisID: 'y'
                         },
@@ -858,7 +864,7 @@
                         {
                             label: 'MG Maxus 7 (EV)',
                             data: [270000, 65000, 110000, 150000, 1049000],
-                            backgroundColor: '#2563EB',
+                            backgroundColor: '#C8102E',
                             borderRadius: 6
                         },
                         {
