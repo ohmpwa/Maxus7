@@ -90,8 +90,8 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-700/60 relative z-10">
                 <div class="bg-slate-800/80 rounded-2xl p-4 border border-slate-700">
                     <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">ราคาแคมเปญปัจจุบัน</p>
-                    <p class="text-2xl md:text-3xl font-bold text-emerald-400 mt-1">1.399 <span class="text-sm font-normal text-slate-300">ล้านบาท</span></p>
-                    <p class="text-xs text-slate-400 mt-1">ลดจาก MSRP 1.769 ล้านบาท</p>
+                    <p class="text-2xl md:text-3xl font-bold text-emerald-400 mt-1">1.299 <span class="text-sm font-normal text-slate-300">ล้านบาท</span></p>
+                    <p class="text-xs text-slate-400 mt-1">โปรฯ ต.ค. 69 (ปกติ 1.399 ล้านบาท)</p>
                 </div>
                 <div class="bg-slate-800/80 rounded-2xl p-4 border border-slate-700">
                     <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">ความจุแบตเตอรี่</p>
@@ -560,8 +560,9 @@
         <section id="news" class="space-y-6">
             <div class="border-l-4 border-rose-500 pl-4">
                 <h2 class="text-2xl font-bold text-slate-900">9. ข่าวสารและอัปเดต MG Maxus 7</h2>
-                <p class="text-slate-600 text-sm mt-1">รวบรวมข่าวราคา โปรโมชัน และความเคลื่อนไหว (อัปเดตล่าสุด: ต.ค. 2026) — โปรโมชันมีระยะเวลาจำกัด ควรยืนยันกับผู้จำหน่ายก่อนตัดสินใจ</p>
+                <p class="text-slate-600 text-sm mt-1">รวบรวมข่าวราคา โปรโมชัน และความเคลื่อนไหว ตรวจสอบข้อมูลล่าสุดเมื่อ 8 ต.ค. 2569 — ข่าวในหน้านี้ไม่อัปเดตอัตโนมัติ โปรโมชันมีระยะเวลาจำกัด ควรยืนยันกับผู้จำหน่ายก่อนตัดสินใจ</p>
             </div>
+            <div id="promoCard" class="rounded-2xl p-6 bg-gradient-to-br from-rose-600 to-rose-800 text-white shadow-lg space-y-3"></div>
             <div id="newsFilters" class="flex flex-wrap gap-2"></div>
             <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
         </section>
@@ -927,14 +928,23 @@
             { t: 'ไฟเตือนและกรณีฉุกเฉิน', b: ['ไฟเตือนสีแดง: จอดรถในที่ปลอดภัยทันทีและติดต่อศูนย์บริการ', 'ไฟเตือนสีเหลือง: ขับต่อได้อย่างระมัดระวังและนัดตรวจเช็ก', 'รถดับกลางทาง: เปิดไฟฉุกเฉิน ห้ามลากโดยล้อหน้าแตะพื้น ให้ใช้รถสไลด์', 'น้ำท่วม: หลีกเลี่ยงการลุยน้ำลึกเกินขอบล่างตัวถัง'] }
         ];
 
+        // วันที่: 'YYYY-MM-DD' = ยืนยันวันประกาศ, 'YYYY-MM' = ทราบเฉพาะเดือน, '' = ไม่ระบุวันที่
+        const PROMO = {
+            title: 'โปรโมชันทางการ ต.ค. 2569 (มาตรการ EV 3.5)',
+            start: '2026-10-01', end: '2026-10-31',
+            prices: [['รุ่นย่อย X', 1399000, 1299000], ['รุ่นย่อย X สีทูโทน', 1419000, 1319000]],
+            perks: ['ประกันชั้น 1 + พ.ร.บ. 1 ปี (25,900 บาท)', 'MG HOME CHARGER + ติดตั้งฟรี (38,500 บาท)', 'สาย V2L (10,000 บาท) + ชุดพรมปูพื้น', 'รับประกันตัวรถ 5 ปี / 160,000 กม.', 'รับประกันแบตเตอรี่และมอเตอร์ตลอดอายุการใช้งาน (เฉพาะบุคคลธรรมดา)'],
+            url: 'https://www.mgcars.com/th/promotions/MG-MAXUS-7-Promotion'
+        };
         const NEWS = [
-            { date: '2026-03-01', tag: 'โปรโมชัน', title: 'Motor Show 2026: ลด 100,000 บาท เหลือ 1,299,000 บาท', desc: 'แคมเปญช่วงงาน Motor Show (1 มี.ค. – 5 เม.ย. 2569) ปัจจุบันสิ้นสุดแล้ว', url: 'https://autolifethailand.tv/official-price-discount-mg-maxus-7-ev-motor-show-2026/', src: 'AutoLife Thailand' },
-            { date: '2026-01-15', tag: 'ราคา', title: 'ราคาอย่างเป็นทางการ ม.ค. 2026: 1,399,000 บาท', desc: 'รุ่น X นำเข้า CBU จากจีน คงราคาเดิมจากปี 2025 หลังหักส่วนลด', url: 'https://autolifethailand.tv/official-price-mg-maxus-7-ev-bev-jan-2026/', src: 'AutoLife Thailand' },
-            { date: '2026-01-10', tag: 'รีวิว/สเปก', title: 'MPV ไฟฟ้า 570 กม./ชาร์จ NEDC ราคา 1,399,000 บาท', desc: 'สรุปสเปก 245 แรงม้า แบต 90 kWh และคู่แข่งในตลาด', url: 'https://www.car250.com/new-mg-maxus-7-mpv-2026.html', src: 'CAR250' },
-            { date: '2026-10-01', tag: 'โปรโมชัน', title: 'โปรโมชันทางการ MG: เริ่มต้น 1,299,000 บาท (EV 3.5)', desc: 'ตรวจสอบเงื่อนไขและแคมเปญล่าสุดจากเว็บไซต์ MG Thailand', url: 'https://www.mgcars.com/th/promotions/MG-MAXUS-7-Promotion', src: 'MG Thailand' },
-            { date: '2026-06-01', tag: 'ราคา', title: 'ตารางราคา ผ่อน-ดาวน์ MG Maxus 7', desc: 'คำนวณค่างวดตามเงินดาวน์และระยะผ่อน', url: 'https://www.9carthai.com/new-mg-maxus-7-price/', src: '9CarThai' },
-            { date: '2026-05-01', tag: 'รีวิว/สเปก', title: 'สเปกเต็ม MG Maxus 7 2026 ในไทย', desc: 'ตารางข้อมูลทางเทคนิคและอุปกรณ์มาตรฐาน', url: 'https://www.zigwheels.co.th/en/new-cars/mg/maxus-7/specifications', src: 'ZigWheels' }
-        ].sort((a, b) => b.date.localeCompare(a.date));
+            { date: '2026-10-01', tag: 'โปรโมชัน', title: 'โปรฯ ต.ค. 2569: เริ่มต้น 1,299,000 บาท พร้อมของแถมชุดใหญ่', desc: 'ราคาพิเศษภายใต้ EV 3.5 (ปกติ 1,399,000) ฟรีประกันชั้น 1, Home Charger พร้อมติดตั้ง, สาย V2L — จอง-รับรถ 1–31 ต.ค. 2569', url: 'https://www.mgcars.com/th/promotions/MG-MAXUS-7-Promotion', src: 'MG Thailand (ทางการ)' },
+            { date: '2026-03-01', tag: 'โปรโมชัน', title: 'Motor Show 2026: ลด 100,000 บาท เหลือ 1,299,000 บาท', desc: 'แคมเปญช่วงงาน Motor Show (1 มี.ค. – 5 เม.ย. 2569) สิ้นสุดแล้ว', url: 'https://autolifethailand.tv/official-price-discount-mg-maxus-7-ev-motor-show-2026/', src: 'AutoLife Thailand' },
+            { date: '2026-03', tag: 'โปรโมชัน', title: 'รวมโปรฯ Motor Show MG ทุกรุ่น', desc: 'สรุปส่วนลดและข้อเสนอของ MG ในงาน Motor Show 2026', url: 'https://car2day.com/promotion-mg-bims/', src: 'Car2Day' },
+            { date: '2026-01', tag: 'ราคา', title: 'ราคาอย่างเป็นทางการ ม.ค. 2569: 1,399,000 บาท', desc: 'รุ่น X นำเข้า CBU จากจีน คงราคาเดิมจากปี 2568', url: 'https://autolifethailand.tv/official-price-mg-maxus-7-ev-bev-jan-2026/', src: 'AutoLife Thailand' },
+            { date: '', tag: 'ราคา', title: 'เอ็มจีหั่นราคา MG MAXUS 7 ลง 1.69 แสน ลูกค้าเก่าได้สิทธิ์ย้อนหลัง', desc: 'ข่าวการปรับลดราคาครั้งก่อนหน้า (ข้อมูลย้อนหลัง)', url: 'https://www.bangkokbiznews.com/auto/1154586', src: 'กรุงเทพธุรกิจ' },
+            { date: '', tag: 'รีวิว/สเปก', title: 'MPV ไฟฟ้า 570 กม./ชาร์จ NEDC', desc: 'สรุปสเปก 245 แรงม้า แบต 90 kWh และคู่แข่งในตลาด', url: 'https://www.car250.com/new-mg-maxus-7-mpv-2026.html', src: 'CAR250' },
+            { date: '', tag: 'รีวิว/สเปก', title: 'รีวิว MG Maxus 7', desc: 'ทดลองขับและอุปกรณ์มาตรฐานรุ่นไทย จอ 12.3 นิ้ว, CarPlay', url: 'https://www.pcauto.com/th/review/mg-maxus-7-review', src: 'PCAUTO' }
+        ].sort((a, b) => (b.date || '0').localeCompare(a.date || '0'));
 
         const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
         const chip = (label, active) => `<button data-v="${esc(label)}" class="px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${active ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-600 border-slate-300 hover:border-slate-500'}">${esc(label)}</button>`;
@@ -959,7 +969,30 @@
                 </div>`).join('');
         });
 
-        const fmtDate = d => new Date(d).toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
+        const fmtDate = d => !d ? 'ไม่ระบุวันที่'
+            : d.length === 7 ? new Date(d + '-01').toLocaleDateString('th-TH', { year: 'numeric', month: 'short' })
+            : new Date(d).toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
+
+        // Featured promo with live status from the viewer's clock
+        (function renderPromo() {
+            const today = new Date(); today.setHours(0, 0, 0, 0);
+            const end = new Date(PROMO.end), start = new Date(PROMO.start);
+            const days = Math.round((end - today) / 864e5);
+            const status = today < start ? 'ยังไม่เริ่ม' : days < 0 ? 'หมดเขตแล้ว — โปรดตรวจโปรฯ ใหม่ที่เว็บไซต์ MG' : days === 0 ? 'วันสุดท้าย!' : 'เหลืออีก ' + days + ' วัน';
+            const fmt = n => n.toLocaleString();
+            document.getElementById('promoCard').innerHTML = `
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <span class="text-xs bg-white/20 px-2.5 py-1 rounded-full">🔥 โปรโมชันปัจจุบัน · ${fmtDate(PROMO.start)} – ${fmtDate(PROMO.end)}</span>
+                    <span class="text-xs font-bold ${days < 0 ? 'bg-slate-900/40' : 'bg-amber-400 text-slate-900'} px-2.5 py-1 rounded-full">${status}</span>
+                </div>
+                <h3 class="text-xl font-bold">${esc(PROMO.title)}</h3>
+                <div class="grid sm:grid-cols-2 gap-3">${PROMO.prices.map(([n, o, p]) => `
+                    <div class="bg-white/10 rounded-xl p-3"><p class="text-xs text-rose-100">${esc(n)}</p>
+                    <p class="text-2xl font-bold">${fmt(p)} <span class="text-sm font-normal">บาท</span></p>
+                    <p class="text-xs text-rose-200"><s>${fmt(o)}</s> · ลด ${fmt(o - p)} บาท</p></div>`).join('')}</div>
+                <ul class="text-sm text-rose-50 grid sm:grid-cols-2 gap-1">${PROMO.perks.map(x => `<li>✓ ${esc(x)}</li>`).join('')}</ul>
+                <a href="${PROMO.url}" target="_blank" rel="noopener" class="inline-block text-xs underline text-white/90">ดูเงื่อนไขเต็มที่เว็บไซต์ MG Thailand ↗</a>`;
+        })();
         filterable(document.getElementById('newsFilters'), NEWS, 'tag', list => {
             document.getElementById('newsGrid').innerHTML = list.map(n => `
                 <a href="${esc(n.url)}" target="_blank" rel="noopener" class="glass-card rounded-2xl p-5 space-y-2 block hover:border-rose-300 transition-colors">
