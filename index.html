@@ -1311,7 +1311,7 @@
         renderCompare();
 
         // ---------- 9.3 Trip planner ----------
-        const ROUTES = [['หัวหิน', 200], ['พัทยา', 150], ['เขาใหญ่', 180], ['ขอนแก่น', 445], ['เชียงใหม่', 690], ['ภูเก็ต', 840]];
+        const ROUTES = [['หัวหิน', 200], ['พัทยา', 150], ['เขาใหญ่', 180], ['ขอนแก่น', 445], ['เชียงใหม่', 690], ['สุราษฎร์ธานี', 645], ['ภูเก็ต', 840]];
         $('tripPresets').innerHTML = ROUTES.map(([n, d]) => `<button data-n="${n}" data-d="${d}" class="px-3 py-1.5 rounded-full text-xs font-medium border bg-white text-slate-600 border-slate-300 hover:border-slate-500">กทม. → ${n} (~${d} กม.)</button>`).join('');
         $('tripPresets').addEventListener('click', e => {
             const b = e.target.closest('button'); if (!b) return;
@@ -1324,18 +1324,28 @@
             const dest = $('tpDest').value.trim();
             $('tpMapLink').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('สถานีชาร์จรถยนต์ไฟฟ้า ' + dest);
             const first = range * Math.max(0, start - reserve) / 100, perStop = range * (to - reserve) / 100;
-            let stops = 0, arrive;
+            // จุดชาร์จสุดท้ายเติมแค่พอถึงปลายทาง + เผื่อ 10%
+            const BUFFER = 10;
+            let stops = 0, arrive, lastTo = to;
             if (dist <= first) arrive = start - dist / range * 100;
             else {
                 stops = Math.ceil((dist - first) / perStop);
-                arrive = to - ((dist - first) - (stops - 1) * perStop) / range * 100;
+                const lastLeg = (dist - first) - (stops - 1) * perStop;
+                lastTo = Math.min(to, Math.ceil(reserve + lastLeg / range * 100 + BUFFER));
+                arrive = lastTo - lastLeg / range * 100;
             }
-            const stopHrs = dcHours(reserve, to, 120), driveHrs = dist / 90;
+            const stopHrs = dcHours(reserve, to, 120), lastHrs = dcHours(reserve, lastTo, 120), driveHrs = dist / 90;
+            const chargeHrs = (stops - 1) * stopHrs + lastHrs;
+            const plan = stops === 1
+                ? `ชาร์จ ${reserve}→${lastTo}% ~${fmtHrs(lastHrs)}`
+                : lastTo < to
+                    ? `${stops === 2 ? "ครั้งแรก" : (stops - 1) + " ครั้งแรก"}ชาร์จ ${reserve}→${to}%${stops === 2 ? "" : " ครั้งละ"} ~${fmtHrs(stopHrs)}, ครั้งสุดท้ายเติมแค่ ${reserve}→${lastTo}% ~${fmtHrs(lastHrs)}`
+                    : `ชาร์จ ${reserve}→${to}% ครั้งละ ~${fmtHrs(stopHrs)}`;
             const roundTrip = dist * 2 <= first ? 'ไป-กลับได้โดยไม่ต้องชาร์จ' : 'ไป-กลับต้องชาร์จเพิ่ม (ชาร์จที่ปลายทางหรือระหว่างทาง)';
             $('tpResult').innerHTML = stops === 0
                 ? `✅ <b>ไม่ต้องแวะชาร์จ</b> ถึง${esc(dest || 'ปลายทาง')}เหลือแบตประมาณ <b>${Math.round(arrive)}%</b><br><span class="text-xs">${roundTrip}</span>`
-                : `🔌 ต้องแวะชาร์จ <b>${stops} ครั้ง</b> (ชาร์จ ${reserve}→${to}% ครั้งละ ~${fmtHrs(stopHrs)})<br>
-                   ถึง${esc(dest || 'ปลายทาง')}เหลือแบตประมาณ <b>${Math.round(arrive)}%</b> · เวลาเดินทางรวมโดยประมาณ ${fmtHrs(driveHrs + stops * stopHrs)} (ขับเฉลี่ย 90 กม./ชม.)<br>
+                : `🔌 ต้องแวะชาร์จ <b>${stops} ครั้ง</b> รวมเวลาชาร์จ ~${fmtHrs(chargeHrs)} (${plan})<br>
+                   ถึง${esc(dest || 'ปลายทาง')}เหลือแบตประมาณ <b>${Math.round(arrive)}%</b> · เวลาเดินทางรวมโดยประมาณ ${fmtHrs(driveHrs + chargeHrs)} (ขับเฉลี่ย 90 กม./ชม.)<br>
                    <span class="text-xs">แนะนำแวะชาร์จครั้งแรกก่อนวิ่งได้ ~${Math.round(first)} กม.</span>`;
         }
         ['tpDest', 'tpDist', 'tpRange', 'tpStart', 'tpReserve', 'tpTo'].forEach(id => $(id).addEventListener('input', calcTripPlan));
