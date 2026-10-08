@@ -55,6 +55,7 @@
                 <a href="#forecast" class="hover:text-blue-400 transition-colors">แนวโน้มราคาปลายปี</a>
                 <a href="#tco" class="hover:text-blue-400 transition-colors">TCO 300,000 กม.</a>
                 <a href="#features" class="hover:text-blue-400 transition-colors">ฟีเจอร์</a>
+                <a href="#finance" class="hover:text-blue-400 transition-colors">ตารางผ่อน</a>
                 <a href="#manual" class="hover:text-blue-400 transition-colors">คู่มือ</a>
                 <a href="#news" class="hover:text-blue-400 transition-colors">ข่าวสาร</a>
             </nav>
@@ -62,7 +63,7 @@
         </div>
         <div id="mobileNav" class="hidden lg:hidden bg-slate-900 border-t border-slate-800 px-4 py-3 grid grid-cols-2 gap-2 text-sm text-slate-300">
             <a href="#overview">ภาพรวมสเปก</a><a href="#bom">ต้นทุน BOM</a><a href="#global-price">ราคาทั่วโลก</a><a href="#forecast">แนวโน้มราคา</a>
-            <a href="#tco">TCO</a><a href="#features">ฟีเจอร์</a><a href="#manual">คู่มือ</a><a href="#news">ข่าวสาร</a>
+            <a href="#tco">TCO</a><a href="#features">ฟีเจอร์</a><a href="#finance">ตารางผ่อน</a><a href="#manual">คู่มือ</a><a href="#news">ข่าวสาร</a>
         </div>
     </header>
 
@@ -483,6 +484,10 @@
             </div>
             <div id="featureFilters" class="flex flex-wrap gap-2"></div>
             <div id="featureGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-900 leading-relaxed">
+                <b>⚠️ ข้อสังเกตสเปกไทย:</b> รุ่นที่จำหน่ายในประเทศไทยไม่พบข้อมูลยืนยันว่ารองรับแอปเชื่อมต่อรถ (Connected Car) สำหรับสั่งการระยะไกล เช่น สั่งแอร์ล่วงหน้า/ดูสถานะแบตผ่านมือถือ
+                และไม่พบข้อมูลการอัปเดตซอฟต์แวร์แบบ OTA — การอัปเดตระบบน่าจะต้องทำที่ศูนย์บริการ การเชื่อมต่อมือถือใช้ได้ผ่าน Apple CarPlay / Android Auto / Bluetooth บนจอในรถเท่านั้น
+            </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="glass-card rounded-2xl p-6 space-y-4">
@@ -506,6 +511,37 @@
                     <label class="block text-sm text-slate-600">ค่าไฟ (บาท/kWh)<input id="tripRate" type="number" value="4.5" step="0.1" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
                     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900" id="tripResult"></div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Finance: Installment Table -->
+        <section id="finance" class="space-y-6">
+            <div class="border-l-4 border-sky-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-900">ตารางผ่อนชำระ MG Maxus 7</h2>
+                <p class="text-slate-600 text-sm mt-1">คำนวณค่างวดต่อเดือนแบบดอกเบี้ยคงที่ (Flat Rate) ปรับราคารถและอัตราดอกเบี้ยได้ตามข้อเสนอของไฟแนนซ์</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6 space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <label class="block text-sm text-slate-600">ราคารถ (บาท)<input id="finPrice" type="number" value="1299000" step="1000" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
+                    <label class="block text-sm text-slate-600">ดอกเบี้ย Flat (%/ปี)<input id="finRate" type="number" value="2.49" step="0.01" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
+                    <label class="flex items-center gap-2 text-sm text-slate-600 sm:mt-6"><input id="finVat" type="checkbox" checked class="w-4 h-4"> รวม VAT 7% ของดอกเบี้ย</label>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right text-xs md:text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                                <th class="p-3 text-left font-semibold">ดาวน์</th>
+                                <th class="p-3 font-semibold">เงินดาวน์ (บาท)</th>
+                                <th class="p-3 font-semibold">ยอดจัด (บาท)</th>
+                                <th class="p-3 font-semibold">48 งวด</th>
+                                <th class="p-3 font-semibold">60 งวด</th>
+                                <th class="p-3 font-semibold">72 งวด</th>
+                            </tr>
+                        </thead>
+                        <tbody id="finBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                    </table>
+                </div>
+                <p class="text-xs text-slate-400">* ค่างวดโดยประมาณ ยังไม่รวมประกันภัย ค่าจดทะเบียน และค่าธรรมเนียมอื่น อัตราดอกเบี้ยจริงขึ้นกับแคมเปญและการอนุมัติของสถาบันการเงิน ราคาเริ่มต้นอ้างอิงโปรโมชัน 1,299,000 บาท</p>
             </div>
         </section>
 
@@ -875,14 +911,13 @@
             { cat: 'ห้องโดยสาร', icon: '❄️', title: 'แอร์แยกโซนแถวหลัง', desc: 'ช่องแอร์หลังคาสำหรับผู้โดยสาร 3 แถว กระจายความเย็นทั่วห้องโดยสาร' },
             { cat: 'ความปลอดภัย', icon: '🛡️', title: 'ระบบช่วยขับขี่ ADAS', desc: 'Adaptive Cruise Control, ระบบช่วยรักษาเลน, เบรกฉุกเฉินอัตโนมัติ (ตรวจสอบรายการตามรุ่นที่จำหน่าย)' },
             { cat: 'ความปลอดภัย', icon: '📷', title: 'กล้องรอบคัน 360°', desc: 'ช่วยจอดในพื้นที่แคบ เห็นมุมอับรอบตัวรถขนาดใหญ่' },
-            { cat: 'เทคโนโลยี', icon: '📱', title: 'iSMART / แอปควบคุมรถ', desc: 'ตรวจสถานะแบต สั่งแอร์ล่วงหน้า และค้นหาตำแหน่งรถผ่านสมาร์ทโฟน' },
-            { cat: 'เทคโนโลยี', icon: '🖥️', title: 'จอกลาง + Apple CarPlay/Android Auto', desc: 'ศูนย์รวมการตั้งค่ารถ มัลติมีเดีย และการนำทาง' },
-            { cat: 'เทคโนโลยี', icon: '🔄', title: 'อัปเดตซอฟต์แวร์ OTA', desc: 'รับฟีเจอร์และแก้ไขระบบผ่านอากาศโดยไม่ต้องเข้าศูนย์ (เมื่อมีการปล่อยอัปเดต)' }
+            { cat: 'เทคโนโลยี', icon: '🖥️', title: 'จอกลาง 12.3" + Apple CarPlay/Android Auto', desc: 'เชื่อมต่อสมาร์ทโฟนผ่านจอในรถเพื่อใช้แผนที่ เพลง และโทรศัพท์ รองรับ Bluetooth' },
+            { cat: 'เทคโนโลยี', icon: '🔊', title: 'ระบบเสียง 8 ลำโพง', desc: 'กระจายเสียงทั่วห้องโดยสารทั้ง 3 แถว' }
         ];
 
         const MANUAL = [
             { t: 'เริ่มต้นใช้งานและสตาร์ทรถ', b: ['พกกุญแจอัจฉริยะเข้าใกล้รถ ประตูจะปลดล็อกเมื่อสัมผัสมือจับ', 'นั่งประจำที่ เหยียบเบรก ระบบจะพร้อมขับ (ไฟ READY ขึ้นบนหน้าปัด)', 'เลือกเกียร์ D/R โดยเหยียบเบรกค้างไว้ขณะเปลี่ยน', 'เมื่อจอด เลือก P ระบบเบรกมือไฟฟ้า (EPB) จะทำงานอัตโนมัติ'] },
-            { t: 'การชาร์จไฟ AC (ที่บ้าน)', b: ['ใช้ Wallbox ที่ติดตั้งโดยช่างที่ได้รับอนุญาต แยกเบรกเกอร์เฉพาะ', 'เปิดฝาช่องชาร์จ เสียบหัว Type 2 จนได้ยินเสียงล็อก', 'ตั้งเวลาชาร์จช่วง Off-peak (TOU) ผ่านหน้าจอหรือแอป เพื่อลดค่าไฟ', 'แนะนำตั้งเป้าชาร์จ 80–90% ในการใช้งานประจำวัน'] },
+            { t: 'การชาร์จไฟ AC (ที่บ้าน)', b: ['ใช้ Wallbox ที่ติดตั้งโดยช่างที่ได้รับอนุญาต แยกเบรกเกอร์เฉพาะ', 'เปิดฝาช่องชาร์จ เสียบหัว Type 2 จนได้ยินเสียงล็อก', 'ตั้งเวลาชาร์จช่วง Off-peak (TOU) ผ่านหน้าจอในรถ เพื่อลดค่าไฟ', 'แนะนำตั้งเป้าชาร์จ 80–90% ในการใช้งานประจำวัน'] },
             { t: 'การชาร์จเร็ว DC (สถานีสาธารณะ)', b: ['ใช้หัว CCS2 ชาร์จได้สูงสุด 120 kW', 'ความเร็วชาร์จจะลดลงหลัง 80% — แนะนำชาร์จช่วง 20–80% เพื่อประหยัดเวลา', 'แบตเย็นหรือร้อนจัดอาจทำให้ชาร์จช้าลง', 'ก่อนถอดหัว ให้กดหยุดที่ตู้หรือแอปผู้ให้บริการ'] },
             { t: 'การใช้งาน V2L จ่ายไฟออก', b: ['ต่ออะแดปเตอร์ V2L เข้าช่องชาร์จ', 'เปิดฟังก์ชันจ่ายไฟที่หน้าจอ และตั้งระดับแบตขั้นต่ำที่ต้องการเหลือไว้', 'รวมโหลดไม่เกิน 6.6 kW และห้ามใช้ในที่เปียกน้ำ', 'ปิดฟังก์ชันก่อนถอดอะแดปเตอร์'] },
             { t: 'ประตูสไลด์ไฟฟ้าและเบาะ', b: ['เปิด-ปิดด้วยปุ่มบนกุญแจ มือจับประตู หรือปุ่มคอนโซล', 'ประตูมีระบบกันหนีบ หากเจอสิ่งกีดขวางจะเด้งกลับ', 'เปิด Child Lock จากหน้าจอเมื่อมีเด็กเล็กนั่งแถวหลัง', 'Captain Seat เลื่อนบนรางได้ ตรวจสอบว่าล็อกเข้าที่ก่อนออกรถ'] },
@@ -980,6 +1015,19 @@
         }
         ['tripKm', 'tripEff', 'tripRate'].forEach(id => $(id).addEventListener('input', calcTrip));
         calcTrip();
+
+        // Installment table (flat rate)
+        function calcFinance() {
+            const price = +$('finPrice').value || 0, rate = (+$('finRate').value || 0) / 100, vat = $('finVat').checked ? 1.07 : 1;
+            const fmt = n => Math.round(n).toLocaleString();
+            $('finBody').innerHTML = [25, 30, 35, 40, 45, 50].map(d => {
+                const down = price * d / 100, fin = price - down;
+                const cells = [48, 60, 72].map(n => `<td class="p-3 font-semibold text-sky-800">${fmt((fin + fin * rate * n / 12 * vat) / n)}</td>`).join('');
+                return `<tr class="hover:bg-sky-50/50"><td class="p-3 text-left font-semibold">${d}%</td><td class="p-3">${fmt(down)}</td><td class="p-3">${fmt(fin)}</td>${cells}</tr>`;
+            }).join('');
+        }
+        ['finPrice', 'finRate', 'finVat'].forEach(id => $(id).addEventListener('input', calcFinance));
+        calcFinance();
 
         // Back to top + mobile nav
         const tt = $('toTop');
