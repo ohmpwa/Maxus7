@@ -11,6 +11,8 @@
     <!-- Google Fonts: Kanit -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        html { scroll-behavior: smooth; }
+        section[id] { scroll-margin-top: 5rem; }
         body {
             font-family: 'Kanit', sans-serif;
             background-color: #F8FAFC;
@@ -46,13 +48,21 @@
                 <span class="bg-blue-600 text-white font-bold text-xs uppercase px-2.5 py-1 rounded-md tracking-wider">e-MPV Analysis</span>
                 <span class="text-lg font-bold tracking-tight text-slate-100">MG MAXUS 7 <span class="text-blue-400 font-normal">| 2026 Intelligence Brief</span></span>
             </div>
-            <nav class="hidden md:flex space-x-6 text-sm font-medium text-slate-300">
+            <nav class="hidden lg:flex space-x-5 text-sm font-medium text-slate-300">
                 <a href="#overview" class="hover:text-blue-400 transition-colors">ภาพรวมสเปก</a>
                 <a href="#bom" class="hover:text-blue-400 transition-colors">โครงสร้างต้นทุน BOM</a>
                 <a href="#global-price" class="hover:text-blue-400 transition-colors">ราคาเปรียบเทียบทั่วโลก</a>
                 <a href="#forecast" class="hover:text-blue-400 transition-colors">แนวโน้มราคาปลายปี</a>
                 <a href="#tco" class="hover:text-blue-400 transition-colors">TCO 300,000 กม.</a>
+                <a href="#features" class="hover:text-blue-400 transition-colors">ฟีเจอร์</a>
+                <a href="#manual" class="hover:text-blue-400 transition-colors">คู่มือ</a>
+                <a href="#news" class="hover:text-blue-400 transition-colors">ข่าวสาร</a>
             </nav>
+            <button id="mobileNavBtn" class="lg:hidden text-2xl px-2" aria-label="เมนู">☰</button>
+        </div>
+        <div id="mobileNav" class="hidden lg:hidden bg-slate-900 border-t border-slate-800 px-4 py-3 grid grid-cols-2 gap-2 text-sm text-slate-300">
+            <a href="#overview">ภาพรวมสเปก</a><a href="#bom">ต้นทุน BOM</a><a href="#global-price">ราคาทั่วโลก</a><a href="#forecast">แนวโน้มราคา</a>
+            <a href="#tco">TCO</a><a href="#features">ฟีเจอร์</a><a href="#manual">คู่มือ</a><a href="#news">ข่าวสาร</a>
         </div>
     </header>
 
@@ -464,6 +474,64 @@
             </div>
         </section>
 
+
+        <!-- SECTION 7: Features Showcase & Tools -->
+        <section id="features" class="space-y-6">
+            <div class="border-l-4 border-emerald-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-900">7. ฟีเจอร์เด่นและเครื่องมือคำนวณ (Feature Hub)</h2>
+                <p class="text-slate-600 text-sm mt-1">รวมฟีเจอร์ที่น่าสนใจของ MG Maxus 7 กรองตามหมวด พร้อมเครื่องคำนวณเวลาชาร์จและค่าไฟต่อทริป</p>
+            </div>
+            <div id="featureFilters" class="flex flex-wrap gap-2"></div>
+            <div id="featureGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="glass-card rounded-2xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-slate-800">⚡ คำนวณเวลาชาร์จ</h3>
+                    <label class="block text-sm text-slate-600">แบตเตอรี่ปัจจุบัน: <b id="socFromV">20</b>% → เป้าหมาย: <b id="socToV">80</b>%</label>
+                    <input id="socFrom" type="range" min="0" max="100" value="20" class="w-full">
+                    <input id="socTo" type="range" min="0" max="100" value="80" class="w-full">
+                    <select id="chargerType" class="w-full border border-slate-300 rounded-lg p-2 text-sm">
+                        <option value="7">AC Wallbox 7 kW</option>
+                        <option value="11">AC 11 kW</option>
+                        <option value="60">DC 60 kW</option>
+                        <option value="120" selected>DC 120 kW (สูงสุดของรถ)</option>
+                    </select>
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm text-emerald-900" id="chargeResult"></div>
+                    <p class="text-xs text-slate-400">* ประมาณการจาก 90 kWh, ประสิทธิภาพ AC 90% / DC ลดกำลังหลัง 80% — เวลาจริงขึ้นกับอุณหภูมิและตู้ชาร์จ</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-slate-800">🗺️ คำนวณค่าไฟต่อทริป</h3>
+                    <label class="block text-sm text-slate-600">ระยะทาง (กม.)<input id="tripKm" type="number" value="300" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
+                    <label class="block text-sm text-slate-600">อัตราสิ้นเปลือง (kWh/100 กม.)<input id="tripEff" type="number" value="19" step="0.5" min="5" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
+                    <label class="block text-sm text-slate-600">ค่าไฟ (บาท/kWh)<input id="tripRate" type="number" value="4.5" step="0.1" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900" id="tripResult"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: User Manual -->
+        <section id="manual" class="space-y-6">
+            <div class="border-l-4 border-amber-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-900">8. คู่มือการใช้งานฉบับย่อ (Quick Owner's Guide)</h2>
+                <p class="text-slate-600 text-sm mt-1">สรุปขั้นตอนใช้งานที่พบบ่อย ค้นหาได้ทันที — โปรดยึดสมุดคู่มือประจำรถและคำแนะนำของศูนย์บริการ MG เป็นหลัก</p>
+            </div>
+            <input id="manualSearch" type="search" placeholder="🔍 ค้นหาในคู่มือ เช่น ชาร์จ, V2L, ประตู, ยาง..." class="w-full border border-slate-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400">
+            <div id="manualList" class="space-y-3"></div>
+            <p id="manualEmpty" class="hidden text-sm text-slate-500 text-center py-6">ไม่พบหัวข้อที่ค้นหา</p>
+        </section>
+
+        <!-- SECTION 9: News -->
+        <section id="news" class="space-y-6">
+            <div class="border-l-4 border-rose-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-900">9. ข่าวสารและอัปเดต MG Maxus 7</h2>
+                <p class="text-slate-600 text-sm mt-1">รวบรวมข่าวราคา โปรโมชัน และความเคลื่อนไหว (อัปเดตล่าสุด: ต.ค. 2026) — โปรโมชันมีระยะเวลาจำกัด ควรยืนยันกับผู้จำหน่ายก่อนตัดสินใจ</p>
+            </div>
+            <div id="newsFilters" class="flex flex-wrap gap-2"></div>
+            <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </section>
+
+        <button id="toTop" class="fixed bottom-6 right-6 z-50 hidden bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full shadow-lg text-xl" aria-label="กลับด้านบน">↑</button>
+
     </main>
 
     <!-- Footer -->
@@ -793,6 +861,133 @@
             });
 
         });
+    </script>
+    <!-- Feature Hub / Manual / News -->
+    <script>
+    (function () {
+        const FEATURES = [
+            { cat: 'ขับขี่', icon: '🔋', title: 'แบตเตอรี่ 90 kWh NMC', desc: 'ระยะทาง NEDC สูงสุด 570 กม. พร้อม Lifetime Warranty แบตเตอรี่และมอเตอร์สำหรับเจ้าของรายแรก (ตามเงื่อนไข)' },
+            { cat: 'ขับขี่', icon: '🏎️', title: 'มอเตอร์ 245 PS / 350 Nm', desc: 'มอเตอร์ PMSM ขับล้อหน้า อัตราเร่งฉับไวเหมาะกับการแซงบนทางหลวง' },
+            { cat: 'ชาร์จ', icon: '⚡', title: 'DC Fast Charge 120 kW', desc: 'ชาร์จ 30–80% ได้ในราว 30–36 นาที ผ่านหัว CCS2' },
+            { cat: 'ชาร์จ', icon: '🔌', title: 'V2L 6.6 kW', desc: 'จ่ายไฟ 220V ให้อุปกรณ์ภายนอก เช่น เตาไฟฟ้า แคมป์ปิ้ง หรือไฟสำรองยามฉุกเฉิน' },
+            { cat: 'ห้องโดยสาร', icon: '🚪', title: 'ประตูสไลด์ไฟฟ้าทั้ง 2 ฝั่ง', desc: 'เปิด-ปิดด้วยปุ่มบนกุญแจ มือจับ หรือหน้าจอ เหมาะกับเด็กและผู้สูงอายุ' },
+            { cat: 'ห้องโดยสาร', icon: '💺', title: 'Captain Seat 2+2+3', desc: 'เบาะแถวสองแบบกัปตันปรับเลื่อนได้ เบาะแถวสามพับเพิ่มพื้นที่เก็บสัมภาระ' },
+            { cat: 'ห้องโดยสาร', icon: '❄️', title: 'แอร์แยกโซนแถวหลัง', desc: 'ช่องแอร์หลังคาสำหรับผู้โดยสาร 3 แถว กระจายความเย็นทั่วห้องโดยสาร' },
+            { cat: 'ความปลอดภัย', icon: '🛡️', title: 'ระบบช่วยขับขี่ ADAS', desc: 'Adaptive Cruise Control, ระบบช่วยรักษาเลน, เบรกฉุกเฉินอัตโนมัติ (ตรวจสอบรายการตามรุ่นที่จำหน่าย)' },
+            { cat: 'ความปลอดภัย', icon: '📷', title: 'กล้องรอบคัน 360°', desc: 'ช่วยจอดในพื้นที่แคบ เห็นมุมอับรอบตัวรถขนาดใหญ่' },
+            { cat: 'เทคโนโลยี', icon: '📱', title: 'iSMART / แอปควบคุมรถ', desc: 'ตรวจสถานะแบต สั่งแอร์ล่วงหน้า และค้นหาตำแหน่งรถผ่านสมาร์ทโฟน' },
+            { cat: 'เทคโนโลยี', icon: '🖥️', title: 'จอกลาง + Apple CarPlay/Android Auto', desc: 'ศูนย์รวมการตั้งค่ารถ มัลติมีเดีย และการนำทาง' },
+            { cat: 'เทคโนโลยี', icon: '🔄', title: 'อัปเดตซอฟต์แวร์ OTA', desc: 'รับฟีเจอร์และแก้ไขระบบผ่านอากาศโดยไม่ต้องเข้าศูนย์ (เมื่อมีการปล่อยอัปเดต)' }
+        ];
+
+        const MANUAL = [
+            { t: 'เริ่มต้นใช้งานและสตาร์ทรถ', b: ['พกกุญแจอัจฉริยะเข้าใกล้รถ ประตูจะปลดล็อกเมื่อสัมผัสมือจับ', 'นั่งประจำที่ เหยียบเบรก ระบบจะพร้อมขับ (ไฟ READY ขึ้นบนหน้าปัด)', 'เลือกเกียร์ D/R โดยเหยียบเบรกค้างไว้ขณะเปลี่ยน', 'เมื่อจอด เลือก P ระบบเบรกมือไฟฟ้า (EPB) จะทำงานอัตโนมัติ'] },
+            { t: 'การชาร์จไฟ AC (ที่บ้าน)', b: ['ใช้ Wallbox ที่ติดตั้งโดยช่างที่ได้รับอนุญาต แยกเบรกเกอร์เฉพาะ', 'เปิดฝาช่องชาร์จ เสียบหัว Type 2 จนได้ยินเสียงล็อก', 'ตั้งเวลาชาร์จช่วง Off-peak (TOU) ผ่านหน้าจอหรือแอป เพื่อลดค่าไฟ', 'แนะนำตั้งเป้าชาร์จ 80–90% ในการใช้งานประจำวัน'] },
+            { t: 'การชาร์จเร็ว DC (สถานีสาธารณะ)', b: ['ใช้หัว CCS2 ชาร์จได้สูงสุด 120 kW', 'ความเร็วชาร์จจะลดลงหลัง 80% — แนะนำชาร์จช่วง 20–80% เพื่อประหยัดเวลา', 'แบตเย็นหรือร้อนจัดอาจทำให้ชาร์จช้าลง', 'ก่อนถอดหัว ให้กดหยุดที่ตู้หรือแอปผู้ให้บริการ'] },
+            { t: 'การใช้งาน V2L จ่ายไฟออก', b: ['ต่ออะแดปเตอร์ V2L เข้าช่องชาร์จ', 'เปิดฟังก์ชันจ่ายไฟที่หน้าจอ และตั้งระดับแบตขั้นต่ำที่ต้องการเหลือไว้', 'รวมโหลดไม่เกิน 6.6 kW และห้ามใช้ในที่เปียกน้ำ', 'ปิดฟังก์ชันก่อนถอดอะแดปเตอร์'] },
+            { t: 'ประตูสไลด์ไฟฟ้าและเบาะ', b: ['เปิด-ปิดด้วยปุ่มบนกุญแจ มือจับประตู หรือปุ่มคอนโซล', 'ประตูมีระบบกันหนีบ หากเจอสิ่งกีดขวางจะเด้งกลับ', 'เปิด Child Lock จากหน้าจอเมื่อมีเด็กเล็กนั่งแถวหลัง', 'Captain Seat เลื่อนบนรางได้ ตรวจสอบว่าล็อกเข้าที่ก่อนออกรถ'] },
+            { t: 'ระบบช่วยขับขี่ (ADAS)', b: ['เปิด Adaptive Cruise ด้วยปุ่มบนพวงมาลัย ตั้งความเร็วและระยะห่าง', 'ระบบเป็นเพียงตัวช่วย ผู้ขับต้องจับพวงมาลัยและเฝ้าระวังตลอดเวลา', 'ทำความสะอาดกล้องและเรดาร์หน้ารถให้ปราศจากฝุ่นโคลน', 'ฝนตกหนักหรือเส้นจราจรไม่ชัด ระบบอาจทำงานได้จำกัด'] },
+            { t: 'โหมดขับขี่และการชาร์จคืนพลังงาน', b: ['เลือกโหมด Eco / Normal / Sport ตามสถานการณ์', 'ปรับระดับ Regenerative Braking ให้สูงในเมืองเพื่อเพิ่มระยะทาง', 'ใช้ Eco + แอร์ 25–26°C บนทางไกลเพื่อประหยัดพลังงาน'] },
+            { t: 'การดูแลรักษาตามระยะ', b: ['เข้าตรวจเช็กตามระยะที่ศูนย์ MG กำหนด (ดูสมุดรับประกัน)', 'ตรวจลมยางทุก 2 สัปดาห์ ตามค่าบนป้ายข้างประตูคนขับ', 'เปลี่ยนไส้กรองแอร์ น้ำมันเบรก และน้ำยาหล่อเย็นแบตตามกำหนด', 'แบต 12V ยังต้องดูแล — หากจอดนานควรเปิดระบบเป็นระยะ'] },
+            { t: 'ไฟเตือนและกรณีฉุกเฉิน', b: ['ไฟเตือนสีแดง: จอดรถในที่ปลอดภัยทันทีและติดต่อศูนย์บริการ', 'ไฟเตือนสีเหลือง: ขับต่อได้อย่างระมัดระวังและนัดตรวจเช็ก', 'รถดับกลางทาง: เปิดไฟฉุกเฉิน ห้ามลากโดยล้อหน้าแตะพื้น ให้ใช้รถสไลด์', 'น้ำท่วม: หลีกเลี่ยงการลุยน้ำลึกเกินขอบล่างตัวถัง'] }
+        ];
+
+        const NEWS = [
+            { date: '2026-03-01', tag: 'โปรโมชัน', title: 'Motor Show 2026: ลด 100,000 บาท เหลือ 1,299,000 บาท', desc: 'แคมเปญช่วงงาน Motor Show (1 มี.ค. – 5 เม.ย. 2569) ปัจจุบันสิ้นสุดแล้ว', url: 'https://autolifethailand.tv/official-price-discount-mg-maxus-7-ev-motor-show-2026/', src: 'AutoLife Thailand' },
+            { date: '2026-01-15', tag: 'ราคา', title: 'ราคาอย่างเป็นทางการ ม.ค. 2026: 1,399,000 บาท', desc: 'รุ่น X นำเข้า CBU จากจีน คงราคาเดิมจากปี 2025 หลังหักส่วนลด', url: 'https://autolifethailand.tv/official-price-mg-maxus-7-ev-bev-jan-2026/', src: 'AutoLife Thailand' },
+            { date: '2026-01-10', tag: 'รีวิว/สเปก', title: 'MPV ไฟฟ้า 570 กม./ชาร์จ NEDC ราคา 1,399,000 บาท', desc: 'สรุปสเปก 245 แรงม้า แบต 90 kWh และคู่แข่งในตลาด', url: 'https://www.car250.com/new-mg-maxus-7-mpv-2026.html', src: 'CAR250' },
+            { date: '2026-10-01', tag: 'โปรโมชัน', title: 'โปรโมชันทางการ MG: เริ่มต้น 1,299,000 บาท (EV 3.5)', desc: 'ตรวจสอบเงื่อนไขและแคมเปญล่าสุดจากเว็บไซต์ MG Thailand', url: 'https://www.mgcars.com/th/promotions/MG-MAXUS-7-Promotion', src: 'MG Thailand' },
+            { date: '2026-06-01', tag: 'ราคา', title: 'ตารางราคา ผ่อน-ดาวน์ MG Maxus 7', desc: 'คำนวณค่างวดตามเงินดาวน์และระยะผ่อน', url: 'https://www.9carthai.com/new-mg-maxus-7-price/', src: '9CarThai' },
+            { date: '2026-05-01', tag: 'รีวิว/สเปก', title: 'สเปกเต็ม MG Maxus 7 2026 ในไทย', desc: 'ตารางข้อมูลทางเทคนิคและอุปกรณ์มาตรฐาน', url: 'https://www.zigwheels.co.th/en/new-cars/mg/maxus-7/specifications', src: 'ZigWheels' }
+        ].sort((a, b) => b.date.localeCompare(a.date));
+
+        const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        const chip = (label, active) => `<button data-v="${esc(label)}" class="px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${active ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-600 border-slate-300 hover:border-slate-500'}">${esc(label)}</button>`;
+
+        function filterable(filtersEl, items, key, render) {
+            const cats = ['ทั้งหมด', ...new Set(items.map(i => i[key]))];
+            let cur = 'ทั้งหมด';
+            const draw = () => {
+                filtersEl.innerHTML = cats.map(c => chip(c, c === cur)).join('');
+                render(cur === 'ทั้งหมด' ? items : items.filter(i => i[key] === cur));
+            };
+            filtersEl.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { cur = b.dataset.v; draw(); } });
+            draw();
+        }
+
+        filterable(document.getElementById('featureFilters'), FEATURES, 'cat', list => {
+            document.getElementById('featureGrid').innerHTML = list.map(f => `
+                <div class="glass-card rounded-2xl p-5 space-y-2 hover:-translate-y-0.5 transition-transform">
+                    <div class="flex items-center justify-between"><span class="text-2xl">${f.icon}</span><span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full">${esc(f.cat)}</span></div>
+                    <h4 class="font-bold text-slate-800">${esc(f.title)}</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">${esc(f.desc)}</p>
+                </div>`).join('');
+        });
+
+        const fmtDate = d => new Date(d).toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
+        filterable(document.getElementById('newsFilters'), NEWS, 'tag', list => {
+            document.getElementById('newsGrid').innerHTML = list.map(n => `
+                <a href="${esc(n.url)}" target="_blank" rel="noopener" class="glass-card rounded-2xl p-5 space-y-2 block hover:border-rose-300 transition-colors">
+                    <div class="flex items-center justify-between text-[11px]"><span class="bg-rose-50 text-rose-700 px-2 py-0.5 rounded-full">${esc(n.tag)}</span><span class="text-slate-400">${fmtDate(n.date)}</span></div>
+                    <h4 class="font-bold text-slate-800 leading-snug">${esc(n.title)}</h4>
+                    <p class="text-xs text-slate-600">${esc(n.desc)}</p>
+                    <p class="text-[11px] text-blue-600">ที่มา: ${esc(n.src)} ↗</p>
+                </a>`).join('');
+        });
+
+        // Manual: accordion + search
+        const mList = document.getElementById('manualList');
+        mList.innerHTML = MANUAL.map((m, i) => `
+            <details class="glass-card rounded-xl p-4 group" data-text="${esc((m.t + ' ' + m.b.join(' ')).toLowerCase())}">
+                <summary class="cursor-pointer font-semibold text-slate-800 flex justify-between items-center list-none">
+                    <span><span class="text-amber-600 mr-2">${i + 1}.</span>${esc(m.t)}</span><span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+                </summary>
+                <ol class="list-decimal pl-6 mt-3 space-y-1.5 text-sm text-slate-600">${m.b.map(x => `<li>${esc(x)}</li>`).join('')}</ol>
+            </details>`).join('');
+        document.getElementById('manualSearch').addEventListener('input', e => {
+            const q = e.target.value.trim().toLowerCase();
+            let shown = 0;
+            mList.querySelectorAll('details').forEach(d => {
+                const hit = !q || d.dataset.text.includes(q);
+                d.classList.toggle('hidden', !hit);
+                d.open = !!q && hit;
+                shown += hit;
+            });
+            document.getElementById('manualEmpty').classList.toggle('hidden', shown > 0);
+        });
+
+        const BATT = 90, $ = id => document.getElementById(id);
+
+        // Charge calculator: DC เต็มกำลังถึง 80% จากนั้นเหลือ ~35%
+        function calcCharge() {
+            const a = +$('socFrom').value, b = +$('socTo').value;
+            $('socFromV').textContent = a; $('socToV').textContent = b;
+            if (b <= a) { $('chargeResult').textContent = 'เป้าหมายต้องมากกว่าระดับปัจจุบัน'; return; }
+            const kw = +$('chargerType').value, dc = kw > 22, eff = dc ? 0.95 : 0.9;
+            const fast = Math.max(0, Math.min(b, 80) - a), slow = Math.max(0, b - Math.max(a, 80));
+            const hrs = dc ? (fast / 100 * BATT) / (kw * 0.8 * eff) + (slow / 100 * BATT) / (kw * 0.35 * eff)
+                           : ((b - a) / 100 * BATT) / (kw * eff);
+            const h = Math.floor(hrs), m = Math.round((hrs - h) * 60), kwh = (b - a) / 100 * BATT;
+            $('chargeResult').innerHTML = `เวลาประมาณ <b class="text-lg">${h ? h + ' ชม. ' : ''}${m} นาที</b><br>พลังงานที่เติม ~${kwh.toFixed(1)} kWh · ได้ระยะทางเพิ่ม ~${Math.round(kwh / 0.19)} กม.`;
+        }
+        ['socFrom', 'socTo', 'chargerType'].forEach(id => $(id).addEventListener('input', calcCharge));
+        calcCharge();
+
+        function calcTrip() {
+            const km = +$('tripKm').value || 0, eff = +$('tripEff').value || 0, rate = +$('tripRate').value || 0;
+            const kwh = km * eff / 100, cost = kwh * rate, fuel = km / 12 * 38;
+            $('tripResult').innerHTML = `ใช้พลังงาน ~${kwh.toFixed(1)} kWh (${Math.round(kwh / BATT * 100)}% ของแบต)<br>ค่าไฟ <b class="text-lg">${Math.round(cost).toLocaleString()} บาท</b> (${(cost / (km || 1)).toFixed(2)} บาท/กม.)<br><span class="text-xs">เทียบ MPV น้ำมัน 12 กม./ลิตร @38 บาท ≈ ${Math.round(fuel).toLocaleString()} บาท · ประหยัด ${Math.round(fuel - cost).toLocaleString()} บาท</span>`;
+        }
+        ['tripKm', 'tripEff', 'tripRate'].forEach(id => $(id).addEventListener('input', calcTrip));
+        calcTrip();
+
+        // Back to top + mobile nav
+        const tt = $('toTop');
+        addEventListener('scroll', () => tt.classList.toggle('hidden', scrollY < 600));
+        tt.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+        $('mobileNavBtn').addEventListener('click', () => $('mobileNav').classList.toggle('hidden'));
+        document.querySelectorAll('#mobileNav a').forEach(a => a.addEventListener('click', () => $('mobileNav').classList.add('hidden')));
+    })();
     </script>
 </body>
 </html>
