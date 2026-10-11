@@ -4,1568 +4,371 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MG Maxus 7 ข้อมูลครบ</title>
-    <meta name="description" content="ข้อมูล MG Maxus 7 e-MPV: สเปก ความปลอดภัย Euro NCAP 5 ดาว ราคาในไทยเทียบทั่วโลก คาดการณ์ราคา Motor Expo 2026 และเครื่องมือคำนวณ">
-    <!-- Tailwind CSS CDN -->
+    <meta name="description" content="MG Maxus 7 e-MPV ไฟฟ้า 7 ที่นั่ง: สเปก ความปลอดภัย Euro NCAP 5 ดาว ราคาในไทยเทียบทั่วโลก และคาดการณ์ราคา Motor Expo 2026">
+    <meta name="theme-color" content="#C8102E">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Maxus7 Thailand Guide">
+    <meta name="keywords" content="MG Maxus 7, Maxus MIFA 7, e-MPV, รถไฟฟ้า 7 ที่นั่ง, ราคา Maxus 7, Motor Expo 2026, Euro NCAP">
+    <link rel="canonical" href="https://maxus7.vercel.app/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="preload" as="image" href="/images/maxus7-side.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MG Maxus 7 ข้อมูลครบ">
+    <meta property="og:locale" content="th_TH">
+    <meta property="og:title" content="MG Maxus 7 — e-MPV ไฟฟ้า 7 ที่นั่ง ปลอดภัย Euro NCAP 5 ดาว">
+    <meta property="og:description" content="สเปก 245 แรงม้า แบต 90 kWh ราคาในไทยเทียบทั่วโลก คาดการณ์ราคา Motor Expo 2026 และบทสรุป: คุ้มไหม? พร้อมแหล่งอ้างอิงทุกตัวเลข">
+    <meta property="og:url" content="https://maxus7.vercel.app/">
+    <meta property="og:image" content="https://maxus7.vercel.app/images/maxus7-side.png">
+    <meta property="og:image:alt" content="MG Maxus 7 สีขาว จอดหน้าอาคารอิฐ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MG Maxus 7 — e-MPV ไฟฟ้า 7 ที่นั่ง Euro NCAP 5 ดาว">
+    <meta name="twitter:description" content="สเปก ราคาไทยเทียบทั่วโลก และคาดการณ์ราคา Motor Expo 2026">
+    <meta name="twitter:image" content="https://maxus7.vercel.app/images/maxus7-side.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "MG Maxus 7 ข้อมูลครบ",
+          "url": "https://maxus7.vercel.app/",
+          "inLanguage": "th-TH"
+        },
+        {
+          "@type": "Car",
+          "name": "MG Maxus 7",
+          "brand": { "@type": "Brand", "name": "MG" },
+          "manufacturer": { "@type": "Organization", "name": "SAIC Motor" },
+          "bodyType": "MPV",
+          "fuelType": "Electric",
+          "seatingCapacity": 7,
+          "vehicleEngine": { "@type": "EngineSpecification", "enginePower": { "@type": "QuantitativeValue", "value": 180, "unitCode": "KWT" }, "torque": { "@type": "QuantitativeValue", "value": 350, "unitCode": "NU" } },
+          "image": "https://maxus7.vercel.app/images/maxus7-side.png",
+          "offers": { "@type": "Offer", "price": 1299000, "priceCurrency": "THB", "availability": "https://schema.org/InStock", "description": "ราคาโปรโมชัน ต.ค. 2026 (ราคาปกติ 1,399,000 บาท)" }
+        }
+      ]
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>
-        // MG brand theme: remap accent palettes (blue/sky/indigo) to MG red
         const mgRed = { 50: '#FEF2F3', 100: '#FDE3E5', 200: '#FBCBD0', 300: '#F7A1AA', 400: '#F06B79', 500: '#E43C4F', 600: '#C8102E', 700: '#A80D27', 800: '#8C0F25', 900: '#771124', 950: '#42040F' };
-        tailwind.config = { theme: { extend: { colors: { blue: mgRed, sky: mgRed, indigo: mgRed } } } };
+        tailwind.config = { theme: { extend: { colors: { mg: mgRed } } } };
     </script>
-    <meta name="theme-color" content="#C8102E">
-    <!-- Chart.js CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-    <!-- Google Fonts: Kanit -->
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         html { scroll-behavior: smooth; }
-        section[id] { scroll-margin-top: 5rem; }
-        body {
-            font-family: 'Kanit', sans-serif;
-            background-color: #F8FAFC;
-            color: #0F172A;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 320px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 360px;
-            }
-        }
-        .glass-card {
-            background: #FFFFFF;
-            border: 1px solid #E2E8F0;
-            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-        }
+        section[id] { scroll-margin-top: 4.5rem; }
+        body { font-family: 'Kanit', sans-serif; background: #F8FAFC; color: #0F172A; }
+        .card { background: #fff; border: 1px solid #E2E8F0; box-shadow: 0 4px 20px -2px rgba(15,23,42,.05); }
+        .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] .chev { transform: rotate(180deg); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen">
+<body class="min-h-screen">
 
-    <!-- Sticky Navigation Bar -->
-    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md text-white border-b border-slate-800 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <span class="bg-blue-600 text-white font-bold text-xs uppercase px-2.5 py-1 rounded-md tracking-wider">e-MPV Guide</span>
-                <span class="text-lg font-bold tracking-tight text-slate-100">MG MAXUS 7 <span class="text-blue-400 font-normal">| ข้อมูลครบ 2026</span></span>
-            </div>
-            <nav class="hidden xl:flex space-x-5 text-sm font-medium text-slate-300">
-                <a href="#specs" class="hover:text-blue-400 transition-colors">สเปก</a>
-                <a href="#safety" class="hover:text-blue-400 transition-colors">ความปลอดภัย</a>
-                <a href="#global-price" class="hover:text-blue-400 transition-colors">ราคา</a>
-                <a href="#forecast" class="hover:text-blue-400 transition-colors">Motor Expo</a>
-                <a href="#verdict" class="hover:text-blue-400 transition-colors">ฟันธง</a>
-                <a href="#compare" class="hover:text-blue-400 transition-colors">คู่แข่ง</a>
-                <a href="#tco" class="hover:text-blue-400 transition-colors">TCO</a>
-                <a href="#finance" class="hover:text-blue-400 transition-colors">ตารางผ่อน</a>
-                <a href="#tools" class="hover:text-blue-400 transition-colors">เครื่องมือ</a>
-                <a href="#manual" class="hover:text-blue-400 transition-colors">คู่มือ</a>
-                <a href="#news" class="hover:text-blue-400 transition-colors">ข่าวสาร</a>
-                <a href="#faq" class="hover:text-blue-400 transition-colors">FAQ</a>
+    <!-- Nav -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-slate-950/80 backdrop-blur-md text-white border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+            <a href="#top" class="font-bold tracking-tight">MG <span class="text-mg-400">MAXUS 7</span></a>
+            <nav class="hidden md:flex gap-6 text-sm text-slate-300">
+                <a href="#specs" class="hover:text-white">สเปก</a>
+                <a href="#gallery" class="hover:text-white">ภาพรถ</a>
+                <a href="#safety" class="hover:text-white">ความปลอดภัย</a>
+                <a href="#price" class="hover:text-white">ราคา</a>
+                <a href="#verdict" class="hover:text-white">ฟันธง</a>
+                <a href="#faq" class="hover:text-white">FAQ</a>
+                <a href="/tools" class="text-mg-300 hover:text-white">เครื่องมือคำนวณ →</a>
             </nav>
-            <button id="mobileNavBtn" class="xl:hidden text-2xl px-2" aria-label="เมนู">☰</button>
+            <button id="navBtn" class="md:hidden text-2xl px-2" aria-label="เมนู">☰</button>
         </div>
-        <div id="mobileNav" class="hidden xl:hidden bg-slate-900 border-t border-slate-800 px-4 py-3 grid grid-cols-2 gap-2 text-sm text-slate-300">
-            <a href="#specs">สเปก</a><a href="#safety">ความปลอดภัย</a><a href="#global-price">ราคาทั่วโลก</a><a href="#forecast">Motor Expo</a>
-            <a href="#verdict">ฟันธง</a><a href="#compare">คู่แข่ง</a><a href="#tco">TCO</a><a href="#bom">ต้นทุน BOM</a><a href="#features">ฟีเจอร์</a><a href="#finance">ตารางผ่อน</a>
-            <a href="#tools">เครื่องมือ</a><a href="#checklist">เช็กลิสต์</a><a href="#manual">คู่มือ</a><a href="#news">ข่าวสาร</a><a href="#faq">FAQ</a><a href="#sources">แหล่งข้อมูล</a>
+        <div id="navMobile" class="hidden md:hidden bg-slate-950 px-4 py-3 grid grid-cols-3 gap-2 text-sm text-slate-300 border-t border-white/10">
+            <a href="#specs">สเปก</a><a href="#gallery">ภาพรถ</a><a href="#safety">ความปลอดภัย</a>
+            <a href="#price">ราคา</a><a href="#verdict">ฟันธง</a><a href="#faq">FAQ</a>
+            <a href="/tools" class="col-span-3 text-mg-300">เครื่องมือคำนวณ TCO / ผ่อน / ทริป →</a>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
-
-        <!-- Hero & Overview Header -->
-        <section id="overview" class="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 text-white rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
-            <div class="max-w-3xl relative z-10 space-y-4">
-                <div class="inline-flex items-center space-x-2 bg-blue-500/20 border border-blue-400/30 text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
-                    <span>⭐ Euro NCAP 5 ดาว</span>
-                    <span>•</span>
-                    <span>e-MPV ไฟฟ้า 100% · 7 ที่นั่ง</span>
+    <!-- Hero -->
+    <section id="top" class="relative min-h-[92vh] flex items-end text-white overflow-hidden">
+        <img src="images/maxus7-side.png" alt="MG Maxus 7 สีขาว จอดหน้าอาคารอิฐ" class="absolute inset-0 w-full h-full object-cover object-[70%_80%]">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/10"></div>
+        <div class="relative max-w-7xl mx-auto w-full px-4 sm:px-6 pb-12 pt-28">
+            <div class="max-w-2xl space-y-4">
+                <div class="inline-flex flex-wrap items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-xs">
+                    <span class="text-amber-300">★★★★★</span><span>Euro NCAP 5 ดาว</span><span class="opacity-50">•</span><span>e-MPV ไฟฟ้า 100% · 7 ที่นั่ง</span>
                 </div>
-                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                    <span class="text-blue-400">MG Maxus 7</span> e-MPV ไฟฟ้าสำหรับครอบครัว
-                </h1>
-                <p class="text-slate-300 text-base md:text-lg font-light leading-relaxed">
-                    รวมทุกเรื่องที่ต้องรู้ก่อนซื้อ ทั้งสเปก ความปลอดภัย ราคาในไทยเทียบกับทั่วโลก คาดการณ์ราคางาน Motor Expo 2026 และเครื่องมือคำนวณค่าใช้จ่าย
-                </p>
-                <div class="flex flex-wrap gap-2 pt-2 text-sm">
-                    <a href="#verdict" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg">ดูบทสรุป: คุ้มไหม?</a>
-                    <a href="#specs" class="border border-slate-500 hover:border-slate-300 text-slate-200 px-4 py-2 rounded-lg">ดูสเปก</a>
+                <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">MG Maxus 7</h1>
+                <p class="text-lg sm:text-xl text-slate-200 font-light">MPV ไฟฟ้าสำหรับครอบครัว ปลอดภัยระดับ 5 ดาว แบตเตอรี่ 90 kWh ในราคาต่ำกว่าตลาดต่างประเทศหลายแสนบาท</p>
+                <div class="flex items-end gap-4 pt-2">
+                    <div>
+                        <p class="text-xs text-slate-400">โปรฯ ต.ค. 2026</p>
+                        <p class="text-4xl font-bold text-emerald-400">1,299,000 <span class="text-base font-normal text-slate-300">บาท</span></p>
+                    </div>
+                    <p class="text-sm text-slate-400 line-through pb-1">1,399,000</p>
                 </div>
-            </div>
-
-            <!-- Key Metric Highlights Cards -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-700/60 relative z-10">
-                <div class="bg-slate-800/80 rounded-2xl p-4 border border-slate-700">
-                    <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">ราคาแคมเปญปัจจุบัน</p>
-                    <p class="text-2xl md:text-3xl font-bold text-emerald-400 mt-1">1.299 <span class="text-sm font-normal text-slate-300">ล้านบาท</span></p>
-                    <p class="text-xs text-slate-400 mt-1">โปรฯ ต.ค. 69 (ปกติ 1.399 ล้านบาท)</p>
-                </div>
-                <div class="bg-slate-800/80 rounded-2xl p-4 border border-slate-700">
-                    <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">ความจุแบตเตอรี่</p>
-                    <p class="text-2xl md:text-3xl font-bold text-blue-400 mt-1">90.0 <span class="text-sm font-normal text-slate-300">kWh</span></p>
-                    <p class="text-xs text-slate-400 mt-1">SAIC-CATL Prismatic NMC</p>
-                </div>
-                <div class="bg-slate-800/80 rounded-2xl p-4 border border-slate-700">
-                    <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">ระยะทางที่ MG ประกาศ</p>
-                    <p class="text-2xl md:text-3xl font-bold text-cyan-400 mt-1">540–570 <span class="text-sm font-normal text-slate-300">กม.</span></p>
-                    <p class="text-xs text-slate-400 mt-1">WLTP 480 กม. · ทางหลวงจริง ~410 กม.</p>
-                </div>
-                <div class="bg-slate-800/80 rounded-2xl p-4 border border-slate-700">
-                    <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">สิทธิ์การรับประกัน</p>
-                    <p class="text-2xl md:text-3xl font-bold text-amber-400 mt-1">Lifetime</p>
-                    <p class="text-xs text-slate-400 mt-1">แบตเตอรี่ & มอเตอร์ (เจ้าของแรก)</p>
+                <div class="flex flex-wrap gap-3 pt-2 text-sm">
+                    <a href="#verdict" class="bg-mg-600 hover:bg-mg-700 px-5 py-2.5 rounded-lg font-semibold">คุ้มไหม? ดูบทสรุป</a>
+                    <a href="#specs" class="border border-white/30 hover:border-white px-5 py-2.5 rounded-lg">ดูสเปก</a>
                 </div>
             </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-10">
+                <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/15"><p class="text-xs text-slate-300">กำลังสูงสุด</p><p class="text-2xl font-bold">245 <span class="text-sm font-normal">แรงม้า</span></p><p class="text-xs text-slate-400">350 นิวตันเมตร</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/15"><p class="text-xs text-slate-300">แบตเตอรี่</p><p class="text-2xl font-bold">90 <span class="text-sm font-normal">kWh</span></p><p class="text-xs text-slate-400">NMC ร่วมพัฒนากับ CATL</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/15"><p class="text-xs text-slate-300">ระยะทางที่ MG ประกาศ</p><p class="text-2xl font-bold">540–570 <span class="text-sm font-normal">กม.</span></p><p class="text-xs text-slate-400">WLTP 480 กม.</p></div>
+                <div class="bg-white/10 backdrop-blur rounded-xl p-4 border border-white/15"><p class="text-xs text-slate-300">ชาร์จ DC 30→80%</p><p class="text-2xl font-bold">~36 <span class="text-sm font-normal">นาที</span></p><p class="text-xs text-slate-400">สูงสุด ~120 kW</p></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-16 space-y-24">
+
+        <!-- About -->
+        <section id="about" class="grid lg:grid-cols-2 gap-10 items-center reveal">
+            <div class="space-y-4">
+                <p class="text-mg-600 font-semibold text-sm uppercase tracking-wider">รู้จัก Maxus 7</p>
+                <h2 class="text-3xl font-bold">MPV ไฟฟ้าจาก SAIC บริษัทแม่ของ MG</h2>
+                <p class="text-slate-600 leading-relaxed">เปิดตัวครั้งแรกในจีนปลายปี 2023 ในชื่อ <b>Maxus Dajia 7</b> ส่วนในยุโรปใช้ชื่อ <b>MIFA 7</b> และในไทยจำหน่ายในชื่อ <b>MG Maxus 7</b> จุดยืนของรถรุ่นนี้คือให้พื้นที่ ความสบาย และความปลอดภัยใกล้เคียง MPV ไฟฟ้าพรีเมียมจากยุโรป ในราคาที่ต่ำกว่ามาก <sup class="text-mg-600">[1][2]</sup></p>
+                <div class="grid grid-cols-2 gap-3 text-sm pt-2">
+                    <div class="card rounded-xl p-3">🚪 ประตูสไลด์ไฟฟ้าทั้งสองข้าง และฝาท้ายไฟฟ้า</div>
+                    <div class="card rounded-xl p-3">🌤️ หลังคากระจกพาโนรามา</div>
+                    <div class="card rounded-xl p-3">💺 7 ที่นั่ง แถวสองเป็น Captain Seat</div>
+                    <div class="card rounded-xl p-3">📱 จอ 12.3" ชิป Snapdragon 8155 รองรับ CarPlay / Android Auto</div>
+                    <div class="card rounded-xl p-3">🔌 V2L 6.6 kW นอกรถ / 2.2 kW ในห้องโดยสาร</div>
+                    <div class="card rounded-xl p-3">📶 แท่นชาร์จไร้สาย และ USB ทุกแถว</div>
+                </div>
+            </div>
+            <figure class="rounded-3xl overflow-hidden shadow-2xl">
+                <img src="images/maxus7-front.webp" alt="MG Maxus 7 มุมหน้า ไฟหน้า LED แนวตั้ง" class="w-full h-full object-cover" loading="lazy">
+            </figure>
         </section>
 
-        <!-- SECTION 1: Technical Spec & Feature Audit -->
-        <section id="specs" class="space-y-6">
-            <div class="border-l-4 border-blue-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">1. รู้จัก Maxus 7 และสเปกหลัก</h2>
-                <p class="text-slate-600 text-sm mt-1">
-                    MPV ไฟฟ้าล้วนขนาดกลางจาก SAIC Motor (บริษัทแม่ของ MG) เปิดตัวในจีนปลายปี 2023 ชื่อ <b>Maxus Dajia 7</b> ในยุโรปใช้ชื่อ <b>MIFA 7</b> และในไทยจำหน่ายในชื่อ <b>MG Maxus 7</b> ตำแหน่งของรถรุ่นนี้คือให้พื้นที่และความปลอดภัยใกล้เคียง MPV ไฟฟ้าพรีเมียมจากยุโรป ในราคาที่ต่ำกว่ามาก <a href="#sources" class="text-blue-600">[1][2]</a>
-                </p>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 text-sm">
-                <div class="glass-card rounded-xl p-3">🚪 ประตูสไลด์ไฟฟ้าทั้งสองข้าง และฝาท้ายไฟฟ้า</div>
-                <div class="glass-card rounded-xl p-3">🌤️ หลังคากระจกพาโนรามา</div>
-                <div class="glass-card rounded-xl p-3">💺 7 ที่นั่ง แถวสองเป็น Captain Seat</div>
-                <div class="glass-card rounded-xl p-3">📱 จอ 12.3" ชิป Snapdragon 8155 · CarPlay / Android Auto</div>
-                <div class="glass-card rounded-xl p-3">🔌 V2L 6.6 kW นอกรถ / 2.2 kW ในห้องโดยสาร</div>
-                <div class="glass-card rounded-xl p-3">📶 แท่นชาร์จไร้สาย และ USB ทุกแถว</div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Specs Highlights Box -->
-                <div class="glass-card rounded-2xl p-6 space-y-4">
-                    <h3 class="text-lg font-bold text-slate-800 flex items-center space-x-2">
-                        <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">สเปกหลัก</span>
-                        <span>รายละเอียดระบบขับเคลื่อน</span>
-                    </h3>
-                    <ul class="space-y-3 text-sm text-slate-600">
-                        <li class="flex justify-between border-b border-slate-100 pb-2">
-                            <span class="text-slate-500">มอเตอร์ไฟฟ้า</span>
-                            <span class="font-semibold text-slate-800">PMSM 180 kW (245 PS)</span>
-                        </li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2">
-                            <span class="text-slate-500">แรงบิดสูงสุด</span>
-                            <span class="font-semibold text-slate-800">350 นิวตัน-เมตร</span>
-                        </li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2">
-                            <span class="text-slate-500">0–100 กม./ชม. / ความเร็วสูงสุด</span>
-                            <span class="font-semibold text-slate-800">~9 วินาที / 180 กม./ชม.</span>
-                        </li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2">
-                            <span class="text-slate-500">แบตเตอรี่</span>
-                            <span class="font-semibold text-slate-800">NMC 90 kWh (ร่วมพัฒนากับ CATL)</span>
-                        </li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2">
-                            <span class="text-slate-500">ระยะทาง (MG / WLTP)</span>
-                            <span class="font-semibold text-slate-800">540–570 / 480 กม.</span>
-                        </li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2">
-                            <span class="text-slate-500">โหมดขับขี่</span>
-                            <span class="font-semibold text-slate-800">Snow/Eco/Normal/Sport/Custom</span>
-                        </li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2">
-                            <span class="text-slate-500">ชาร์จเร็ว DC (30-80%)</span>
-                            <span class="font-semibold text-slate-800">120 kW (30–36 นาที)</span>
-                        </li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2">
-                            <span class="text-slate-500">จ่ายไฟฟ้าภายนอก V2L</span>
-                            <span class="font-semibold text-slate-800">6.6 kW (220V / 30A)</span>
-                        </li>
-                        <li class="flex justify-between border-b border-slate-100 pb-2">
-                            <span class="text-slate-500">ช่วงล่าง หน้า/หลัง</span>
-                            <span class="font-semibold text-slate-800">MacPherson / Multi-Link</span>
-                        </li>
-                        <li class="flex justify-between pb-1">
-                            <span class="text-slate-500">ผังห้องโดยสาร</span>
-                            <span class="font-semibold text-slate-800">7 ที่นั่ง (2+2+3 Captain Seat)</span>
-                        </li>
-                    </ul>
-                    <p class="text-xs text-slate-500 bg-slate-50 rounded-lg p-2"><b>เรื่องระยะทาง:</b> แต่ละมาตรฐานวัดได้ไม่เท่ากัน CLTC (จีน) ~605 กม., NEDC ~540–570 กม., WLTP ~480 กม. ถ้าขับบนทางหลวงในไทย ให้ประมาณไว้ใกล้ค่า WLTP หรือต่ำกว่านั้น <a href="#sources" class="text-blue-600">[3][5][6]</a></p>
+        <!-- Specs -->
+        <section id="specs" class="space-y-6 reveal">
+            <div><p class="text-mg-600 font-semibold text-sm uppercase tracking-wider">สเปกหลัก</p><h2 class="text-3xl font-bold">MG Maxus 7 (รุ่นไทย)</h2></div>
+            <div class="grid lg:grid-cols-3 gap-6">
+                <div class="card rounded-2xl p-6 lg:col-span-2">
+                    <dl class="grid sm:grid-cols-2 gap-x-8 text-sm">
+                        <div class="flex justify-between border-b border-slate-100 py-3"><dt class="text-slate-500">มอเตอร์</dt><dd class="font-semibold text-right">ซิงโครนัส แม่เหล็กถาวร ขับหน้า</dd></div>
+                        <div class="flex justify-between border-b border-slate-100 py-3"><dt class="text-slate-500">กำลัง / แรงบิด</dt><dd class="font-semibold">180 kW (245 แรงม้า) / 350 Nm</dd></div>
+                        <div class="flex justify-between border-b border-slate-100 py-3"><dt class="text-slate-500">0–100 กม./ชม.</dt><dd class="font-semibold">~9 วินาที</dd></div>
+                        <div class="flex justify-between border-b border-slate-100 py-3"><dt class="text-slate-500">ความเร็วสูงสุด</dt><dd class="font-semibold">180 กม./ชม.</dd></div>
+                        <div class="flex justify-between border-b border-slate-100 py-3"><dt class="text-slate-500">แบตเตอรี่</dt><dd class="font-semibold">NMC 90 kWh</dd></div>
+                        <div class="flex justify-between border-b border-slate-100 py-3"><dt class="text-slate-500">ระยะทาง</dt><dd class="font-semibold">540–570 กม. (MG) · 480 กม. (WLTP)</dd></div>
+                        <div class="flex justify-between border-b border-slate-100 py-3"><dt class="text-slate-500">ชาร์จเร็ว DC</dt><dd class="font-semibold">~120 kW · 30→80% ~36 นาที</dd></div>
+                        <div class="flex justify-between border-b border-slate-100 py-3"><dt class="text-slate-500">V2L</dt><dd class="font-semibold">6.6 kW / 2.2 kW</dd></div>
+                        <div class="flex justify-between border-b border-slate-100 py-3"><dt class="text-slate-500">ช่วงล่าง หน้า / หลัง</dt><dd class="font-semibold">แมคเฟอร์สัน / มัลติลิงก์</dd></div>
+                        <div class="flex justify-between border-b border-slate-100 py-3"><dt class="text-slate-500">ถุงลมนิรภัย</dt><dd class="font-semibold">6 ตำแหน่ง</dd></div>
+                        <div class="flex justify-between py-3 sm:col-span-2"><dt class="text-slate-500">โหมดขับขี่</dt><dd class="font-semibold text-right">Snow / Eco / Normal / Sport / Custom + ปรับระดับ KERS</dd></div>
+                    </dl>
+                    <p class="text-xs text-slate-400 mt-3">ที่มา: [3][5][6][7]</p>
                 </div>
-
-                <!-- Feature Gap Analysis Chart Container -->
-                <div class="glass-card rounded-2xl p-6 lg:col-span-2 space-y-4">
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-lg font-bold text-slate-800">ดัชนีระดับออปชันเทียบกับตลาดโลก (Feature Completeness Ratio)</h3>
-                        <span class="bg-slate-100 text-slate-600 text-xs font-semibold px-2.5 py-1 rounded-full">China Top Trim = 100%</span>
-                    </div>
-                    <p class="text-xs text-slate-500">
-                        ระบบหลักของรุ่นไทย (มอเตอร์ แบต 90 kWh V2L และ ADAS) เทียบเท่ารุ่นที่ขายทั่วโลก ส่วนที่ไม่มีในรุ่นไทยคือกระจกมองข้างแบบกล้อง (CMS) จอผู้โดยสารหน้า ระบบสลับแบตเตอรี่ (มีเฉพาะในจีน) และถุงลมนิรภัยกลาง (มีในรุ่นยุโรป)
-                    </p>
-                    <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 text-xs text-amber-900"><b>⚠️ ข้อมูลประมาณการ:</b> ดัชนีความสมบูรณ์ของฟีเจอร์เป็นการให้คะแนนเชิงวิเคราะห์จากรายงานต้นฉบับ ไม่ใช่ข้อมูลทางการ</div>
-                    <div class="chart-container">
-                        <canvas id="featureGapChart"></canvas>
-                    </div>
+                <div class="rounded-2xl p-6 bg-slate-900 text-white space-y-4">
+                    <h3 class="font-bold">ระยะทางแต่ละมาตรฐานไม่เท่ากัน</h3>
+                    <div class="space-y-3 text-sm" id="rangeBars"></div>
+                    <p class="text-xs text-slate-400">ถ้าขับบนทางหลวงในไทยที่ 110–120 กม./ชม. ให้ประมาณไว้ราว 400–420 กม.</p>
                 </div>
             </div>
+            <p class="text-sm text-slate-500"><b>ตลาดอื่น:</b> ที่จีนมีแบต 77 kWh (~527 กม. CLTC) และ 90 kWh (~605 กม. CLTC) และมีรุ่นที่สลับแบตเตอรี่ได้ ซึ่งมีเฉพาะในจีนเท่านั้น <sup class="text-mg-600">[1]</sup></p>
+        </section>
+
+        <!-- Gallery -->
+        <section id="gallery" class="space-y-6 reveal">
+            <div><p class="text-mg-600 font-semibold text-sm uppercase tracking-wider">ภาพรถ</p><h2 class="text-3xl font-bold">ดีไซน์ภายนอก</h2></div>
+            <div class="grid md:grid-cols-3 gap-4">
+                <button class="gal md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden group" data-src="images/maxus7-side.png" data-cap="มุมหน้า: ไฟ LED แนวตั้งและแถบไฟคาดหน้า">
+                    <img src="images/maxus7-side.png" alt="MG Maxus 7 มุมหน้าซ้าย" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                </button>
+                <button class="gal rounded-2xl overflow-hidden group" data-src="images/maxus7-front.webp" data-cap="มุมหน้าขวา: ประตูสไลด์และล้ออัลลอยลายใบพัด">
+                    <img src="images/maxus7-front.webp" alt="MG Maxus 7 มุมหน้าขวา" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                </button>
+                <button class="gal rounded-2xl overflow-hidden group" data-src="images/maxus7-rear.webp" data-cap="มุมหลัง: ไฟท้ายแนวตั้งและฝาท้ายไฟฟ้า">
+                    <img src="images/maxus7-rear.webp" alt="MG Maxus 7 มุมหลัง" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                </button>
+            </div>
+            <p class="text-xs text-slate-400">ภาพ: AutoLife Thailand · คลิกที่ภาพเพื่อดูขนาดใหญ่</p>
         </section>
 
         <!-- Safety -->
-        <section id="safety" class="space-y-6">
-            <div class="border-l-4 border-rose-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">2. ความปลอดภัย: Euro NCAP 5 ดาว</h2>
-                <p class="text-slate-600 text-sm mt-1">MIFA 7 ได้ Euro NCAP 5 ดาวในปี 2024 และ SAIC ระบุว่า MIFA 7 กับ MIFA 9 เป็น MPV ไฟฟ้าที่ได้คะแนนความปลอดภัยสูงสุดในขณะนั้น <a href="#sources" class="text-blue-600">[8]</a></p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="rounded-2xl p-6 bg-gradient-to-br from-slate-900 to-slate-800 text-white space-y-2">
-                    <p class="text-amber-400 text-2xl tracking-widest">★★★★★</p>
-                    <p class="text-4xl font-extrabold">92%</p>
-                    <p class="text-sm text-slate-300">คะแนนปกป้องผู้โดยสารผู้ใหญ่</p>
-                    <p class="text-xs text-slate-400">ได้คะแนนเต็มในการทดสอบชนด้านหน้า (Full Width), ชนด้านข้าง (MDB) และชนเสา (Side Pole)</p>
+        <section id="safety" class="space-y-6 reveal">
+            <div><p class="text-mg-600 font-semibold text-sm uppercase tracking-wider">ความปลอดภัย</p><h2 class="text-3xl font-bold">Euro NCAP 5 ดาว (2024)</h2>
+                <p class="text-slate-600 mt-1">SAIC ระบุว่า MIFA 7 และ MIFA 9 เป็น MPV ไฟฟ้าที่ได้คะแนนความปลอดภัยสูงสุดในขณะนั้น <sup class="text-mg-600">[8]</sup></p></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="rounded-2xl p-6 bg-gradient-to-br from-mg-700 to-mg-950 text-white space-y-2">
+                    <p class="text-amber-300 text-2xl tracking-widest">★★★★★</p>
+                    <p class="text-5xl font-extrabold">92%</p>
+                    <p class="text-sm text-mg-100">คะแนนปกป้องผู้โดยสารผู้ใหญ่</p>
+                    <p class="text-xs text-mg-200">ได้คะแนนเต็มในการทดสอบชนด้านหน้า (Full Width) ชนด้านข้าง และชนเสา</p>
                 </div>
-                <div class="glass-card rounded-2xl p-6 space-y-2">
-                    <h3 class="font-bold text-slate-800">🛡️ โครงสร้างตัวถัง</h3>
-                    <ul class="text-sm text-slate-600 space-y-1 list-disc pl-5">
-                        <li>โครงวงแหวนปิด ใช้เหล็กกำลังสูง ~70% และเหล็กกำลังสูงพิเศษ ~20%</li>
-                        <li>ความแข็งแกร่งเชิงบิด 26.8 kN·m/deg</li>
-                        <li>โครงสร้างด้านหน้ารูปตัว "π" กระจายแรงชนแบบ 6+2+2</li>
-                    </ul>
-                </div>
-                <div class="glass-card rounded-2xl p-6 space-y-2">
-                    <h3 class="font-bold text-slate-800">🎈 ถุงลมนิรภัย 6 ตำแหน่ง</h3>
-                    <ul class="text-sm text-slate-600 space-y-1 list-disc pl-5">
-                        <li>คู่หน้า และด้านข้างคู่หน้า</li>
-                        <li>ม่านนิรภัยยาวคลุม 97% ของระยะฐานล้อ</li>
-                        <li class="text-slate-500">รุ่นยุโรปมีถุงลมนิรภัยกลางเพิ่ม แต่รุ่นไทยไม่ได้ระบุไว้</li>
-                    </ul>
-                </div>
-                <div class="glass-card rounded-2xl p-6 space-y-2">
-                    <h3 class="font-bold text-slate-800">🚘 ระบบช่วยขับขี่ ADAS (L2)</h3>
-                    <ul class="text-sm text-slate-600 space-y-1 list-disc pl-5">
-                        <li>FCW / AEB เตือนชนและเบรกอัตโนมัติ</li>
-                        <li>ACC ครูสคอนโทรลแบบแปรผัน</li>
-                        <li>LDW / LKA ช่วยรักษาเลน</li>
-                        <li>BSD / RCTA / DOW</li>
-                        <li>กล้อง 360° ภาพ 3 มิติ</li>
-                    </ul>
-                </div>
+                <div class="card rounded-2xl p-6 space-y-2"><h3 class="font-bold">🛡️ โครงสร้างตัวถัง</h3>
+                    <ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>โครงวงแหวนปิด เหล็กกำลังสูง ~70% และเหล็กกำลังสูงพิเศษ ~20%</li><li>ความแข็งแกร่งเชิงบิด 26.8 kN·m/deg</li><li>โครงสร้างหน้ารูปตัว "π" กระจายแรงชนแบบ 6+2+2</li></ul></div>
+                <div class="card rounded-2xl p-6 space-y-2"><h3 class="font-bold">🎈 ถุงลมนิรภัย 6 ตำแหน่ง</h3>
+                    <ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>คู่หน้า และด้านข้างคู่หน้า</li><li>ม่านนิรภัยยาวคลุม 97% ของระยะฐานล้อ</li><li class="text-slate-400">รุ่นยุโรปมีถุงลมกลางเพิ่ม แต่รุ่นไทยไม่ได้ระบุไว้</li></ul></div>
+                <div class="card rounded-2xl p-6 space-y-2"><h3 class="font-bold">🚘 ADAS ระดับ 2</h3>
+                    <ul class="text-sm text-slate-600 space-y-1 list-disc pl-5"><li>FCW / AEB เตือนชนและเบรกอัตโนมัติ</li><li>ACC ครูสคอนโทรลแบบแปรผัน</li><li>LDW / LKA ช่วยรักษาเลน</li><li>BSD / RCTA / DOW</li><li>กล้อง 360° ภาพ 3 มิติ</li></ul></div>
             </div>
         </section>
 
-        <!-- SECTION 3: Global Price Comparison -->
-        <section id="global-price" class="space-y-6">
-            <div class="border-l-4 border-cyan-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">3. ราคาทั่วโลกเทียบกับไทย</h2>
-                <p class="text-slate-600 text-sm mt-1">
-                    ราคาเริ่มต้นของ Maxus 7 / MIFA 7 ในแต่ละตลาด แปลงเป็นเงินบาทแบบคร่าว ๆ เพื่อเทียบระดับราคา
-                </p>
+        <!-- Price -->
+        <section id="price" class="space-y-6 reveal">
+            <div><p class="text-mg-600 font-semibold text-sm uppercase tracking-wider">ราคา</p><h2 class="text-3xl font-bold">ราคาทั่วโลกเทียบกับไทย</h2>
+                <p class="text-slate-600 mt-1">ราคาเริ่มต้นแปลงเป็นเงินบาทแบบคร่าว ๆ เพื่อเทียบระดับราคาเท่านั้น</p></div>
+            <div class="grid lg:grid-cols-2 gap-6">
+                <div class="card rounded-2xl p-6 space-y-4">
+                    <div id="priceBars" class="space-y-4"></div>
+                    <p class="text-xs text-slate-400">ที่มา: [1][4][9][11] · ราคาจีนเป็นราคาเปิดตัวปี 2023</p>
+                </div>
+                <div class="card rounded-2xl p-6">
+                    <h3 class="font-bold mb-4">ประวัติราคาในไทย</h3>
+                    <ol class="relative border-l-2 border-slate-200 ml-2 space-y-5 text-sm">
+                        <li class="pl-5"><span class="absolute -left-[7px] w-3 h-3 rounded-full bg-slate-400"></span><p class="text-slate-500">เปิดตัว Motor Show 2024</p><p class="font-bold">1,769,000 บาท <span class="font-normal text-slate-500">· นำเข้าทั้งคัน (CBU)</span></p></li>
+                        <li class="pl-5"><span class="absolute -left-[7px] w-3 h-3 rounded-full bg-slate-400"></span><p class="text-slate-500">ส.ค. 2025</p><p class="font-bold">1,399,000 บาท <span class="font-normal text-slate-500">· ลด 370,000 บาท แถม Home Charger [10]</span></p></li>
+                        <li class="pl-5"><span class="absolute -left-[7px] w-3 h-3 rounded-full bg-slate-400"></span><p class="text-slate-500">ม.ค. 2026</p><p class="font-bold">1,399,000 บาท <span class="font-normal text-slate-500">· MG ยืนยันราคานี้ตลอดปี 2026 [11]</span></p></li>
+                        <li class="pl-5"><span class="absolute -left-[7px] w-3 h-3 rounded-full bg-slate-400"></span><p class="text-slate-500">Motor Show 2026</p><p class="font-bold">1,299,000 บาท <span class="font-normal text-slate-500">· ส่วนลดในงาน 100,000 บาท [13]</span></p></li>
+                        <li class="pl-5"><span class="absolute -left-[7px] w-3 h-3 rounded-full bg-emerald-500 ring-4 ring-emerald-100"></span><p class="text-slate-500">ต.ค. 2026 (ปัจจุบัน)</p><p class="font-bold text-emerald-700">1,299,000 บาท <span class="font-normal text-slate-500">· โปรฯ ทางการของ MG</span></p></li>
+                    </ol>
+                </div>
             </div>
-
-            <div class="glass-card rounded-2xl p-6 space-y-4">
-                <div class="flex flex-col md:flex-row justify-between md:items-center gap-2">
-                    <h3 class="text-lg font-bold text-slate-800">ราคาจำหน่ายปลีกในประเทศต่างๆ (THB Equivalent)</h3>
-                    <div class="text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-md">
-                        *ราคาในยุโรปและสหราชอาณาจักรรวมภาษี VAT ประจำท้องถิ่นแล้ว
-                    </div>
-                </div>
-                <p class="text-xs text-slate-500">
-                    ราคาไทย (ปกติ 1,399,000 / โปรฯ ต.ค. 2569 1,299,000 บาท) ต่ำกว่าอินโดนีเซียและสหราชอาณาจักรชัดเจน และใกล้เคียงกับราคาเปิดตัวในจีน ทั้งที่อุปกรณ์หลักเทียบเท่ารุ่นที่ขายทั่วโลก ส่วนหนึ่งเป็นผลจากมาตรการส่งเสริม EV 3.5 ของรัฐ
-                </p>
-                <div class="chart-container" style="max-width: 850px; height: 340px;">
-                    <canvas id="globalPriceChart"></canvas>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs border-collapse">
-                        <thead><tr class="bg-slate-100 text-slate-700"><th class="p-2">ตลาด</th><th class="p-2">ชื่อรุ่น</th><th class="p-2">ราคาท้องถิ่น</th><th class="p-2">≈ บาท</th><th class="p-2">ที่มา</th></tr></thead>
-                        <tbody class="divide-y divide-slate-100 text-slate-600">
-                            <tr><td class="p-2 font-medium">จีน</td><td class="p-2">Dajia 7</td><td class="p-2">259,800–299,800 หยวน (ราคาเปิดตัว 2023)</td><td class="p-2">1.3–1.5 ล้าน</td><td class="p-2">[1]</td></tr>
-                            <tr class="bg-blue-50/50 font-medium text-slate-900"><td class="p-2">ไทย</td><td class="p-2">MG Maxus 7 รุ่น X</td><td class="p-2">1,399,000 บาท (โปรฯ 1,299,000)</td><td class="p-2">1.30–1.40 ล้าน</td><td class="p-2">[11]</td></tr>
-                            <tr><td class="p-2 font-medium">อินโดนีเซีย</td><td class="p-2">MIFA 7 (90 kWh)</td><td class="p-2">750 ล้านรูเปียห์ (OTR จาการ์ตา)</td><td class="p-2">~1.7 ล้าน</td><td class="p-2">[4]</td></tr>
-                            <tr><td class="p-2 font-medium">สหราชอาณาจักร</td><td class="p-2">MIFA 7</td><td class="p-2">~£50,000–£57,065</td><td class="p-2">2.2–2.5 ล้าน</td><td class="p-2">[9]</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <h3 class="text-base font-bold text-slate-800 pt-2">ประวัติราคาในไทย</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs md:text-sm border-collapse">
-                        <thead><tr class="bg-slate-100 text-slate-700"><th class="p-2">ช่วงเวลา</th><th class="p-2">ราคา (บาท)</th><th class="p-2">หมายเหตุ</th></tr></thead>
-                        <tbody class="divide-y divide-slate-100 text-slate-600">
-                            <tr><td class="p-2">เปิดตัว Motor Show 2024</td><td class="p-2">1,769,000</td><td class="p-2">นำเข้าทั้งคัน (CBU)</td></tr>
-                            <tr><td class="p-2">ส.ค. 2025</td><td class="p-2">1,399,000</td><td class="p-2">ลด 370,000 บาท แถม Home Charger [10]</td></tr>
-                            <tr><td class="p-2">ม.ค. 2026</td><td class="p-2">1,399,000</td><td class="p-2">MG ยืนยันใช้ราคานี้ต่อตลอดปี 2026 [11]</td></tr>
-                            <tr><td class="p-2">Motor Show 2026</td><td class="p-2">1,299,000</td><td class="p-2">ส่วนลดในงาน 100,000 บาท [13]</td></tr>
-                            <tr class="font-medium text-slate-900"><td class="p-2">ต.ค. 2026</td><td class="p-2 text-emerald-700">1,299,000</td><td class="p-2">โปรฯ ทางการของ MG (ปกติ 1,399,000)</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="bg-mg-50 border border-mg-100 rounded-2xl p-5 text-sm text-slate-700">
+                <b>สรุป:</b> ราคาในไทยต่ำกว่าอินโดนีเซียและสหราชอาณาจักรชัดเจน และใกล้เคียงราคาเปิดตัวในจีน ทั้งที่ระบบหลักเทียบเท่ารุ่นที่ขายทั่วโลก ทั้งแบต 90 kWh, ADAS ครบชุด และ V2L 6.6 kW ส่วนที่ไม่มีในรุ่นไทยคือถุงลมนิรภัยกลาง (มีในรุ่นยุโรป) ระบบสลับแบตเตอรี่ (มีเฉพาะในจีน) กระจกมองข้างแบบกล้อง และจอผู้โดยสารหน้า
             </div>
         </section>
 
-        <!-- SECTION 4: End-2026 Forecast & Sensitivity -->
-        <section id="forecast" class="space-y-6">
-            <div class="border-l-4 border-amber-500 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">4. คาดการณ์ราคางาน Motor Expo 2026</h2>
-                <p class="text-slate-600 text-sm mt-1">
-                    การวิเคราะห์ฉากทัศน์ราคาซื้อขายจริงในงาน Motor Expo (ปลาย พ.ย. – ต้น ธ.ค. 2569) โดยตั้งต้นจากราคาโปรฯ ต.ค. 2569 ที่ 1,299,000 บาท เมื่อเผชิญแรงกดดันจากการแข่งขันของแบรนด์คู่แข่ง (BYD, Denza, XPeng, Zeekr) และการบริหารสต็อก CBU ก่อนเปลี่ยน Model Year
-                </p>
+        <!-- Forecast -->
+        <section id="forecast" class="space-y-6 reveal">
+            <div><p class="text-mg-600 font-semibold text-sm uppercase tracking-wider">คาดการณ์</p><h2 class="text-3xl font-bold">ราคางาน Motor Expo 2026</h2>
+                <p class="text-slate-600 mt-1">ตั้งต้นจากโปรฯ ต.ค. 2026 ที่ 1,299,000 บาท</p></div>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="rounded-2xl p-6 border-2 border-mg-500 bg-white space-y-1"><div class="flex justify-between"><b>กรณีหลัก</b><span class="text-xs bg-mg-100 text-mg-800 px-2 py-0.5 rounded font-bold">โอกาส 55%</span></div><p class="text-xl font-bold">1,249,000–1,299,000</p><p class="text-sm text-slate-600">คงราคาโปรฯ และอาจเพิ่มส่วนลด 0–50,000 บาท หรือเพิ่มของแถม/ดอกเบี้ยพิเศษ</p></div>
+                <div class="card rounded-2xl p-6 space-y-1"><div class="flex justify-between"><b>ลดล้างสต็อก</b><span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">โอกาส 25%</span></div><p class="text-xl font-bold">1,180,000–1,220,000</p><p class="text-sm text-slate-600">ถ้าเกิดสงครามราคา EV รอบใหม่ หรือมีสต็อกค้าง</p></div>
+                <div class="card rounded-2xl p-6 space-y-1"><div class="flex justify-between"><b>คงราคา</b><span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-bold">โอกาส 20%</span></div><p class="text-xl font-bold">1,299,000–1,399,000</p><p class="text-sm text-slate-600">ไม่มีส่วนลดเพิ่ม หรือกลับไปใช้ราคาปกติเมื่อหมดแคมเปญ</p></div>
             </div>
+            <p class="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-xl px-4 py-2">⚠️ เป็นการคาดการณ์เชิงวิเคราะห์ ไม่ใช่ราคาหรือคำยืนยันจาก MG</p>
+        </section>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Forecast Chart -->
-                <div class="glass-card rounded-2xl p-6 lg:col-span-2 space-y-4">
-                    <h3 class="text-lg font-bold text-slate-800">น้ำหนักความน่าจะเป็นของราคาซื้อขายจริง (Price Scenario Probability)</h3>
-                    <p class="text-xs text-slate-500">
-                        กรณี Base Case (โอกาสเกิด 55%) คาดว่าราคาซื้อขายจริงในงาน Motor Expo จะอยู่ในช่วง 1.249–1.299 ล้านบาท ผ่านส่วนลดเพิ่มหรือของแถมที่มากขึ้นจากโปรฯ เดือน ต.ค.
-                    </p>
-                    <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 text-xs text-amber-900"><b>⚠️ ข้อมูลประมาณการ:</b> ฉากทัศน์และความน่าจะเป็นเป็นการคาดการณ์เชิงวิเคราะห์ ไม่ใช่ข้อมูลหรือคำยืนยันจาก MG</div>
-                    <div class="chart-container">
-                        <canvas id="forecastChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Scenario Explanation Cards -->
-                <div class="space-y-4">
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-2xl space-y-1">
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-blue-900 text-sm">Base Case Scenario</span>
-                            <span class="bg-blue-200 text-blue-800 text-xs font-bold px-2 py-0.5 rounded">โอกาส 55%</span>
+        <!-- Verdict -->
+        <section id="verdict" class="reveal">
+            <div class="relative rounded-3xl overflow-hidden text-white">
+                <img src="images/maxus7-rear.webp" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/40"></div>
+                <div class="relative p-8 md:p-12 grid lg:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <p class="text-emerald-400 font-semibold text-sm uppercase tracking-wider">ฟันธง</p>
+                        <h2 class="text-4xl font-extrabold">คุ้มค่าและน่าซื้อ</h2>
+                        <p class="text-slate-200">สำหรับครอบครัวที่ต้องการ MPV ไฟฟ้า 7 ที่นั่งในงบ 1.3–1.4 ล้านบาท ได้ความปลอดภัยระดับ Euro NCAP 5 ดาว แบต 90 kWh พร้อมรับประกันตลอดอายุการใช้งาน และอุปกรณ์เทียบเท่ารุ่นที่ขายทั่วโลก</p>
+                        <div class="space-y-2 text-sm">
+                            <p>✅ <b>เหมาะกับ:</b> ครอบครัวใหญ่ มีผู้สูงอายุ เดินทางต่างจังหวัดบ่อยและวางแผนจุดชาร์จได้ หรืออยากใช้ V2L</p>
+                            <p>⚠️ <b>อาจไม่เหมาะกับ:</b> คนที่ขับทางไกลต่อเนื่องเกิน 400 กม. บ่อย ๆ โดยไม่อยากแวะชาร์จ</p>
                         </div>
-                        <p class="text-base font-bold text-blue-950">1,249,000 – 1,299,000 บาท</p>
-                        <p class="text-xs text-blue-800">
-                            คงราคา 1,299,000 แต่เพิ่มส่วนลดเงินสดอีก 0–50k หรือเพิ่มของแถม/ดอกเบี้ยพิเศษ เพื่อเร่งยอดปลายปีตามพันธะ EV 3.5
-                        </p>
                     </div>
-
-                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-2xl space-y-1">
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-amber-900 text-sm">Bear Case (Clearance)</span>
-                            <span class="bg-amber-200 text-amber-800 text-xs font-bold px-2 py-0.5 rounded">โอกาส 25%</span>
-                        </div>
-                        <p class="text-base font-bold text-amber-950">1,180,000 – 1,220,000 บาท</p>
-                        <p class="text-xs text-amber-800">
-                            เกิดสงครามราคา EV รอบใหม่ สต็อก CBU ค้างสะสม ดีลเลอร์ยอมตัด Margin ขายราคาทุน
-                        </p>
-                    </div>
-
-                    <div class="bg-slate-100 border-l-4 border-slate-500 p-4 rounded-r-2xl space-y-1">
-                        <div class="flex justify-between items-center">
-                            <span class="font-bold text-slate-800 text-sm">Bull Case / Standstill</span>
-                            <span class="bg-slate-200 text-slate-700 text-xs font-bold px-2 py-0.5 rounded">โอกาส 20%</span>
-                        </div>
-                        <p class="text-base font-bold text-slate-900">1,299,000 – 1,399,000 บาท</p>
-                        <p class="text-xs text-slate-600">
-                            คงราคาโปรฯ เดิมโดยไม่มีส่วนลดเพิ่ม หรือกลับสู่ราคาปกติ 1,399,000 หากหมดแคมเปญ
-                        </p>
+                    <div class="grid grid-cols-2 gap-3 text-sm self-center">
+                        <div class="bg-white/10 rounded-xl p-4 border border-white/15"><b>⚡ สมรรถนะ</b><p class="text-slate-300 mt-1">แบตใหญ่ วิ่งไกล เร่ง ~9 วิ</p></div>
+                        <div class="bg-white/10 rounded-xl p-4 border border-white/15"><b>🛋️ ความสบาย</b><p class="text-slate-300 mt-1">ประตูสไลด์คู่ พาโนรามา Captain Seat</p></div>
+                        <div class="bg-white/10 rounded-xl p-4 border border-white/15"><b>🛡️ ความปลอดภัย</b><p class="text-slate-300 mt-1">5 ดาว + ADAS ครบชุด</p></div>
+                        <div class="bg-white/10 rounded-xl p-4 border border-white/15"><b>💰 ราคา</b><p class="text-slate-300 mt-1">ถูกกว่าต่างประเทศหลายแสน</p></div>
+                        <div class="col-span-2 bg-amber-400/15 rounded-xl p-4 border border-amber-300/30 text-amber-100"><b>ข้อควรพิจารณา:</b> ระยะจริงบนทางหลวงใกล้ค่า WLTP, ชาร์จ DC สูงสุด ~120 kW ถือว่าปานกลาง และยังไม่พบข้อมูลยืนยันว่ารุ่นไทยมีแอป Connected Car หรือ OTA</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Value & Verdict -->
-        <section id="verdict" class="space-y-6">
-            <div class="border-l-4 border-emerald-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">5. ความคุ้มค่าและบทสรุป</h2>
-                <p class="text-slate-600 text-sm mt-1">ประเมินจากสมรรถนะ ความสบาย ความปลอดภัย ราคา และการรับประกัน</p>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="glass-card rounded-2xl p-6 lg:col-span-2 space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                        <div class="bg-emerald-50 rounded-xl p-3"><b class="text-emerald-800">⚡ สมรรถนะ</b><p class="text-slate-600 mt-1">แบต 90 kWh วิ่งไกล อัตราเร่ง ~9 วินาที เพียงพอสำหรับรถครอบครัวคันใหญ่</p></div>
-                        <div class="bg-emerald-50 rounded-xl p-3"><b class="text-emerald-800">🛋️ ความสบาย</b><p class="text-slate-600 mt-1">ประตูสไลด์ไฟฟ้าคู่ หลังคาพาโนรามา Captain Seat และ V2L สำหรับแคมปิ้ง</p></div>
-                        <div class="bg-emerald-50 rounded-xl p-3"><b class="text-emerald-800">🛡️ ความปลอดภัย</b><p class="text-slate-600 mt-1">Euro NCAP 5 ดาว พร้อม ADAS ครบชุด</p></div>
-                        <div class="bg-emerald-50 rounded-xl p-3"><b class="text-emerald-800">💰 ราคาและการรับประกัน</b><p class="text-slate-600 mt-1">ต่ำกว่าตลาดต่างประเทศ และรับประกันแบตเตอรี่ตลอดอายุการใช้งาน (เจ้าของแรก)</p></div>
-                    </div>
-                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-900">
-                        <b>ข้อควรพิจารณา</b>
-                        <ul class="list-disc pl-5 mt-1 space-y-1">
-                            <li>ระยะทางที่ใช้ได้จริงบนทางหลวงจะใกล้ค่า WLTP (~480 กม.) หรือต่ำกว่า มากกว่าตัวเลขที่ประกาศ</li>
-                            <li>ชาร์จ DC สูงสุด ~120 kW ถือว่าปานกลางเมื่อเทียบกับขนาดแบต</li>
-                            <li>ไม่พบข้อมูลยืนยันว่ารุ่นไทยรองรับแอป Connected Car หรือการอัปเดต OTA</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="rounded-2xl p-6 bg-gradient-to-br from-emerald-600 to-emerald-800 text-white space-y-3 shadow-lg">
-                    <p class="text-xs uppercase tracking-wider text-emerald-200">ฟันธง</p>
-                    <p class="text-3xl font-extrabold">คุ้มค่าและน่าซื้อ</p>
-                    <p class="text-sm text-emerald-50">สำหรับครอบครัวที่ต้องการ MPV ไฟฟ้า 7 ที่นั่งในงบ 1.3–1.4 ล้านบาท ได้ความปลอดภัยระดับ 5 ดาว แบต 90 kWh และอุปกรณ์เทียบเท่ารุ่นที่ขายทั่วโลก ในราคาต่ำกว่าต่างประเทศหลายแสนบาท</p>
-                    <div class="text-xs space-y-1 pt-2 border-t border-emerald-500">
-                        <p>✅ <b>เหมาะกับ:</b> ครอบครัวใหญ่ มีผู้สูงอายุ เดินทางต่างจังหวัดบ่อยและวางแผนจุดชาร์จได้</p>
-                        <p>⚠️ <b>อาจไม่เหมาะกับ:</b> คนที่ขับทางไกลต่อเนื่องเกิน 400 กม. บ่อย ๆ โดยไม่อยากแวะชาร์จ</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 6: Competitive Landscape & Strategic Buying Tree -->
-        <section id="compare" class="space-y-6">
-            <div class="border-l-4 border-indigo-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">6. เทียบคู่แข่ง e-MPV และวิธีเลือก</h2>
-                <p class="text-slate-600 text-sm mt-1">
-                    ตำแหน่งทางการตลาดของ MG Maxus 7 ในกลุ่มรถยนต์ e-MPV ในประเทศไทย และกรอบการตัดสินใจซื้อเชิงกลยุทธ์
-                </p>
-            </div>
-
-            <!-- Comparison Table Grid -->
-            <div class="glass-card rounded-2xl p-6 overflow-x-auto">
-                <h3 class="text-lg font-bold text-slate-800 mb-4">ตารางเปรียบเทียบ e-MPV ในประเทศไทยปี 2026</h3>
-                <table class="w-full text-left text-xs md:text-sm border-collapse">
-                    <thead>
-                        <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
-                            <th class="p-3 font-semibold">รุ่นรถยนต์</th>
-                            <th class="p-3 font-semibold">ราคาแคมเปญ (บาท)</th>
-                            <th class="p-3 font-semibold">ความจุแบตเตอรี่</th>
-                            <th class="p-3 font-semibold">กำลังสูงสุด</th>
-                            <th class="p-3 font-semibold">ประตูสไลด์ไฟฟ้า</th>
-                            <th class="p-3 font-semibold">จุดเด่นทางเศรษฐศาสตร์</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 text-slate-600">
-                        <tr class="bg-blue-50/50 font-medium text-slate-900">
-                            <td class="p-3 flex items-center space-x-2">
-                                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-                                <span>MG Maxus 7 Model X</span>
-                            </td>
-                            <td class="p-3 text-blue-700 font-bold">1,299,000 – 1,319,000</td>
-                            <td class="p-3">90.0 kWh (NMC)</td>
-                            <td class="p-3">245 PS / 350 Nm</td>
-                            <td class="p-3">มีทั้ง 2 ฝั่ง</td>
-                            <td class="p-3 text-emerald-700 font-medium">คุ้มค่าเงินสูงสุดต่อมิติรถ MPV แท้</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 font-medium text-slate-800">BYD M6</td>
-                            <td class="p-3">829,900 – 929,900</td>
-                            <td class="p-3">71.8 kWh (LFP)</td>
-                            <td class="p-3">204 PS / 310 Nm</td>
-                            <td class="p-3 text-rose-500 font-medium">ไม่มี (ประตูเปิดข้าง)</td>
-                            <td class="p-3">ราคาเริ่มต้นต่ำที่สุด เข้าถึงง่าย</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 font-medium text-slate-800">Wuling Starlight Darion EV</td>
-                            <td class="p-3">839,000 – 899,000</td>
-                            <td class="p-3">69.2 kWh (LFP)</td>
-                            <td class="p-3">204 PS / 310 Nm</td>
-                            <td class="p-3">มี (ไฟฟ้า)</td>
-                            <td class="p-3">MPV ประตูสไลด์ที่ถูกที่สุด ระยะ 521 กม. (NEDC) ชาร์จ DC 30–80% ~20 นาที</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 font-medium text-slate-800">Denza D9 Premium</td>
-                            <td class="p-3">1,999,900 – 2,699,900</td>
-                            <td class="p-3">103.0 kWh (LFP)</td>
-                            <td class="p-3">313 PS / 360 Nm</td>
-                            <td class="p-3">มีทั้ง 2 ฝั่ง</td>
-                            <td class="p-3">ความหรูหราระดับ VIP / Alphard Rival</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 font-medium text-slate-800">XPeng X9 Premium</td>
-                            <td class="p-3">2,399,000 – 2,539,000</td>
-                            <td class="p-3">94.8 kWh (NMC)</td>
-                            <td class="p-3">342 PS / 450 Nm</td>
-                            <td class="p-3">มีทั้ง 2 ฝั่ง</td>
-                            <td class="p-3">สถาปัตยกรรม 800V & ADAS ขั้นสูง</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 font-medium text-slate-800">Zeekr 009 Standard</td>
-                            <td class="p-3">2,399,000</td>
-                            <td class="p-3">116.0 kWh (NMC)</td>
-                            <td class="p-3">422 PS / 616 Nm</td>
-                            <td class="p-3">มีทั้ง 2 ฝั่ง</td>
-                            <td class="p-3">สมรรถนะระดับ Ultra Performance</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Decision Framework Diagram (Structured HTML/CSS) -->
-            <div class="glass-card rounded-2xl p-6 space-y-4">
-                <h3 class="text-lg font-bold text-slate-800">กรอบการตัดสินใจเลือกรถครอบครัว (Strategic Buying Roadmap)</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 pt-2">
-                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-2">
-                        <div class="text-xs font-bold text-slate-500 uppercase">โจทย์ 1: สมาชิก 3–5 คน / เน้นความคล่องตัว</div>
-                        <div class="text-sm font-bold text-slate-800">เลือก EV Crossover / SUV (เช่น Aion V)</div>
-                        <p class="text-xs text-slate-600">
-                            คุ้มค่าทางการเงินสูงสุด ประหยัดงบได้ 400,000–500,000 บาท จอดง่าย คล่องตัวสูง
-                        </p>
-                    </div>
-
-                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-2">
-                        <div class="text-xs font-bold text-slate-500 uppercase">โจทย์ 2: 7 ที่นั่ง + ประตูสไลด์ / งบไม่เกิน 0.9M</div>
-                        <div class="text-sm font-bold text-slate-800">เลือก Wuling Starlight Darion EV</div>
-                        <p class="text-xs text-slate-600">
-                            ถูกกว่า Maxus 7 ราว 400,000 บาท ได้ประตูสไลด์ไฟฟ้าและ 7 ที่นั่ง แลกกับแบตเล็กกว่า (69.2 vs 90 kWh) กำลังน้อยกว่า และตัวรถเล็กกว่า (ยาว 4,910 มม.)
-                        </p>
-                    </div>
-
-                    <div class="border-2 border-blue-500 rounded-xl p-4 bg-blue-50/40 space-y-2">
-                        <div class="text-xs font-bold text-blue-600 uppercase">โจทย์ 3: สมาชิก 6–7 คน / มีผู้สูงอายุ / งบ 1.2–1.4M</div>
-                        <div class="text-sm font-bold text-blue-900">เลือก MG Maxus 7 (e-MPV แท้)</div>
-                        <p class="text-xs text-blue-800">
-                            ตอบโจทย์ประตูสไลด์ไฟฟ้าคู่ นั่งสบาย 3 แถว แบตใหญ่ 90 kWh พร้อม Lifetime Warranty
-                        </p>
-                    </div>
-
-                    <div class="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-2">
-                        <div class="text-xs font-bold text-slate-500 uppercase">โจทย์ 4: เน้นความหรูหราพรีเมียม VIP / งบ 2.0M+</div>
-                        <div class="text-sm font-bold text-slate-800">เลือก Denza D9 / XPeng X9 / Zeekr 009</div>
-                        <p class="text-xs text-slate-600">
-                            ได้เบาะนวดไฟฟ้าVIP ระบบช่วงล่างถุงลม/ไฟฟ้า ออปชันเทคโนโลยีระดับท็อปสุด
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- SECTION 5: Total Cost of Ownership (TCO) -->
-        <section id="tco" class="space-y-6">
-            <div class="border-l-4 border-purple-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">7. ค่าใช้จ่ายตลอด 300,000 กม. (TCO)</h2>
-                <p class="text-slate-600 text-sm mt-1">
-                    เปรียบเทียบค่าใช้จ่ายรวมตลอดอายุการใช้งาน 300,000 กิโลเมตร (หรือประมาณ 6 ปี) ระหว่าง MG Maxus 7 (e-MPV) กับรถ MPV เครื่องยนต์สันดาป/ไฮบริด ในขนาดมิติตัวถังใกล้เคียงกัน
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-                <!-- TCO Chart Container -->
-                <div class="glass-card rounded-2xl p-6 lg:col-span-2 space-y-4">
-                    <h3 class="text-lg font-bold text-slate-800">เปรียบเทียบหมวดหมู่ค่าใช้จ่าย TCO (300,000 km Cumulative Cost)</h3>
-                    <p class="text-xs text-slate-500">
-                        MG Maxus 7 ประหยัดค่าพลังงานไฟฟ้าและค่าบำรุงรักษาเชิงป้องกันลงได้มากกว่า 600,000 บาท แม้จะมีค่าเสื่อมราคาตัวรถที่สูงกว่า (คิดจากราคา 1,299,000 บาท) — ปรับค่าตามการใช้งานของคุณได้ที่ <a href="#tools" class="text-blue-600 underline">ตัวคำนวณ TCO หัวข้อ 11</a>
-                    </p>
-                    <div class="chart-container">
-                        <canvas id="tcoChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- TCO Summary Metrics -->
-                <div class="glass-card rounded-2xl p-6 space-y-6 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-                    <h3 class="text-lg font-bold text-blue-400 border-b border-slate-700 pb-2">สรุปความคุ้มค่า TCO</h3>
-                    
-                    <div class="space-y-1">
-                        <p class="text-xs text-slate-400 uppercase">TCO รวม MG Maxus 7 (EV)</p>
-                        <p class="text-3xl font-extrabold text-emerald-400">1,569,000 <span class="text-sm font-normal text-slate-300">บาท</span></p>
-                        <p class="text-xs text-emerald-300 font-medium">เฉลี่ย 5.23 บาท / กิโลเมตร</p>
-                    </div>
-
-                    <div class="space-y-1">
-                        <p class="text-xs text-slate-400 uppercase">TCO รวม MPV เครื่องยนต์สันดาป/ไฮบริด</p>
-                        <p class="text-2xl font-bold text-slate-300">2,200,000 <span class="text-sm font-normal text-slate-400">บาท</span></p>
-                        <p class="text-xs text-slate-400">เฉลี่ย 7.33 บาท / กิโลเมตร</p>
-                    </div>
-
-                    <div class="pt-4 border-t border-slate-700">
-                        <div class="bg-emerald-500/20 border border-emerald-500/40 rounded-xl p-3 text-center">
-                            <p class="text-xs font-medium text-emerald-300">ส่วนประหยัดสุทธิจาก EV</p>
-                            <p class="text-2xl font-black text-emerald-400 mt-0.5">631,000 บาท</p>
-                            <p class="text-[11px] text-slate-300 mt-1">ประหยัดกว่ารถน้ำมัน 28.7% ตลอด 300,000 กม.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 2: BOM & Cost Engineering Analysis -->
-        <section id="bom" class="space-y-6">
-            <div class="border-l-4 border-emerald-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">8. เจาะลึก: ประมาณการต้นทุนชิ้นส่วน (BOM)</h2>
-                <p class="text-slate-600 text-sm mt-1">
-                    การวิเคราะห์วิศวกรรมต้นทุน (Bill of Materials - BOM) ของ MG Maxus 7 ประเมินต้นทุนรวมทั้งคันที่โรงงานจีนไว้ที่ 23,400–25,500 USD (~819,000–892,500 บาท) โดยแบตเตอรี่ NMC ขนาด 90 kWh คิดเป็นสัดส่วนสูงถึง 38–42% ของต้นทุนชิ้นส่วนทั้งหมด
-                </p>
-            </div>
-            <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-2 text-xs text-amber-900"><b>⚠️ ข้อมูลประมาณการ:</b> ตัวเลขต้นทุนชิ้นส่วนและห่วงโซ่ราคาทั้งหมดเป็นการประเมินเชิงวิศวกรรมต้นทุน MG ไม่เคยเปิดเผยต้นทุนจริง ใช้เพื่อเข้าใจโครงสร้างราคาเท่านั้น</div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <!-- Chart: BOM Component Breakdown -->
-                <div class="glass-card rounded-2xl p-6 space-y-4">
-                    <h3 class="text-lg font-bold text-slate-800">สัดส่วนต้นทุนชิ้นส่วนหลัก (BOM Cost Share %)</h3>
-                    <p class="text-xs text-slate-500">
-                        โครงสร้างชิ้นส่วนแสดงให้เห็นว่าระบบขับเคลื่อนไฟฟ้า (แบตเตอรี่ + มอเตอร์ + อินเวอร์เตอร์) ครองสัดส่วนมากกว่าครึ่งหนึ่งของต้นทุนตัวรถทั้งหมด
-                    </p>
-                    <div class="chart-container">
-                        <canvas id="bomBreakdownChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- HTML Waterfall Representation -->
-                <div class="glass-card rounded-2xl p-6 space-y-4">
-                    <h3 class="text-lg font-bold text-slate-800">ห่วงโซ่การสะสมต้นทุน (China Factory to Thailand Waterfall)</h3>
-                    <p class="text-xs text-slate-500">
-                        การคำนวณสะสมต้นทุนจากหน้าโรงงานจีน (Ex-Factory) จนถึงราคาขายปลีกในไทย ภายใต้สิทธิประโยชน์ ACFTA (ภาษีนำเข้า 0%) และภาษีสรรพสามิต BEV 2%
-                    </p>
-
-                    <div class="space-y-2 text-xs md:text-sm">
-                        <div class="flex justify-between items-center p-2.5 bg-slate-100 rounded-lg">
-                            <span class="font-medium text-slate-700">1. ต้นทุนหน้าโรงงานจีน (Ex-Factory BOM + Overhead)</span>
-                            <span class="font-bold text-slate-900">857,500 บาท</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2.5 bg-slate-50 rounded-lg border border-slate-200 pl-4">
-                            <span class="text-slate-600">+ ค่าขนส่งในจีน & ขนส่งทางเรือ Ro-Ro แหลมฉบัง</span>
-                            <span class="font-semibold text-slate-800">+50,000 บาท</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2.5 bg-blue-50 border border-blue-200 rounded-lg text-blue-900">
-                            <span class="font-bold">2. ราคา CIF ประเทศไทย (ฐานคิดภาษี)</span>
-                            <span class="font-bold">907,500 บาท</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2.5 bg-slate-50 rounded-lg border border-slate-200 pl-4">
-                            <span class="text-slate-600">+ ภาษีศุลกากร Form E (0%) + สรรพสามิต (2%) + มหาดไทย</span>
-                            <span class="font-semibold text-slate-800">+19,965 บาท</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2.5 bg-slate-50 rounded-lg border border-slate-200 pl-4">
-                            <span class="text-slate-600">+ พิธีการศุลกากร, Port Handling & PDI</span>
-                            <span class="font-semibold text-slate-800">+12,500 บาท</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2.5 bg-emerald-100 border border-emerald-300 rounded-lg text-emerald-900">
-                            <span class="font-bold">3. ต้นทุนส่งมอบถึงคลังในไทย (Landed Duty Paid)</span>
-                            <span class="font-bold">940,000 บาท</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2.5 bg-slate-50 rounded-lg border border-slate-200 pl-4">
-                            <span class="text-slate-600">+ กำไรผู้นำเข้า MG, งบการตลาด & เงินสำรอง Lifetime Warranty</span>
-                            <span class="font-semibold text-slate-800">+180,000 บาท</span>
-                        </div>
-                        <div class="flex justify-between items-center p-2.5 bg-slate-50 rounded-lg border border-slate-200 pl-4">
-                            <span class="text-slate-600">+ Dealer Margin ~94,000 & VAT 7% ~85,000</span>
-                            <span class="font-semibold text-slate-800">+179,000 บาท</span>
-                        </div>
-                        <div class="flex justify-between items-center p-3 bg-slate-900 text-white rounded-xl shadow-md">
-                            <span class="font-bold text-sm">4. ราคาขายปลีก (โปรฯ ต.ค. 2569)</span>
-                            <span class="font-bold text-lg text-emerald-400">1,299,000 บาท</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 7: Features Showcase & Tools -->
-        <section id="features" class="space-y-6">
-            <div class="border-l-4 border-emerald-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">9. ฟีเจอร์เด่นและเครื่องคำนวณการชาร์จ</h2>
-                <p class="text-slate-600 text-sm mt-1">รวมฟีเจอร์ที่น่าสนใจของ MG Maxus 7 กรองตามหมวด พร้อมเครื่องคำนวณเวลาชาร์จและค่าไฟต่อทริป</p>
-            </div>
-            <div id="featureFilters" class="flex flex-wrap gap-2"></div>
-            <div id="featureGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-xs text-amber-900 leading-relaxed">
-                <b>⚠️ ข้อสังเกตสเปกไทย:</b> รุ่นที่จำหน่ายในประเทศไทยไม่พบข้อมูลยืนยันว่ารองรับแอปเชื่อมต่อรถ (Connected Car) สำหรับสั่งการระยะไกล เช่น สั่งแอร์ล่วงหน้า/ดูสถานะแบตผ่านมือถือ
-                และไม่พบข้อมูลการอัปเดตซอฟต์แวร์แบบ OTA — การอัปเดตระบบน่าจะต้องทำที่ศูนย์บริการ การเชื่อมต่อมือถือใช้ได้ผ่าน Apple CarPlay / Android Auto / Bluetooth บนจอในรถเท่านั้น
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="glass-card rounded-2xl p-6 space-y-4">
-                    <h3 class="text-lg font-bold text-slate-800">⚡ คำนวณเวลาชาร์จ</h3>
-                    <label class="block text-sm text-slate-600">แบตเตอรี่ปัจจุบัน: <b id="socFromV">20</b>% → เป้าหมาย: <b id="socToV">80</b>%</label>
-                    <input id="socFrom" type="range" min="0" max="100" value="20" class="w-full">
-                    <input id="socTo" type="range" min="0" max="100" value="80" class="w-full">
-                    <select id="chargerType" class="w-full border border-slate-300 rounded-lg p-2 text-sm">
-                        <option value="7">AC Wallbox 7 kW</option>
-                        <option value="11">AC 11 kW</option>
-                        <option value="60">DC 60 kW</option>
-                        <option value="120" selected>DC 120 kW (สูงสุดของรถ)</option>
-                    </select>
-                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm text-emerald-900" id="chargeResult"></div>
-                    <p class="text-xs text-slate-400">* ประมาณการจาก 90 kWh, ประสิทธิภาพ AC 90% / DC ลดกำลังหลัง 80% — เวลาจริงขึ้นกับอุณหภูมิและตู้ชาร์จ</p>
-                </div>
-                <div class="glass-card rounded-2xl p-6 space-y-4">
-                    <h3 class="text-lg font-bold text-slate-800">🗺️ คำนวณค่าไฟต่อทริป</h3>
-                    <label class="block text-sm text-slate-600">ระยะทาง (กม.)<input id="tripKm" type="number" value="300" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">อัตราสิ้นเปลือง (kWh/100 กม.)<input id="tripEff" type="number" value="19" step="0.5" min="5" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">ค่าไฟ (บาท/kWh)<input id="tripRate" type="number" value="4.5" step="0.1" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900" id="tripResult"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Finance: Installment Table -->
-        <section id="finance" class="space-y-6">
-            <div class="border-l-4 border-sky-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">10. ตารางผ่อนชำระ MG Maxus 7</h2>
-                <p class="text-slate-600 text-sm mt-1">คำนวณค่างวดต่อเดือนแบบดอกเบี้ยคงที่ (Flat Rate) ปรับราคารถและอัตราดอกเบี้ยได้ตามข้อเสนอของไฟแนนซ์</p>
-            </div>
-            <div class="glass-card rounded-2xl p-6 space-y-4">
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <label class="block text-sm text-slate-600">ราคารถ (บาท)<input id="finPrice" type="number" value="1299000" step="1000" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">ดอกเบี้ย Flat (%/ปี)<input id="finRate" type="number" value="2.49" step="0.01" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="flex items-center gap-2 text-sm text-slate-600 sm:mt-6"><input id="finVat" type="checkbox" checked class="w-4 h-4"> รวม VAT 7% ของดอกเบี้ย</label>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-right text-xs md:text-sm border-collapse">
-                        <thead>
-                            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
-                                <th class="p-3 text-left font-semibold">ดาวน์</th>
-                                <th class="p-3 font-semibold">เงินดาวน์ (บาท)</th>
-                                <th class="p-3 font-semibold">ยอดจัด (บาท)</th>
-                                <th class="p-3 font-semibold">48 งวด</th>
-                                <th class="p-3 font-semibold">60 งวด</th>
-                                <th class="p-3 font-semibold">72 งวด</th>
-                            </tr>
-                        </thead>
-                        <tbody id="finBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
-                    </table>
-                </div>
-                <p class="text-xs text-slate-400">* ค่างวดโดยประมาณ ยังไม่รวมประกันภัย ค่าจดทะเบียน และค่าธรรมเนียมอื่น อัตราดอกเบี้ยจริงขึ้นกับแคมเปญและการอนุมัติของสถาบันการเงิน ราคาเริ่มต้นอ้างอิงโปรโมชัน 1,299,000 บาท</p>
-            </div>
-        </section>
-
-        <!-- SECTION 9: Decision Tools -->
-        <section id="tools" class="space-y-6">
-            <div class="border-l-4 border-violet-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">11. เครื่องมือช่วยตัดสินใจซื้อ</h2>
-                <p class="text-slate-600 text-sm mt-1">คำนวณต้นทุนรวมตามการใช้งานของคุณ เลือกรุ่นมาเทียบกันเอง และวางแผนทริปชาร์จไฟ</p>
-            </div>
-
-            <!-- 9.1 TCO calculator -->
-            <div class="glass-card rounded-2xl p-6 space-y-4">
-                <h3 class="text-lg font-bold text-slate-800">💰 ตัวคำนวณต้นทุนรวมการถือครอง (TCO) แบบปรับค่าได้</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    <label class="block text-sm text-slate-600">ระยะทาง/ปี (กม.)<input id="tcoKm" type="number" value="25000" step="1000" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">จำนวนปีที่ใช้<input id="tcoYears" type="number" value="6" min="1" max="15" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">ค่าไฟ (บาท/kWh)<input id="tcoElec" type="number" value="4.5" step="0.1" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">ค่าน้ำมัน (บาท/ลิตร)<input id="tcoFuel" type="number" value="35" step="0.5" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-xs md:text-sm border-collapse">
-                        <thead>
-                            <tr class="bg-slate-100 text-slate-700 border-b border-slate-200 text-right">
-                                <th class="p-2 text-left font-semibold">รุ่น</th>
-                                <th class="p-2 font-semibold">ราคา (บาท)</th>
-                                <th class="p-2 font-semibold">อัตราสิ้นเปลือง</th>
-                                <th class="p-2 font-semibold">บำรุงรักษา/ปี</th>
-                                <th class="p-2 font-semibold">ประกัน/ปี</th>
-                                <th class="p-2 font-semibold">เสื่อมราคา %/ปี</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tcoInputs" class="divide-y divide-slate-100"></tbody>
-                    </table>
-                </div>
-                <div class="chart-container" style="max-width: 900px;"><canvas id="tcoCalcChart"></canvas></div>
-                <div id="tcoSummary" class="grid grid-cols-2 lg:grid-cols-4 gap-3"></div>
-                <p class="text-xs text-slate-400">* ค่าเริ่มต้นทุกช่องเป็นค่าสมมติเพื่อการเปรียบเทียบ ปรับให้ตรงกับใบเสนอราคาและการใช้งานจริงได้ — "MPV ไฮบริด" เป็นรถสมมติขนาดใกล้เคียงกัน · MG Maxus 7 และ Darion EV หักประกันปีแรกตามโปรฯ ที่แถมประกันชั้น 1 · ค่าเสื่อมคิดแบบลดลงทุกปี (Declining balance) · ยังไม่รวมดอกเบี้ยไฟแนนซ์และภาษีรถประจำปี</p>
-            </div>
-
-            <!-- 9.2 Compare picker -->
-            <div class="glass-card rounded-2xl p-6 space-y-4">
-                <h3 class="text-lg font-bold text-slate-800">⚖️ เลือกรุ่นมาเทียบกันเอง</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <select id="cmpA" class="cmp-select border border-slate-300 rounded-lg p-2 text-sm"></select>
-                    <select id="cmpB" class="cmp-select border border-slate-300 rounded-lg p-2 text-sm"></select>
-                    <select id="cmpC" class="cmp-select border border-slate-300 rounded-lg p-2 text-sm"></select>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-xs md:text-sm border-collapse">
-                        <tbody id="cmpBody" class="divide-y divide-slate-100"></tbody>
-                    </table>
-                </div>
-                <p class="text-xs text-slate-400">* ช่องสีเขียว = ดีที่สุดในกลุ่มที่เลือก · "—" = ยังไม่มีข้อมูลที่ยืนยันได้ · ราคาอ้างอิงช่วง ต.ค. 2569 ควรตรวจกับผู้จำหน่าย</p>
-            </div>
-
-            <!-- 9.3 Trip planner & charging map -->
-            <div class="glass-card rounded-2xl p-6 space-y-4">
-                <h3 class="text-lg font-bold text-slate-800">🗺️ วางแผนทริปและค้นหาสถานีชาร์จ</h3>
-                <div id="tripPresets" class="flex flex-wrap gap-2"></div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    <label class="block text-sm text-slate-600">ปลายทาง<input id="tpDest" type="text" value="หัวหิน" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">ระยะทางเที่ยวเดียว (กม.)<input id="tpDist" type="number" value="200" min="0" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">ระยะวิ่งจริงเมื่อแบตเต็ม (กม.)<input id="tpRange" type="number" value="410" min="50" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">แบตตอนออกเดินทาง (%)<input id="tpStart" type="number" value="100" min="1" max="100" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">แบตขั้นต่ำที่ต้องการเหลือ (%)<input id="tpReserve" type="number" value="15" min="5" max="50" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                    <label class="block text-sm text-slate-600">ชาร์จระหว่างทางถึง (%)<input id="tpTo" type="number" value="80" min="30" max="100" class="w-full border border-slate-300 rounded-lg p-2 mt-1"></label>
-                </div>
-                <div id="tpResult" class="bg-violet-50 border border-violet-200 rounded-xl p-4 text-sm text-violet-900"></div>
-                <div class="flex flex-wrap gap-2 text-sm">
-                    <a id="tpMapLink" target="_blank" rel="noopener" class="bg-slate-900 hover:bg-slate-700 text-white px-4 py-2 rounded-lg">📍 ค้นหาสถานีชาร์จใกล้ปลายทาง (Google Maps)</a>
-                    <a href="https://www.google.com/maps/search/?api=1&query=%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99%E0%B8%B5%E0%B8%8A%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%88%E0%B8%A3%E0%B8%96%E0%B8%A2%E0%B8%99%E0%B8%95%E0%B9%8C%E0%B9%84%E0%B8%9F%E0%B8%9F%E0%B9%89%E0%B8%B2" target="_blank" rel="noopener" class="border border-slate-300 hover:border-slate-500 px-4 py-2 rounded-lg">สถานีชาร์จใกล้ฉัน</a>
-                    <a href="https://www.plugshare.com/" target="_blank" rel="noopener" class="border border-slate-300 hover:border-slate-500 px-4 py-2 rounded-lg">PlugShare (แผนที่ + รีวิวตู้ชาร์จ)</a>
-                </div>
-                <p class="text-xs text-slate-500">แอปผู้ให้บริการชาร์จที่นิยมในไทย: PEA VOLTA, EleXA (กฟผ.), EV Station PluZ (PTT), EA Anywhere, MEA EV — ควรติดตั้งและผูกบัญชีไว้ก่อนเดินทางไกล</p>
-                <p class="text-xs text-slate-400">* ระยะทางเส้นทางยอดนิยมเป็นค่าประมาณจากกรุงเทพฯ · ระยะวิ่งจริงขึ้นกับความเร็ว น้ำหนักบรรทุก และแอร์ (ขับ 110–120 กม./ชม. บนทางหลวงประมาณ 400–420 กม.) · เวลาชาร์จคำนวณที่ DC 120 kW</p>
-            </div>
-        </section>
-
-        <!-- SECTION 10: Buying Checklist -->
-        <section id="checklist" class="space-y-6">
-            <div class="border-l-4 border-teal-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">12. เช็กลิสต์ก่อนซื้อและวันรับรถ</h2>
-                <p class="text-slate-600 text-sm mt-1">ติ๊กได้ทีละข้อ ระบบจำไว้ในเบราว์เซอร์ของคุณ (ไม่ส่งข้อมูลไปที่ใด)</p>
-            </div>
-            <div class="glass-card rounded-2xl p-6 space-y-4">
-                <div class="flex items-center gap-3">
-                    <div class="flex-1 h-3 bg-slate-100 rounded-full overflow-hidden"><div id="ckBar" class="h-full bg-teal-500 transition-all" style="width:0%"></div></div>
-                    <span id="ckCount" class="text-sm font-semibold text-slate-700 whitespace-nowrap"></span>
-                    <button id="ckReset" class="text-xs text-slate-500 hover:text-rose-600 underline">ล้างทั้งหมด</button>
-                </div>
-                <div id="ckGroups" class="grid grid-cols-1 lg:grid-cols-3 gap-4"></div>
-            </div>
-        </section>
-
-        <!-- SECTION 11: User Manual -->
-        <section id="manual" class="space-y-6">
-            <div class="border-l-4 border-amber-500 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">13. คู่มือการใช้งานฉบับย่อ</h2>
-                <p class="text-slate-600 text-sm mt-1">สรุปขั้นตอนใช้งานที่พบบ่อย ค้นหาได้ทันที — โปรดยึดสมุดคู่มือประจำรถและคำแนะนำของศูนย์บริการ MG เป็นหลัก</p>
-            </div>
-            <input id="manualSearch" type="search" placeholder="🔍 ค้นหาในคู่มือ เช่น ชาร์จ, V2L, ประตู, ยาง..." class="w-full border border-slate-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400">
-            <div id="manualList" class="space-y-3"></div>
-            <p id="manualEmpty" class="hidden text-sm text-slate-500 text-center py-6">ไม่พบหัวข้อที่ค้นหา</p>
-        </section>
-
-        <!-- SECTION 9: News -->
-        <section id="news" class="space-y-6">
-            <div class="border-l-4 border-rose-500 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">14. ข่าวสารและอัปเดต MG Maxus 7</h2>
-                <p class="text-slate-600 text-sm mt-1">รวบรวมข่าวราคา โปรโมชัน และความเคลื่อนไหว ตรวจสอบข้อมูลล่าสุดเมื่อ 8 ต.ค. 2569 — ข่าวในหน้านี้ไม่อัปเดตอัตโนมัติ โปรโมชันมีระยะเวลาจำกัด ควรยืนยันกับผู้จำหน่ายก่อนตัดสินใจ</p>
-            </div>
-            <div id="promoCard" class="rounded-2xl p-6 bg-gradient-to-br from-rose-600 to-rose-800 text-white shadow-lg space-y-3"></div>
-            <div id="newsFilters" class="flex flex-wrap gap-2"></div>
-            <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        <!-- Tools CTA -->
+        <section class="card rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-4 reveal">
+            <div><h2 class="text-2xl font-bold">อยากคำนวณให้ตรงกับการใช้งานของคุณ?</h2><p class="text-slate-600">มีเครื่องคำนวณ TCO ตารางผ่อน เวลาชาร์จ วางแผนทริป เทียบคู่แข่ง เช็กลิสต์ และคู่มือ</p></div>
+            <a href="/tools" class="bg-slate-900 hover:bg-slate-700 text-white px-6 py-3 rounded-xl font-semibold whitespace-nowrap">เปิดเครื่องมือทั้งหมด →</a>
         </section>
 
         <!-- FAQ -->
-        <section id="faq" class="space-y-6">
-            <div class="border-l-4 border-blue-600 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">15. คำถามที่พบบ่อย (FAQ)</h2>
-            </div>
-            <div class="space-y-3 text-sm">
-                <details class="glass-card rounded-xl p-4"><summary class="font-semibold text-slate-800 cursor-pointer">Maxus 7 กับ MIFA 7 คือรุ่นเดียวกันไหม?</summary><p class="text-slate-600 mt-2">ใช่ เป็นรถรุ่นเดียวกัน แต่ใช้ชื่อต่างกันในแต่ละตลาด (จีนเรียก Dajia 7)</p></details>
-                <details class="glass-card rounded-xl p-4"><summary class="font-semibold text-slate-800 cursor-pointer">วิ่งได้จริงกี่กิโลเมตร?</summary><p class="text-slate-600 mt-2">MG ประกาศไว้ ~540–570 กม. แต่ถ้าใช้งานจริงบนทางหลวงที่ 110–120 กม./ชม. ควรประมาณไว้ราว 400–480 กม.</p></details>
-                <details class="glass-card rounded-xl p-4"><summary class="font-semibold text-slate-800 cursor-pointer">ชาร์จเร็วใช้เวลากี่นาที?</summary><p class="text-slate-600 mt-2">ชาร์จ DC จาก 30% ถึง 80% ใช้เวลาประมาณ 30–36 นาที ลองคำนวณเวลาตามตู้ชาร์จได้ที่ <a href="#features" class="text-blue-600 underline">เครื่องคำนวณการชาร์จ</a></p></details>
-                <details class="glass-card rounded-xl p-4"><summary class="font-semibold text-slate-800 cursor-pointer">รุ่นไทยสลับแบตเตอรี่ได้ไหม?</summary><p class="text-slate-600 mt-2">ไม่ได้ ระบบสลับแบตเตอรี่มีเฉพาะในจีน</p></details>
-                <details class="glass-card rounded-xl p-4"><summary class="font-semibold text-slate-800 cursor-pointer">รับประกันแบตเตอรี่นานแค่ไหน?</summary><p class="text-slate-600 mt-2">รับประกันแบตเตอรี่แรงดันสูงและมอเตอร์ตลอดอายุการใช้งานสำหรับเจ้าของรายแรก (ตามเงื่อนไขของ MG ประเทศไทย)</p></details>
-                <details class="glass-card rounded-xl p-4"><summary class="font-semibold text-slate-800 cursor-pointer">ราคาในงาน Motor Expo 2026 จะเป็นเท่าไร?</summary><p class="text-slate-600 mt-2">เป็นการคาดการณ์เท่านั้น กรณีที่น่าจะเกิดมากที่สุดคือ 1,249,000–1,299,000 บาท ดูรายละเอียดได้ที่ <a href="#forecast" class="text-blue-600 underline">คาดการณ์ราคา</a></p></details>
-            </div>
+        <section id="faq" class="space-y-6 reveal">
+            <div><p class="text-mg-600 font-semibold text-sm uppercase tracking-wider">FAQ</p><h2 class="text-3xl font-bold">คำถามที่พบบ่อย</h2></div>
+            <div class="space-y-3" id="faqList"></div>
         </section>
 
         <!-- Sources -->
         <section id="sources" class="space-y-4">
-            <div class="border-l-4 border-slate-400 pl-4">
-                <h2 class="text-2xl font-bold text-slate-900">16. แหล่งข้อมูล</h2>
-                <p class="text-slate-600 text-sm mt-1">ตัวเลขในวงเล็บ [n] ในหน้านี้อ้างอิงรายการด้านล่าง</p>
-            </div>
-            <ol class="glass-card rounded-2xl p-6 list-decimal pl-10 text-xs text-slate-600 space-y-1 columns-1 md:columns-2">
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://paultan.org/2023/11/10/maxus-mifa-7-ev-mpv-gets-swappable-catl-battery-up-to-605-km-range-cltc-from-rm168k-in-china/">paultan.org — MIFA 7 เปิดตัวในจีน (2023)</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://chinacars.co.uk/maxus-in-the-uk-models-price-what-to-know-2026/">chinacars.co.uk — Maxus UK 2026</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://www.news.maxusmotors.be/the-all-new-maxus-mifa-7-a-family-friendly-electric-minivan">Maxus Belgium — The all new MIFA 7</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://otodriver.com/berita/2026/maxus-hadirkan-mifa-7-mpv-listrik-premium-yang-fleksibel-untuk-keluarga-modern-di-giias-2026-maxefaaa026">otodriver.com — MIFA 7 ที่ GIIAS 2026</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://www.sgcarmart.com/new_cars/newcars_print.php?CarCode=21839&amp;Subcode=9739">sgCarMart — MIFA 7 Premium 90 kWh</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://www.mgcars.com/en/cars/mg-maxus7">MG Thailand (EN) — MG MAXUS 7</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://www.mgcars.com/th/cars/mg-maxus7">MG Thailand (TH) — ราคา สเปค</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://en.saicmaxus.com/news/887">SAIC MAXUS — MIFA7 Euro NCAP 5 ดาว</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://www.autotrader.co.uk/cars/maxus/mifa-7">Autotrader UK — MAXUS Mifa 7</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://autolifethailand.tv/official-price-discount-mg-maxus-7-aug2025/">AutoLife Thailand — ส่วนลด 370,000 (ส.ค. 2025)</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://www.evcarsthailand.com/">EV Cars Thailand — ยืนยันราคาเดิมปี 2026</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://en.saicmaxus.com/blog/comparison/mpv-comparison/mifa-7-vs-mifa-9-mpv">SAIC MAXUS — MIFA 7 vs MIFA 9</a></li>
-                <li><a class="hover:text-blue-600" target="_blank" rel="noopener" href="https://autolifethailand.tv/official-price-discount-mg-maxus-7-ev-motor-show-2026/">AutoLife Thailand — ส่วนลด 100,000 Motor Show 2026</a></li>
+            <h2 class="text-xl font-bold">แหล่งข้อมูล</h2>
+            <ol class="card rounded-2xl p-6 list-decimal pl-10 text-xs text-slate-600 space-y-1 md:columns-2">
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://paultan.org/2023/11/10/maxus-mifa-7-ev-mpv-gets-swappable-catl-battery-up-to-605-km-range-cltc-from-rm168k-in-china/">paultan.org — MIFA 7 เปิดตัวในจีน (2023)</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://chinacars.co.uk/maxus-in-the-uk-models-price-what-to-know-2026/">chinacars.co.uk — Maxus UK 2026</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://www.news.maxusmotors.be/the-all-new-maxus-mifa-7-a-family-friendly-electric-minivan">Maxus Belgium — The all new MIFA 7</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://otodriver.com/berita/2026/maxus-hadirkan-mifa-7-mpv-listrik-premium-yang-fleksibel-untuk-keluarga-modern-di-giias-2026-maxefaaa026">otodriver.com — MIFA 7 ที่ GIIAS 2026</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://www.sgcarmart.com/new_cars/newcars_print.php?CarCode=21839&amp;Subcode=9739">sgCarMart — MIFA 7 Premium 90 kWh</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://www.mgcars.com/en/cars/mg-maxus7">MG Thailand (EN) — MG MAXUS 7</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://www.mgcars.com/th/cars/mg-maxus7">MG Thailand (TH) — ราคา สเปค</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://en.saicmaxus.com/news/887">SAIC MAXUS — MIFA7 Euro NCAP 5 ดาว</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://www.autotrader.co.uk/cars/maxus/mifa-7">Autotrader UK — MAXUS Mifa 7</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://autolifethailand.tv/official-price-discount-mg-maxus-7-aug2025/">AutoLife Thailand — ส่วนลด 370,000 (ส.ค. 2025)</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://www.evcarsthailand.com/">EV Cars Thailand — ยืนยันราคาเดิมปี 2026</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://en.saicmaxus.com/blog/comparison/mpv-comparison/mifa-7-vs-mifa-9-mpv">SAIC MAXUS — MIFA 7 vs MIFA 9</a></li>
+                <li><a class="hover:text-mg-600" target="_blank" rel="noopener" href="https://autolifethailand.tv/official-price-discount-mg-maxus-7-ev-motor-show-2026/">AutoLife Thailand — ส่วนลด 100,000 Motor Show 2026</a></li>
             </ol>
         </section>
-
-        <button id="toTop" class="fixed bottom-6 right-6 z-50 hidden bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full shadow-lg text-xl" aria-label="กลับด้านบน">↑</button>
-
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
-            <p>MG Maxus 7 — ศูนย์รวมข้อมูล e-MPV สำหรับผู้ซื้อในประเทศไทย · ข้อมูล ณ ตุลาคม 2026</p>
-            <p class="text-slate-500">เว็บไซต์อิสระ ไม่ได้เกี่ยวข้องกับ MG หรือ SAIC · ตัวเลขที่ระบุว่า "ประมาณการ" หรือ "คาดการณ์" ไม่ใช่ข้อมูลทางการ ควรยืนยันราคาและสเปกกับผู้จำหน่ายก่อนตัดสินใจ</p>
-        </div>
+    <footer class="bg-slate-950 text-slate-400 py-8 text-center text-xs space-y-2 px-4">
+        <p>MG Maxus 7 — ศูนย์รวมข้อมูล e-MPV สำหรับผู้ซื้อในประเทศไทย · ข้อมูล ณ ตุลาคม 2026</p>
+        <p class="text-slate-500">เว็บไซต์อิสระ ไม่ได้เกี่ยวข้องกับ MG หรือ SAIC · ภาพรถ: AutoLife Thailand · ตัวเลขคาดการณ์ไม่ใช่ข้อมูลทางการ ควรยืนยันกับผู้จำหน่ายก่อนตัดสินใจ</p>
     </footer>
 
-    <!-- JavaScript Charts Implementation -->
+    <!-- Lightbox -->
+    <div id="lb" class="fixed inset-0 z-[60] hidden bg-black/90 flex-col items-center justify-center p-4" role="dialog" aria-modal="true">
+        <button id="lbClose" class="absolute top-4 right-5 text-white text-3xl" aria-label="ปิด">×</button>
+        <img id="lbImg" alt="" class="max-h-[80vh] max-w-full rounded-xl">
+        <p id="lbCap" class="text-slate-300 text-sm mt-3 text-center"></p>
+    </div>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        // Mobile nav
+        const navBtn = document.getElementById('navBtn'), navMobile = document.getElementById('navMobile');
+        navBtn.addEventListener('click', () => navMobile.classList.toggle('hidden'));
+        navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMobile.classList.add('hidden')));
 
-            // Global Chart.js Defaults
-            Chart.defaults.font.family = "'Kanit', sans-serif";
-            Chart.defaults.color = '#475569';
+        // Range bars
+        const ranges = [['CLTC (จีน)', 605, '#94A3B8'], ['NEDC (ที่ MG ประกาศ)', 570, '#F06B79'], ['WLTP (ยุโรป)', 480, '#E43C4F'], ['ทางหลวงไทย (ประมาณ)', 410, '#10B981']];
+        document.getElementById('rangeBars').innerHTML = ranges.map(([l, v, c]) =>
+            `<div><div class="flex justify-between text-xs mb-1"><span>${l}</span><b>${v} กม.</b></div><div class="h-2.5 bg-white/10 rounded-full"><div class="h-full rounded-full" style="width:${v / 605 * 100}%;background:${c}"></div></div></div>`).join('');
 
-            // Shared Tooltip Configuration Callback
-            const sharedTooltipConfig = {
-                callbacks: {
-                    title: function(tooltipItems) {
-                        const item = tooltipItems[0];
-                        let label = item.chart.data.labels[item.dataIndex];
-                        if (Array.isArray(label)) {
-                            return label.join(' ');
-                        } else {
-                            return label;
-                        }
-                    }
-                }
-            };
-
-            // 1. Feature Gap Chart (Radar / Horizontal Bar)
-            const featureCtx = document.getElementById('featureGapChart').getContext('2d');
-            
-            // Long labels wrapped to <= 16 chars arrays
-            const featureLabels = [
-                ['สเปกตัวถังและ', 'มอเตอร์ขับเคลื่อน'],
-                ['แบตเตอรี่ 90kWh', '& ระบบ V2L 6.6kW'],
-                ['เบาะนั่งแถวสอง', 'และระบบปรับไฟฟ้า'],
-                ['หน้าจอแสดงผล', 'ในห้องโดยสาร'],
-                ['ระบบความปลอดภัย', 'ADAS Level 2'],
-                ['กล้องมองข้างดิจิทัล', 'CMS & Swapping']
-            ];
-
-            new Chart(featureCtx, {
-                type: 'bar',
-                data: {
-                    labels: featureLabels,
-                    datasets: [
-                        {
-                            label: 'ไทย (Thailand Model X)',
-                            data: [100, 100, 60, 66, 90, 0],
-                            backgroundColor: '#C8102E',
-                            borderRadius: 6
-                        },
-                        {
-                            label: 'จีน (China Top Trim)',
-                            data: [100, 100, 100, 100, 100, 100],
-                            backgroundColor: '#CBD5E1',
-                            borderRadius: 6
-                        }
-                    ]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                callback: function(value) { return value + '%'; }
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                font: { size: 11 }
-                            }
-                        }
-                    },
-                    plugins: {
-                        tooltip: sharedTooltipConfig,
-                        legend: { position: 'top' }
-                    }
-                }
-            });
-
-            // 2. BOM Cost Breakdown Chart (Donut / Pie)
-            const bomCtx = document.getElementById('bomBreakdownChart').getContext('2d');
-            
-            const bomLabels = [
-                ['ชุดแบตเตอรี่', '90kWh NMC'],
-                ['มอเตอร์ &', 'อินเวอร์เตอร์ 180kW'],
-                ['โครงสร้างตัวถัง', 'BIW & งานสี'],
-                ['ระบบช่วงล่าง', 'ล้อ ยาง เบรก'],
-                ['เบาะนั่ง &', 'งานตกแต่งภายใน'],
-                ['ระบบอิเล็กทรอนิกส์', 'และหน้าจอ'],
-                ['ระบบ ADAS &', 'ชิ้นส่วนอื่นๆ']
-            ];
-
-            new Chart(bomCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: bomLabels,
-                    datasets: [{
-                        data: [40, 9, 16, 8, 9, 7, 11],
-                        backgroundColor: [
-                            '#C8102E', // MG Red
-                            '#06B6D4', // Cyan
-                            '#64748B', // Slate
-                            '#F59E0B', // Amber
-                            '#10B981', // Emerald
-                            '#8B5CF6', // Purple
-                            '#94A3B8'  // Light Slate
-                        ],
-                        borderWidth: 2,
-                        borderColor: '#FFFFFF'
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                title: function(tooltipItems) {
-                                    const item = tooltipItems[0];
-                                    let label = item.chart.data.labels[item.dataIndex];
-                                    return Array.isArray(label) ? label.join(' ') : label;
-                                },
-                                label: function(context) {
-                                    return ' สัดส่วนต้นทุน: ' + context.raw + '%';
-                                }
-                            }
-                        },
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                boxWidth: 12,
-                                font: { size: 11 }
-                            }
-                        }
-                    }
-                }
-            });
-
-            // 3. Global Price Comparison Chart (Horizontal Bar)
-            const globalCtx = document.getElementById('globalPriceChart').getContext('2d');
-
-            const globalLabels = [
-                ['ไทย โปรฯ ต.ค. 69', '(รุ่น X)'],
-                ['จีน', '(ราคาเปิดตัว 2023)'],
-                ['ไทย ราคาปกติ', '(รุ่น X)'],
-                ['อินโดนีเซีย', '(MIFA 7 90 kWh)'],
-                ['สหราชอาณาจักร', '(MIFA 7)']
-            ];
-
-            new Chart(globalCtx, {
-                type: 'bar',
-                data: {
-                    labels: globalLabels,
-                    datasets: [{
-                        label: 'ราคาเริ่มต้นแปลงเป็นบาท (THB)',
-                        data: [1299000, 1300000, 1399000, 1700000, 2200000],
-                        backgroundColor: [
-                            '#10B981', // Highlight Thailand Campaign
-                            '#94A3B8',
-                            '#F06B79',
-                            '#A80D27',
-                            '#8B5CF6'
-                        ],
-                        borderRadius: 8
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    scales: {
-                        x: {
-                            ticks: {
-                                callback: function(value) {
-                                    return (value / 1000000).toFixed(2) + 'M ฿';
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                title: function(tooltipItems) {
-                                    const item = tooltipItems[0];
-                                    let label = item.chart.data.labels[item.dataIndex];
-                                    return Array.isArray(label) ? label.join(' ') : label;
-                                },
-                                label: function(context) {
-                                    return ' ราคา: ' + context.raw.toLocaleString() + ' บาท';
-                                }
-                            }
-                        },
-                        legend: { display: false }
-                    }
-                }
-            });
-
-            // 4. End-2026 Forecast Scenario Chart
-            const forecastCtx = document.getElementById('forecastChart').getContext('2d');
-
-            const forecastLabels = [
-                ['Bear Case', '(เน้นล้างสต็อก)'],
-                ['Base Case', '(Motor Expo Promo)'],
-                ['Bull Case', '(คงราคาแคมเปญ)']
-            ];
-
-            new Chart(forecastCtx, {
-                type: 'bar',
-                data: {
-                    labels: forecastLabels,
-                    datasets: [
-                        {
-                            label: 'ราคาซื้อขายจริงประมาณการ (บาท)',
-                            data: [1200000, 1274000, 1349000],
-                            backgroundColor: ['#F59E0B', '#C8102E', '#64748B'],
-                            borderRadius: 8,
-                            yAxisID: 'y'
-                        },
-                        {
-                            label: 'ความน่าจะเป็น (%)',
-                            data: [25, 55, 20],
-                            type: 'line',
-                            borderColor: '#10B981',
-                            backgroundColor: '#10B981',
-                            borderWidth: 3,
-                            pointRadius: 6,
-                            yAxisID: 'y1'
-                        }
-                    ]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    scales: {
-                        y: {
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
-                            ticks: {
-                                callback: function(value) { return (value / 1000000).toFixed(2) + 'M'; }
-                            }
-                        },
-                        y1: {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            max: 100,
-                            grid: { drawOnChartArea: false },
-                            ticks: {
-                                callback: function(value) { return value + '%'; }
-                            }
-                        }
-                    },
-                    plugins: {
-                        tooltip: sharedTooltipConfig,
-                        legend: { position: 'top' }
-                    }
-                }
-            });
-
-            // 5. TCO Comparison Chart (Grouped Bar)
-            const tcoCtx = document.getElementById('tcoChart').getContext('2d');
-
-            const tcoLabels = [
-                ['ค่าพลังงาน', '(เชื้อเพลิง/ไฟฟ้า)'],
-                ['ค่าบำรุงรักษา', 'ตามระยะ'],
-                ['ค่ายางและเบรก'],
-                ['ค่าประกันภัย', '(รวม 6 ปี)'],
-                ['ค่าเสื่อมราคา', 'ตัวรถ 6 ปี']
-            ];
-
-            new Chart(tcoCtx, {
-                type: 'bar',
-                data: {
-                    labels: tcoLabels,
-                    datasets: [
-                        {
-                            label: 'MG Maxus 7 (EV)',
-                            data: [270000, 65000, 110000, 150000, 974000],
-                            backgroundColor: '#C8102E',
-                            borderRadius: 6
-                        },
-                        {
-                            label: 'MPV สันดาป/ไฮบริด',
-                            data: [900000, 180000, 135000, 135000, 850000],
-                            backgroundColor: '#94A3B8',
-                            borderRadius: 6
-                        }
-                    ]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    scales: {
-                        y: {
-                            ticks: {
-                                callback: function(value) { return (value / 1000).toLocaleString() + 'k ฿'; }
-                            }
-                        }
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                title: function(tooltipItems) {
-                                    const item = tooltipItems[0];
-                                    let label = item.chart.data.labels[item.dataIndex];
-                                    return Array.isArray(label) ? label.join(' ') : label;
-                                },
-                                label: function(context) {
-                                    return context.dataset.label + ': ' + context.raw.toLocaleString() + ' บาท';
-                                }
-                            }
-                        },
-                        legend: { position: 'top' }
-                    }
-                }
-            });
-
-        });
-    </script>
-    <!-- Feature Hub / Manual / News -->
-    <script>
-    (function () {
-        const FEATURES = [
-            { cat: 'ขับขี่', icon: '🔋', title: 'แบตเตอรี่ 90 kWh NMC', desc: 'ระยะทาง NEDC สูงสุด 570 กม. พร้อม Lifetime Warranty แบตเตอรี่และมอเตอร์สำหรับเจ้าของรายแรก (ตามเงื่อนไข)' },
-            { cat: 'ขับขี่', icon: '🏎️', title: 'มอเตอร์ 245 PS / 350 Nm', desc: 'มอเตอร์ PMSM ขับล้อหน้า อัตราเร่งฉับไวเหมาะกับการแซงบนทางหลวง' },
-            { cat: 'ชาร์จ', icon: '⚡', title: 'DC Fast Charge 120 kW', desc: 'ชาร์จ 30–80% ได้ในราว 30–36 นาที ผ่านหัว CCS2' },
-            { cat: 'ชาร์จ', icon: '🔌', title: 'V2L 6.6 kW', desc: 'จ่ายไฟ 220V ให้อุปกรณ์ภายนอก เช่น เตาไฟฟ้า แคมป์ปิ้ง หรือไฟสำรองยามฉุกเฉิน' },
-            { cat: 'ห้องโดยสาร', icon: '🚪', title: 'ประตูสไลด์ไฟฟ้าทั้ง 2 ฝั่ง', desc: 'เปิด-ปิดด้วยปุ่มบนกุญแจ มือจับ หรือหน้าจอ เหมาะกับเด็กและผู้สูงอายุ' },
-            { cat: 'ห้องโดยสาร', icon: '💺', title: 'Captain Seat 2+2+3', desc: 'เบาะแถวสองแบบกัปตันปรับเลื่อนได้ เบาะแถวสามพับเพิ่มพื้นที่เก็บสัมภาระ' },
-            { cat: 'ห้องโดยสาร', icon: '❄️', title: 'แอร์แยกโซนแถวหลัง', desc: 'ช่องแอร์หลังคาสำหรับผู้โดยสาร 3 แถว กระจายความเย็นทั่วห้องโดยสาร' },
-            { cat: 'ความปลอดภัย', icon: '🛡️', title: 'ระบบช่วยขับขี่ ADAS', desc: 'Adaptive Cruise Control, ระบบช่วยรักษาเลน, เบรกฉุกเฉินอัตโนมัติ (ตรวจสอบรายการตามรุ่นที่จำหน่าย)' },
-            { cat: 'ความปลอดภัย', icon: '📷', title: 'กล้องรอบคัน 360°', desc: 'ช่วยจอดในพื้นที่แคบ เห็นมุมอับรอบตัวรถขนาดใหญ่' },
-            { cat: 'เทคโนโลยี', icon: '🖥️', title: 'จอกลาง 12.3" + Apple CarPlay/Android Auto', desc: 'เชื่อมต่อสมาร์ทโฟนผ่านจอในรถเพื่อใช้แผนที่ เพลง และโทรศัพท์ รองรับ Bluetooth' },
-            { cat: 'เทคโนโลยี', icon: '🔊', title: 'ระบบเสียง 8 ลำโพง', desc: 'กระจายเสียงทั่วห้องโดยสารทั้ง 3 แถว' }
+        // Price bars
+        const prices = [
+            ['ไทย โปรฯ ต.ค. 2026', 'MG Maxus 7 รุ่น X', 1299000, '#10B981', true],
+            ['จีน', 'Dajia 7 · 259,800 หยวน', 1300000, '#94A3B8'],
+            ['ไทย ราคาปกติ', 'MG Maxus 7 รุ่น X', 1399000, '#F06B79'],
+            ['อินโดนีเซีย', 'MIFA 7 · 750 ล้านรูเปียห์', 1700000, '#C8102E'],
+            ['สหราชอาณาจักร', 'MIFA 7 · ~£50,000', 2200000, '#771124']
         ];
+        const pMax = 2200000;
+        document.getElementById('priceBars').innerHTML = prices.map(([l, s, v, c, hi]) =>
+            `<div><div class="flex justify-between items-baseline text-sm mb-1"><span class="${hi ? 'font-bold text-emerald-700' : ''}">${l} <span class="text-xs text-slate-400 font-normal">${s}</span></span><b>${(v / 1e6).toFixed(2)} ล้าน</b></div><div class="h-3 bg-slate-100 rounded-full overflow-hidden"><div class="h-full rounded-full" style="width:${v / pMax * 100}%;background:${c}"></div></div></div>`).join('');
 
-        const MANUAL = [
-            { t: 'เริ่มต้นใช้งานและสตาร์ทรถ', b: ['พกกุญแจอัจฉริยะเข้าใกล้รถ ประตูจะปลดล็อกเมื่อสัมผัสมือจับ', 'นั่งประจำที่ เหยียบเบรก ระบบจะพร้อมขับ (ไฟ READY ขึ้นบนหน้าปัด)', 'เลือกเกียร์ D/R โดยเหยียบเบรกค้างไว้ขณะเปลี่ยน', 'เมื่อจอด เลือก P ระบบเบรกมือไฟฟ้า (EPB) จะทำงานอัตโนมัติ'] },
-            { t: 'การชาร์จไฟ AC (ที่บ้าน)', b: ['ใช้ Wallbox ที่ติดตั้งโดยช่างที่ได้รับอนุญาต แยกเบรกเกอร์เฉพาะ', 'เปิดฝาช่องชาร์จ เสียบหัว Type 2 จนได้ยินเสียงล็อก', 'ตั้งเวลาชาร์จช่วง Off-peak (TOU) ผ่านหน้าจอในรถ เพื่อลดค่าไฟ', 'แนะนำตั้งเป้าชาร์จ 80–90% ในการใช้งานประจำวัน'] },
-            { t: 'การชาร์จเร็ว DC (สถานีสาธารณะ)', b: ['ใช้หัว CCS2 ชาร์จได้สูงสุด 120 kW', 'ความเร็วชาร์จจะลดลงหลัง 80% — แนะนำชาร์จช่วง 20–80% เพื่อประหยัดเวลา', 'แบตเย็นหรือร้อนจัดอาจทำให้ชาร์จช้าลง', 'ก่อนถอดหัว ให้กดหยุดที่ตู้หรือแอปผู้ให้บริการ'] },
-            { t: 'การใช้งาน V2L จ่ายไฟออก', b: ['ต่ออะแดปเตอร์ V2L เข้าช่องชาร์จ', 'เปิดฟังก์ชันจ่ายไฟที่หน้าจอ และตั้งระดับแบตขั้นต่ำที่ต้องการเหลือไว้', 'รวมโหลดไม่เกิน 6.6 kW และห้ามใช้ในที่เปียกน้ำ', 'ปิดฟังก์ชันก่อนถอดอะแดปเตอร์'] },
-            { t: 'ประตูสไลด์ไฟฟ้าและเบาะ', b: ['เปิด-ปิดด้วยปุ่มบนกุญแจ มือจับประตู หรือปุ่มคอนโซล', 'ประตูมีระบบกันหนีบ หากเจอสิ่งกีดขวางจะเด้งกลับ', 'เปิด Child Lock จากหน้าจอเมื่อมีเด็กเล็กนั่งแถวหลัง', 'Captain Seat เลื่อนบนรางได้ ตรวจสอบว่าล็อกเข้าที่ก่อนออกรถ'] },
-            { t: 'ระบบช่วยขับขี่ (ADAS)', b: ['เปิด Adaptive Cruise ด้วยปุ่มบนพวงมาลัย ตั้งความเร็วและระยะห่าง', 'ระบบเป็นเพียงตัวช่วย ผู้ขับต้องจับพวงมาลัยและเฝ้าระวังตลอดเวลา', 'ทำความสะอาดกล้องและเรดาร์หน้ารถให้ปราศจากฝุ่นโคลน', 'ฝนตกหนักหรือเส้นจราจรไม่ชัด ระบบอาจทำงานได้จำกัด'] },
-            { t: 'โหมดขับขี่และการชาร์จคืนพลังงาน', b: ['เลือกโหมด Eco / Normal / Sport ตามสถานการณ์', 'ปรับระดับ Regenerative Braking ให้สูงในเมืองเพื่อเพิ่มระยะทาง', 'ใช้ Eco + แอร์ 25–26°C บนทางไกลเพื่อประหยัดพลังงาน'] },
-            { t: 'การดูแลรักษาตามระยะ', b: ['เข้าตรวจเช็กตามระยะที่ศูนย์ MG กำหนด (ดูสมุดรับประกัน)', 'ตรวจลมยางทุก 2 สัปดาห์ ตามค่าบนป้ายข้างประตูคนขับ', 'เปลี่ยนไส้กรองแอร์ น้ำมันเบรก และน้ำยาหล่อเย็นแบตตามกำหนด', 'แบต 12V ยังต้องดูแล — หากจอดนานควรเปิดระบบเป็นระยะ'] },
-            { t: 'ไฟเตือนและกรณีฉุกเฉิน', b: ['ไฟเตือนสีแดง: จอดรถในที่ปลอดภัยทันทีและติดต่อศูนย์บริการ', 'ไฟเตือนสีเหลือง: ขับต่อได้อย่างระมัดระวังและนัดตรวจเช็ก', 'รถดับกลางทาง: เปิดไฟฉุกเฉิน ห้ามลากโดยล้อหน้าแตะพื้น ให้ใช้รถสไลด์', 'น้ำท่วม: หลีกเลี่ยงการลุยน้ำลึกเกินขอบล่างตัวถัง'] }
+        // FAQ
+        const faqs = [
+            ['Maxus 7 กับ MIFA 7 คือรุ่นเดียวกันไหม?', 'ใช่ เป็นรถรุ่นเดียวกัน แต่ใช้ชื่อต่างกันในแต่ละตลาด (จีนเรียก Dajia 7)'],
+            ['วิ่งได้จริงกี่กิโลเมตร?', 'MG ประกาศไว้ ~540–570 กม. แต่ถ้าใช้งานจริงบนทางหลวง ควรประมาณไว้ราว 400–480 กม.'],
+            ['ชาร์จเร็วใช้เวลากี่นาที?', 'ชาร์จ DC จาก 30% ถึง 80% ใช้เวลาประมาณ 30–36 นาที ที่ตู้ 120 kW'],
+            ['รุ่นไทยสลับแบตเตอรี่ได้ไหม?', 'ไม่ได้ ระบบสลับแบตเตอรี่มีเฉพาะในจีน'],
+            ['รับประกันแบตเตอรี่นานแค่ไหน?', 'รับประกันแบตเตอรี่แรงดันสูงและมอเตอร์ตลอดอายุการใช้งานสำหรับเจ้าของรายแรก (ตามเงื่อนไขของ MG ประเทศไทย)'],
+            ['ราคาในงาน Motor Expo 2026 จะเป็นเท่าไร?', 'เป็นการคาดการณ์เท่านั้น กรณีที่น่าจะเกิดมากที่สุดคือ 1,249,000–1,299,000 บาท']
         ];
+        document.getElementById('faqList').innerHTML = faqs.map(([q, a]) =>
+            `<details class="card rounded-xl p-4"><summary class="flex justify-between items-center font-semibold cursor-pointer">${q}<span class="chev transition text-slate-400">▾</span></summary><p class="text-slate-600 mt-2 text-sm">${a}</p></details>`).join('');
 
-        // วันที่: 'YYYY-MM-DD' = ยืนยันวันประกาศ, 'YYYY-MM' = ทราบเฉพาะเดือน, '' = ไม่ระบุวันที่
-        const PROMO = {
-            title: 'โปรโมชันทางการ ต.ค. 2569 (มาตรการ EV 3.5)',
-            start: '2026-10-01', end: '2026-10-31',
-            prices: [['รุ่นย่อย X', 1399000, 1299000], ['รุ่นย่อย X สีทูโทน', 1419000, 1319000]],
-            perks: ['ประกันชั้น 1 + พ.ร.บ. 1 ปี (25,900 บาท)', 'MG HOME CHARGER + ติดตั้งฟรี (38,500 บาท)', 'สาย V2L (10,000 บาท) + ชุดพรมปูพื้น', 'รับประกันตัวรถ 5 ปี / 160,000 กม.', 'รับประกันแบตเตอรี่และมอเตอร์ตลอดอายุการใช้งาน (เฉพาะบุคคลธรรมดา)'],
-            url: 'https://www.mgcars.com/th/promotions/MG-MAXUS-7-Promotion'
-        };
-        const NEWS = [
-            { date: '2026-10-01', tag: 'โปรโมชัน', title: 'โปรฯ ต.ค. 2569: เริ่มต้น 1,299,000 บาท พร้อมของแถมชุดใหญ่', desc: 'ราคาพิเศษภายใต้ EV 3.5 (ปกติ 1,399,000) ฟรีประกันชั้น 1, Home Charger พร้อมติดตั้ง, สาย V2L — จอง-รับรถ 1–31 ต.ค. 2569', url: 'https://www.mgcars.com/th/promotions/MG-MAXUS-7-Promotion', src: 'MG Thailand (ทางการ)' },
-            { date: '2026-03-01', tag: 'โปรโมชัน', title: 'Motor Show 2026: ลด 100,000 บาท เหลือ 1,299,000 บาท', desc: 'แคมเปญช่วงงาน Motor Show (1 มี.ค. – 5 เม.ย. 2569) สิ้นสุดแล้ว', url: 'https://autolifethailand.tv/official-price-discount-mg-maxus-7-ev-motor-show-2026/', src: 'AutoLife Thailand' },
-            { date: '2026-03', tag: 'โปรโมชัน', title: 'รวมโปรฯ Motor Show MG ทุกรุ่น', desc: 'สรุปส่วนลดและข้อเสนอของ MG ในงาน Motor Show 2026', url: 'https://car2day.com/promotion-mg-bims/', src: 'Car2Day' },
-            { date: '2026-01', tag: 'ราคา', title: 'ราคาอย่างเป็นทางการ ม.ค. 2569: 1,399,000 บาท', desc: 'รุ่น X นำเข้า CBU จากจีน คงราคาเดิมจากปี 2568', url: 'https://autolifethailand.tv/official-price-mg-maxus-7-ev-bev-jan-2026/', src: 'AutoLife Thailand' },
-            { date: '', tag: 'ราคา', title: 'เอ็มจีหั่นราคา MG MAXUS 7 ลง 1.69 แสน ลูกค้าเก่าได้สิทธิ์ย้อนหลัง', desc: 'ข่าวการปรับลดราคาครั้งก่อนหน้า (ข้อมูลย้อนหลัง)', url: 'https://www.bangkokbiznews.com/auto/1154586', src: 'กรุงเทพธุรกิจ' },
-            { date: '', tag: 'รีวิว/สเปก', title: 'MPV ไฟฟ้า 570 กม./ชาร์จ NEDC', desc: 'สรุปสเปก 245 แรงม้า แบต 90 kWh และคู่แข่งในตลาด', url: 'https://www.car250.com/new-mg-maxus-7-mpv-2026.html', src: 'CAR250' },
-            { date: '', tag: 'รีวิว/สเปก', title: 'รีวิว MG Maxus 7', desc: 'ทดลองขับและอุปกรณ์มาตรฐานรุ่นไทย จอ 12.3 นิ้ว, CarPlay', url: 'https://www.pcauto.com/th/review/mg-maxus-7-review', src: 'PCAUTO' }
-        ].sort((a, b) => (b.date || '0').localeCompare(a.date || '0'));
+        // Lightbox
+        const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lbCap = document.getElementById('lbCap');
+        const closeLb = () => { lb.classList.add('hidden'); lb.classList.remove('flex'); };
+        document.querySelectorAll('.gal').forEach(b => b.addEventListener('click', () => {
+            lbImg.src = b.dataset.src; lbImg.alt = b.dataset.cap; lbCap.textContent = b.dataset.cap;
+            lb.classList.remove('hidden'); lb.classList.add('flex');
+        }));
+        lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 
-        const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-        const chip = (label, active) => `<button data-v="${esc(label)}" class="px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${active ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-600 border-slate-300 hover:border-slate-500'}">${esc(label)}</button>`;
-
-        function filterable(filtersEl, items, key, render) {
-            const cats = ['ทั้งหมด', ...new Set(items.map(i => i[key]))];
-            let cur = 'ทั้งหมด';
-            const draw = () => {
-                filtersEl.innerHTML = cats.map(c => chip(c, c === cur)).join('');
-                render(cur === 'ทั้งหมด' ? items : items.filter(i => i[key] === cur));
-            };
-            filtersEl.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { cur = b.dataset.v; draw(); } });
-            draw();
-        }
-
-        filterable(document.getElementById('featureFilters'), FEATURES, 'cat', list => {
-            document.getElementById('featureGrid').innerHTML = list.map(f => `
-                <div class="glass-card rounded-2xl p-5 space-y-2 hover:-translate-y-0.5 transition-transform">
-                    <div class="flex items-center justify-between"><span class="text-2xl">${f.icon}</span><span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full">${esc(f.cat)}</span></div>
-                    <h4 class="font-bold text-slate-800">${esc(f.title)}</h4>
-                    <p class="text-xs text-slate-600 leading-relaxed">${esc(f.desc)}</p>
-                </div>`).join('');
-        });
-
-        const fmtDate = d => !d ? 'ไม่ระบุวันที่'
-            : d.length === 7 ? new Date(d + '-01').toLocaleDateString('th-TH', { year: 'numeric', month: 'short' })
-            : new Date(d).toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' });
-
-        // Featured promo with live status from the viewer's clock
-        (function renderPromo() {
-            const today = new Date(); today.setHours(0, 0, 0, 0);
-            const end = new Date(PROMO.end), start = new Date(PROMO.start);
-            const days = Math.round((end - today) / 864e5);
-            const status = today < start ? 'ยังไม่เริ่ม' : days < 0 ? 'หมดเขตแล้ว — โปรดตรวจโปรฯ ใหม่ที่เว็บไซต์ MG' : days === 0 ? 'วันสุดท้าย!' : 'เหลืออีก ' + days + ' วัน';
-            const fmt = n => n.toLocaleString();
-            document.getElementById('promoCard').innerHTML = `
-                <div class="flex flex-wrap items-center justify-between gap-2">
-                    <span class="text-xs bg-white/20 px-2.5 py-1 rounded-full">🔥 โปรโมชันปัจจุบัน · ${fmtDate(PROMO.start)} – ${fmtDate(PROMO.end)}</span>
-                    <span class="text-xs font-bold ${days < 0 ? 'bg-slate-900/40' : 'bg-amber-400 text-slate-900'} px-2.5 py-1 rounded-full">${status}</span>
-                </div>
-                <h3 class="text-xl font-bold">${esc(PROMO.title)}</h3>
-                <div class="grid sm:grid-cols-2 gap-3">${PROMO.prices.map(([n, o, p]) => `
-                    <div class="bg-white/10 rounded-xl p-3"><p class="text-xs text-rose-100">${esc(n)}</p>
-                    <p class="text-2xl font-bold">${fmt(p)} <span class="text-sm font-normal">บาท</span></p>
-                    <p class="text-xs text-rose-200"><s>${fmt(o)}</s> · ลด ${fmt(o - p)} บาท</p></div>`).join('')}</div>
-                <ul class="text-sm text-rose-50 grid sm:grid-cols-2 gap-1">${PROMO.perks.map(x => `<li>✓ ${esc(x)}</li>`).join('')}</ul>
-                <a href="${PROMO.url}" target="_blank" rel="noopener" class="inline-block text-xs underline text-white/90">ดูเงื่อนไขเต็มที่เว็บไซต์ MG Thailand ↗</a>`;
-        })();
-        filterable(document.getElementById('newsFilters'), NEWS, 'tag', list => {
-            document.getElementById('newsGrid').innerHTML = list.map(n => `
-                <a href="${esc(n.url)}" target="_blank" rel="noopener" class="glass-card rounded-2xl p-5 space-y-2 block hover:border-rose-300 transition-colors">
-                    <div class="flex items-center justify-between text-[11px]"><span class="bg-rose-50 text-rose-700 px-2 py-0.5 rounded-full">${esc(n.tag)}</span><span class="text-slate-400">${fmtDate(n.date)}</span></div>
-                    <h4 class="font-bold text-slate-800 leading-snug">${esc(n.title)}</h4>
-                    <p class="text-xs text-slate-600">${esc(n.desc)}</p>
-                    <p class="text-[11px] text-blue-600">ที่มา: ${esc(n.src)} ↗</p>
-                </a>`).join('');
-        });
-
-        // Manual: accordion + search
-        const mList = document.getElementById('manualList');
-        mList.innerHTML = MANUAL.map((m, i) => `
-            <details class="glass-card rounded-xl p-4 group" data-text="${esc((m.t + ' ' + m.b.join(' ')).toLowerCase())}">
-                <summary class="cursor-pointer font-semibold text-slate-800 flex justify-between items-center list-none">
-                    <span><span class="text-amber-600 mr-2">${i + 1}.</span>${esc(m.t)}</span><span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
-                </summary>
-                <ol class="list-decimal pl-6 mt-3 space-y-1.5 text-sm text-slate-600">${m.b.map(x => `<li>${esc(x)}</li>`).join('')}</ol>
-            </details>`).join('');
-        document.getElementById('manualSearch').addEventListener('input', e => {
-            const q = e.target.value.trim().toLowerCase();
-            let shown = 0;
-            mList.querySelectorAll('details').forEach(d => {
-                const hit = !q || d.dataset.text.includes(q);
-                d.classList.toggle('hidden', !hit);
-                d.open = !!q && hit;
-                shown += hit;
-            });
-            document.getElementById('manualEmpty').classList.toggle('hidden', shown > 0);
-        });
-
-        const BATT = 90, $ = id => document.getElementById(id);
-
-        // Charge calculator: DC เต็มกำลังถึง 80% จากนั้นเหลือ ~35%
-        function calcCharge() {
-            const a = +$('socFrom').value, b = +$('socTo').value;
-            $('socFromV').textContent = a; $('socToV').textContent = b;
-            if (b <= a) { $('chargeResult').textContent = 'เป้าหมายต้องมากกว่าระดับปัจจุบัน'; return; }
-            const kw = +$('chargerType').value, dc = kw > 22, eff = dc ? 0.95 : 0.9;
-            const fast = Math.max(0, Math.min(b, 80) - a), slow = Math.max(0, b - Math.max(a, 80));
-            const hrs = dc ? (fast / 100 * BATT) / (kw * 0.8 * eff) + (slow / 100 * BATT) / (kw * 0.35 * eff)
-                           : ((b - a) / 100 * BATT) / (kw * eff);
-            const h = Math.floor(hrs), m = Math.round((hrs - h) * 60), kwh = (b - a) / 100 * BATT;
-            $('chargeResult').innerHTML = `เวลาประมาณ <b class="text-lg">${h ? h + ' ชม. ' : ''}${m} นาที</b><br>พลังงานที่เติม ~${kwh.toFixed(1)} kWh · ได้ระยะทางเพิ่ม ~${Math.round(kwh / 0.19)} กม.`;
-        }
-        ['socFrom', 'socTo', 'chargerType'].forEach(id => $(id).addEventListener('input', calcCharge));
-        calcCharge();
-
-        function calcTrip() {
-            const km = +$('tripKm').value || 0, eff = +$('tripEff').value || 0, rate = +$('tripRate').value || 0;
-            const kwh = km * eff / 100, cost = kwh * rate, fuel = km / 12 * 38;
-            $('tripResult').innerHTML = `ใช้พลังงาน ~${kwh.toFixed(1)} kWh (${Math.round(kwh / BATT * 100)}% ของแบต)<br>ค่าไฟ <b class="text-lg">${Math.round(cost).toLocaleString()} บาท</b> (${(cost / (km || 1)).toFixed(2)} บาท/กม.)<br><span class="text-xs">เทียบ MPV น้ำมัน 12 กม./ลิตร @38 บาท ≈ ${Math.round(fuel).toLocaleString()} บาท · ประหยัด ${Math.round(fuel - cost).toLocaleString()} บาท</span>`;
-        }
-        ['tripKm', 'tripEff', 'tripRate'].forEach(id => $(id).addEventListener('input', calcTrip));
-        calcTrip();
-
-        // Installment table (flat rate)
-        function calcFinance() {
-            const price = +$('finPrice').value || 0, rate = (+$('finRate').value || 0) / 100, vat = $('finVat').checked ? 1.07 : 1;
-            const fmt = n => Math.round(n).toLocaleString();
-            $('finBody').innerHTML = [25, 30, 35, 40, 45, 50].map(d => {
-                const down = price * d / 100, fin = price - down;
-                const cells = [48, 60, 72].map(n => `<td class="p-3 font-semibold text-sky-800">${fmt((fin + fin * rate * n / 12 * vat) / n)}</td>`).join('');
-                return `<tr class="hover:bg-sky-50/50"><td class="p-3 text-left font-semibold">${d}%</td><td class="p-3">${fmt(down)}</td><td class="p-3">${fmt(fin)}</td>${cells}</tr>`;
-            }).join('');
-        }
-        ['finPrice', 'finRate', 'finVat'].forEach(id => $(id).addEventListener('input', calcFinance));
-        calcFinance();
-
-        // Back to top + mobile nav
-        const tt = $('toTop');
-        addEventListener('scroll', () => tt.classList.toggle('hidden', scrollY < 600));
-        tt.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
-        $('mobileNavBtn').addEventListener('click', () => $('mobileNav').classList.toggle('hidden'));
-        document.querySelectorAll('#mobileNav a').forEach(a => a.addEventListener('click', () => $('mobileNav').classList.add('hidden')));
-    })();
-    </script>
-    <!-- Decision tools: TCO calculator / compare picker / trip planner / checklist -->
-    <script>
-    (function () {
-        const $ = id => document.getElementById(id);
-        const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-        const fmt = n => Math.round(n).toLocaleString();
-
-        // DC charge time (hours) on a 90 kWh pack: full power to 80%, ~35% power above
-        function dcHours(from, to, kw) {
-            const BATT = 90, eff = 0.95;
-            const fast = Math.max(0, Math.min(to, 80) - from), slow = Math.max(0, to - Math.max(from, 80));
-            return (fast / 100 * BATT) / (kw * 0.8 * eff) + (slow / 100 * BATT) / (kw * 0.35 * eff);
-        }
-        const fmtHrs = h => { const hh = Math.floor(h), mm = Math.round((h - hh) * 60); return (hh ? hh + ' ชม. ' : '') + mm + ' นาที'; };
-
-        // ---------- 9.1 TCO calculator ----------
-        const TCO_CARS = [
-            { name: 'MG Maxus 7', ev: true, price: 1299000, use: 19, maint: 7000, ins: 30000, dep: 15, freeIns: true, color: '#C8102E' },
-            { name: 'Wuling Darion EV', ev: true, price: 839000, use: 16.5, maint: 6000, ins: 22000, dep: 17, freeIns: true, color: '#F59E0B' },
-            { name: 'BYD M6', ev: true, price: 829900, use: 17.5, maint: 6000, ins: 22000, dep: 15, freeIns: false, color: '#10B981' },
-            { name: 'MPV ไฮบริด (สมมติ)', ev: false, price: 1350000, use: 6, maint: 15000, ins: 25000, dep: 11, freeIns: false, color: '#64748B' }
-        ];
-        const cell = (i, k, v, step) => `<td class="p-1.5"><input data-i="${i}" data-k="${k}" type="number" value="${v}" step="${step}" min="0" class="w-full min-w-[80px] border border-slate-200 rounded p-1.5 text-right"></td>`;
-        $('tcoInputs').innerHTML = TCO_CARS.map((c, i) => `
-            <tr><td class="p-2 font-medium text-slate-800 whitespace-nowrap"><span class="inline-block w-2.5 h-2.5 rounded-full mr-1.5" style="background:${c.color}"></span>${esc(c.name)}</td>
-            ${cell(i, 'price', c.price, 1000)}
-            <td class="p-1.5"><div class="flex items-center gap-1">${cell(i, 'use', c.use, 0.5).replace(/<\/?td[^>]*>/g, '')}<span class="text-[10px] text-slate-400 whitespace-nowrap">${c.ev ? 'kWh/100กม.' : 'ลิตร/100กม.'}</span></div></td>
-            ${cell(i, 'maint', c.maint, 500)}${cell(i, 'ins', c.ins, 500)}${cell(i, 'dep', c.dep, 0.5)}</tr>`).join('');
-
-        const tcoChart = new Chart($('tcoCalcChart').getContext('2d'), {
-            type: 'bar',
-            data: { labels: TCO_CARS.map(c => c.name), datasets: [
-                { label: 'ค่าเสื่อมราคา', data: [], backgroundColor: '#475569' },
-                { label: 'ค่าพลังงาน', data: [], backgroundColor: '#C8102E' },
-                { label: 'บำรุงรักษา', data: [], backgroundColor: '#F59E0B' },
-                { label: 'ประกันภัย', data: [], backgroundColor: '#94A3B8' }
-            ] },
-            options: {
-                indexAxis: 'y', maintainAspectRatio: false, responsive: true,
-                scales: { x: { stacked: true, ticks: { callback: v => (v / 1e6).toFixed(1) + 'M ฿' } }, y: { stacked: true } },
-                plugins: { legend: { position: 'top' }, tooltip: { callbacks: { label: c => ' ' + c.dataset.label + ': ' + fmt(c.raw) + ' บาท' } } }
-            }
-        });
-
-        function calcTco() {
-            const km = +$('tcoKm').value || 0, yrs = Math.max(1, +$('tcoYears').value || 1);
-            const elec = +$('tcoElec').value || 0, fuel = +$('tcoFuel').value || 0, dist = km * yrs;
-            const rows = TCO_CARS.map(c => {
-                const dep = c.price * (1 - Math.pow(1 - c.dep / 100, yrs));
-                const energy = dist * c.use / 100 * (c.ev ? elec : fuel);
-                const maint = c.maint * yrs;
-                const ins = c.ins * Math.max(0, yrs - (c.freeIns ? 1 : 0));
-                return { c, dep, energy, maint, ins, total: dep + energy + maint + ins };
-            });
-            ['dep', 'energy', 'maint', 'ins'].forEach((k, i) => tcoChart.data.datasets[i].data = rows.map(r => r[k]));
-            tcoChart.update();
-            const best = Math.min(...rows.map(r => r.total));
-            $('tcoSummary').innerHTML = rows.map(r => `
-                <div class="rounded-xl p-3 border ${r.total === best ? 'border-emerald-400 bg-emerald-50' : 'border-slate-200 bg-slate-50'}">
-                    <p class="text-xs text-slate-500">${esc(r.c.name)}${r.total === best ? ' · ต่ำสุด' : ''}</p>
-                    <p class="text-lg font-bold text-slate-900">${fmt(r.total)} <span class="text-xs font-normal">บาท</span></p>
-                    <p class="text-xs text-slate-600">${dist ? (r.total / dist).toFixed(2) : '0'} บาท/กม. · ${fmt(r.total / yrs / 12)} บาท/เดือน</p>
-                </div>`).join('');
-        }
-        $('tcoInputs').addEventListener('input', e => {
-            const t = e.target; if (!t.dataset.k) return;
-            TCO_CARS[+t.dataset.i][t.dataset.k] = +t.value || 0; calcTco();
-        });
-        ['tcoKm', 'tcoYears', 'tcoElec', 'tcoFuel'].forEach(id => $(id).addEventListener('input', calcTco));
-        calcTco();
-
-        // ---------- 9.2 Compare picker ----------
-        const CARS = [
-            { name: 'MG Maxus 7', min: 1299000, max: 1319000, kwh: 90, chem: 'NMC', ps: 245, nm: 350, range: 570, door: 'มีทั้ง 2 ฝั่ง', note: 'รับประกันแบต/มอเตอร์ตลอดอายุ (เจ้าของแรก)' },
-            { name: 'Wuling Starlight Darion EV', min: 839000, max: 899000, kwh: 69.2, chem: 'LFP', ps: 204, nm: 310, range: 521, door: 'มี (ไฟฟ้า)', note: 'ชาร์จ DC 30–80% ~20 นาที' },
-            { name: 'BYD M6', min: 829900, max: 929900, kwh: 71.8, chem: 'LFP', ps: 204, nm: 310, range: null, door: 'ไม่มี (ประตูเปิดข้าง)', note: 'ราคาเริ่มต้นต่ำที่สุด' },
-            { name: 'Denza D9 Premium', min: 1999900, max: 2699900, kwh: 103, chem: 'LFP', ps: 313, nm: 360, range: null, door: 'มีทั้ง 2 ฝั่ง', note: 'ความหรูหราระดับ VIP' },
-            { name: 'XPeng X9 Premium', min: 2399000, max: 2539000, kwh: 94.8, chem: 'NMC', ps: 342, nm: 450, range: null, door: 'มีทั้ง 2 ฝั่ง', note: 'สถาปัตยกรรม 800V & ADAS ขั้นสูง' },
-            { name: 'Zeekr 009 Standard', min: 2399000, max: 2399000, kwh: 116, chem: 'NMC', ps: 422, nm: 616, range: null, door: 'มีทั้ง 2 ฝั่ง', note: 'สมรรถนะสูงสุดในกลุ่ม' }
-        ];
-        const ROWS = [
-            { label: 'ราคา (บาท)', v: c => c.min === c.max ? fmt(c.min) : fmt(c.min) + ' – ' + fmt(c.max), score: c => -c.min },
-            { label: 'แบตเตอรี่', v: c => c.kwh + ' kWh (' + c.chem + ')', score: c => c.kwh },
-            { label: 'กำลัง / แรงบิด', v: c => c.ps + ' PS / ' + c.nm + ' Nm', score: c => c.ps },
-            { label: 'ระยะทาง NEDC', v: c => c.range ? c.range + ' กม.' : '—', score: c => c.range || null },
-            { label: 'ราคาต่อความจุแบต', v: c => fmt(c.min / c.kwh) + ' บาท/kWh', score: c => -c.min / c.kwh },
-            { label: 'ราคาต่อแรงม้า', v: c => fmt(c.min / c.ps) + ' บาท/PS', score: c => -c.min / c.ps },
-            { label: 'ประตูสไลด์ไฟฟ้า', v: c => c.door, score: c => c.door.startsWith('ไม่มี') ? 0 : 1, noBest: true },
-            { label: 'จุดเด่น', v: c => c.note, score: () => null }
-        ];
-        const selects = ['cmpA', 'cmpB', 'cmpC'].map($);
-        const defaults = [0, 1, 2];
-        selects.forEach((s, i) => {
-            s.innerHTML = (i === 2 ? '<option value="">— ไม่เลือก —</option>' : '') + CARS.map((c, j) => `<option value="${j}">${esc(c.name)}</option>`).join('');
-            s.value = defaults[i];
-            s.addEventListener('change', renderCompare);
-        });
-        function renderCompare() {
-            const picked = [...new Set(selects.map(s => s.value).filter(v => v !== ''))].map(v => CARS[+v]);
-            const head = `<tr class="bg-slate-100 text-slate-700"><th class="p-3 text-left font-semibold w-36">รายการ</th>${picked.map(c => `<th class="p-3 text-left font-semibold ${c.name === 'MG Maxus 7' ? 'text-blue-700' : ''}">${esc(c.name)}</th>`).join('')}</tr>`;
-            const body = ROWS.map(r => {
-                const scores = picked.map(r.score), valid = scores.filter(x => x !== null);
-                const best = valid.length > 1 && !r.noBest ? Math.max(...valid) : null;
-                const unique = best !== null && scores.filter(x => x === best).length < picked.length;
-                return `<tr><td class="p-3 text-slate-500">${r.label}</td>${picked.map((c, i) => `<td class="p-3 ${unique && scores[i] === best ? 'bg-emerald-50 text-emerald-800 font-semibold' : 'text-slate-700'}">${esc(r.v(c))}</td>`).join('')}</tr>`;
-            }).join('');
-            $('cmpBody').innerHTML = head + body;
-        }
-        renderCompare();
-
-        // ---------- 9.3 Trip planner ----------
-        const ROUTES = [['หัวหิน', 200], ['พัทยา', 150], ['เขาใหญ่', 180], ['ขอนแก่น', 445], ['เชียงใหม่', 690], ['สุราษฎร์ธานี', 645], ['ภูเก็ต', 840]];
-        $('tripPresets').innerHTML = ROUTES.map(([n, d]) => `<button data-n="${n}" data-d="${d}" class="px-3 py-1.5 rounded-full text-xs font-medium border bg-white text-slate-600 border-slate-300 hover:border-slate-500">กทม. → ${n} (~${d} กม.)</button>`).join('');
-        $('tripPresets').addEventListener('click', e => {
-            const b = e.target.closest('button'); if (!b) return;
-            $('tpDest').value = b.dataset.n; $('tpDist').value = b.dataset.d; calcTripPlan();
-        });
-        function calcTripPlan() {
-            const dist = +$('tpDist').value || 0, range = Math.max(1, +$('tpRange').value || 1);
-            const start = Math.min(100, +$('tpStart').value || 0), reserve = +$('tpReserve').value || 0;
-            const to = Math.min(100, Math.max(reserve + 5, +$('tpTo').value || 80));
-            const dest = $('tpDest').value.trim();
-            $('tpMapLink').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('สถานีชาร์จรถยนต์ไฟฟ้า ' + dest);
-            const first = range * Math.max(0, start - reserve) / 100, perStop = range * (to - reserve) / 100;
-            // จุดชาร์จสุดท้ายเติมแค่พอถึงปลายทาง + เผื่อ 10%
-            const BUFFER = 10;
-            let stops = 0, arrive, lastTo = to;
-            if (dist <= first) arrive = start - dist / range * 100;
-            else {
-                stops = Math.ceil((dist - first) / perStop);
-                const lastLeg = (dist - first) - (stops - 1) * perStop;
-                lastTo = Math.min(to, Math.ceil(reserve + lastLeg / range * 100 + BUFFER));
-                arrive = lastTo - lastLeg / range * 100;
-            }
-            const stopHrs = dcHours(reserve, to, 120), lastHrs = dcHours(reserve, lastTo, 120), driveHrs = dist / 90;
-            const chargeHrs = (stops - 1) * stopHrs + lastHrs;
-            const plan = stops === 1
-                ? `ชาร์จ ${reserve}→${lastTo}% ~${fmtHrs(lastHrs)}`
-                : lastTo < to
-                    ? `${stops === 2 ? "ครั้งแรก" : (stops - 1) + " ครั้งแรก"}ชาร์จ ${reserve}→${to}%${stops === 2 ? "" : " ครั้งละ"} ~${fmtHrs(stopHrs)}, ครั้งสุดท้ายเติมแค่ ${reserve}→${lastTo}% ~${fmtHrs(lastHrs)}`
-                    : `ชาร์จ ${reserve}→${to}% ครั้งละ ~${fmtHrs(stopHrs)}`;
-            const roundTrip = dist * 2 <= first ? 'ไป-กลับได้โดยไม่ต้องชาร์จ' : 'ไป-กลับต้องชาร์จเพิ่ม (ชาร์จที่ปลายทางหรือระหว่างทาง)';
-            $('tpResult').innerHTML = stops === 0
-                ? `✅ <b>ไม่ต้องแวะชาร์จ</b> ถึง${esc(dest || 'ปลายทาง')}เหลือแบตประมาณ <b>${Math.round(arrive)}%</b><br><span class="text-xs">${roundTrip}</span>`
-                : `🔌 ต้องแวะชาร์จ <b>${stops} ครั้ง</b> รวมเวลาชาร์จ ~${fmtHrs(chargeHrs)} (${plan})<br>
-                   ถึง${esc(dest || 'ปลายทาง')}เหลือแบตประมาณ <b>${Math.round(arrive)}%</b> · เวลาเดินทางรวมโดยประมาณ ${fmtHrs(driveHrs + chargeHrs)} (ขับเฉลี่ย 90 กม./ชม.)<br>
-                   <span class="text-xs">แนะนำแวะชาร์จครั้งแรกก่อนวิ่งได้ ~${Math.round(first)} กม.</span>`;
-        }
-        ['tpDest', 'tpDist', 'tpRange', 'tpStart', 'tpReserve', 'tpTo'].forEach(id => $(id).addEventListener('input', calcTripPlan));
-        calcTripPlan();
-
-        // ---------- 10. Checklist (per-viewer, localStorage) ----------
-        const CHECK = [
-            { g: '🧾 ก่อนจอง / ต่อรอง', items: [
-                'ทดลองขับเส้นทางจริง พร้อมสมาชิกครอบครัวที่จะนั่งประจำ',
-                'ลองนั่งแถว 3 และพับเบาะ ดูพื้นที่สัมภาระ',
-                'ตรวจว่าที่บ้าน/คอนโดติดตั้ง Wallbox ได้ (มิเตอร์ 15(45)A ขึ้นไป หรือขอเปลี่ยนกับการไฟฟ้า)',
-                'ขอใบเสนอราคาจาก 2–3 โชว์รูม เทียบของแถมและส่วนลด',
-                'ต่อรองของแถมเพิ่ม เช่น ฟิล์มกรองแสง กรอบป้าย เคลือบสี',
-                'ถามเงื่อนไขโปรฯ ว่าต้อง "จองและรับรถ" ภายในเดือนเดียวกันหรือไม่',
-                'เทียบดอกเบี้ยไฟแนนซ์ (Flat Rate รวม VAT) จากหลายสถาบัน',
-                'อ่านเงื่อนไขรับประกันแบต/มอเตอร์ตลอดอายุ (เจ้าของแรก บุคคลธรรมดา)'
-            ] },
-            { g: '🔍 วันรับรถ (PDI)', items: [
-                'ตรวจสีรอบคันในที่สว่าง หารอยขีดข่วน รอยบุบ สีไม่สม่ำเสมอ',
-                'ตรวจปี/เดือนผลิตรถ (ป้ายที่เสาประตู) และสัปดาห์ผลิตยาง',
-                'ทดสอบประตูสไลด์ไฟฟ้าทั้ง 2 ฝั่ง และระบบกันหนีบ',
-                'ทดสอบจอ กล้อง 360° เซนเซอร์ แอร์ทุกแถว ไฟทุกดวง',
-                'เสียบชาร์จ AC ทดลอง และทดสอบสาย V2L กับอุปกรณ์จริง',
-                'ตรวจระดับแบตตอนรับรถ และเลขไมล์ (ควรน้อยมาก)',
-                'ตรวจของแถมครบ: Home Charger, สาย V2L, พรมปูพื้น, กุญแจ 2 ดอก'
-            ] },
-            { g: '📁 เอกสารและหลังรับรถ', items: [
-                'ใบกำกับภาษี / ใบเสร็จรับเงิน / สัญญาเช่าซื้อ',
-                'สมุดรับประกันและสมุดบริการ ลงวันที่ส่งมอบถูกต้อง',
-                'กรมธรรม์ประกันชั้น 1 และ พ.ร.บ.',
-                'นัดวันติดตั้ง MG HOME CHARGER',
-                'ติดตามป้ายทะเบียนและเล่มทะเบียน',
-                'บันทึกเบอร์ศูนย์บริการและบริการช่วยเหลือฉุกเฉิน',
-                'ติดตั้งแอปผู้ให้บริการชาร์จและผูกบัตร'
-            ] }
-        ];
-        const KEY = 'maxus7-checklist-v1';
-        let done = {};
-        try { done = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { done = {}; }
-        const save = () => { try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {} };
-        const total = CHECK.reduce((n, g) => n + g.items.length, 0);
-        function renderChecklist() {
-            $('ckGroups').innerHTML = CHECK.map((g, gi) => `
-                <div class="border border-slate-200 rounded-xl p-4 space-y-2">
-                    <h4 class="font-bold text-slate-800">${g.g}</h4>
-                    ${g.items.map((t, ii) => { const id = gi + '-' + ii; return `
-                    <label class="flex items-start gap-2 text-sm cursor-pointer ${done[id] ? 'text-slate-400 line-through' : 'text-slate-700'}">
-                        <input type="checkbox" data-id="${id}" ${done[id] ? 'checked' : ''} class="mt-1 w-4 h-4 accent-teal-600 shrink-0"><span>${esc(t)}</span>
-                    </label>`; }).join('')}
-                </div>`).join('');
-            const n = Object.values(done).filter(Boolean).length;
-            $('ckBar').style.width = (n / total * 100) + '%';
-            $('ckCount').textContent = n + ' / ' + total + ' ข้อ';
-        }
-        $('ckGroups').addEventListener('change', e => {
-            const id = e.target.dataset.id; if (!id) return;
-            done[id] = e.target.checked; save(); renderChecklist();
-        });
-        $('ckReset').addEventListener('click', () => { done = {}; save(); renderChecklist(); });
-        renderChecklist();
-    })();
+        // Reveal on scroll
+        const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .1 }) : null;
+        document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
     </script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/maxus7", "destination": "/", "permanent": true },
+    { "source": "/mg_maxus_7_infographic", "destination": "/tools", "permanent": true }
+  ]
+}
