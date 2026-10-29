@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Maxus 7 Deal Checker (Ohm)</title>
+  <style>
+    :root {
+      --primary: #1e40af;
+      --primary-light: #3b82f6;
+      --success: #15803d;
+      --warning: #b45309;
+      --danger: #b91c1c;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Sarabun", sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 80px; }
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: white;
+      padding: 18px 16px 14px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    header h1 { font-size: 1.15rem; font-weight: 700; margin-bottom: 2px; }
+    header p { font-size: 0.75rem; opacity: 0.85; }
+    
+    .container { max-width: 540px; margin: 0 auto; padding: 12px; }
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .form-group { margin-bottom: 10px; }
+    label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+    input[type="number"], select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="number"]:focus, select:focus { border-color: var(--primary-light); }
+    
+    .status-badge {
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      margin-top: 10px;
+      transition: all 0.3s;
+    }
+    .status-badge.pass { background: #dcfce7; color: var(--success); border: 1.5px solid #86efac; }
+    .status-badge.warn { background: #fef3c7; color: var(--warning); border: 1.5px solid #fde047; }
+    .status-badge.fail { background: #fee2e2; color: var(--danger); border: 1.5px solid #fca5a5; }
+    .status-badge h3 { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+    .status-badge p { font-size: 0.8rem; font-weight: 500; }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.85rem;
+    }
+    .result-row:last-child { border-bottom: none; }
+    .result-row .label { color: var(--text-muted); }
+    .result-row .val { font-weight: 700; color: var(--text); }
+    .result-row .val.highlight { font-size: 1.1rem; color: var(--primary); }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+    .check-item:last-child { border-bottom: none; }
+    .check-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--primary);
+    }
+    .check-text strong { display: block; color: var(--text); font-size: 0.85rem; }
+    .check-text span { color: var(--text-muted); font-size: 0.75rem; }
+
+    .preset-btn {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .preset-group { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+    
+    .tab-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0 12px;
+      z-index: 100;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      width: 33%;
+    }
+    .tab-btn.active { color: var(--primary); }
+    .tab-btn svg { width: 20px; height: 20px; }
+    
+    .view-section { display: none; }
+    .view-section.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div style="max-width: 540px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h1>Maxus 7 Deal Checker</h1>
+        <p>เครื่องมือตรวจใบเสนอราคา & ตรวจเช็กหน้างาน (คุณโอม)</p>
+      </div>
+      <span style="background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 6px; font-size: 0.7rem;">Motor Expo</span>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- TAB 1: CALCULATOR -->
+    <section id="view-calc" class="view-section active">
+      <div class="card">
+        <div class="card-title">
+          <span>⚡</span> ใส่ตัวเลขจากใบเสนอราคาเซลส์
+        </div>
+
+        <div class="preset-group">
+          <button class="preset-btn" onclick="applyPreset(1269900, 2.64, 84)">เดิม (1.269M / 2.64%)</button>
+          <button class="preset-btn" onclick="applyPreset(1240000, 2.39, 84)">เป้า 1 (1.24M / 2.39%)</button>
+          <button class="preset-btn" onclick="applyPreset(1230000, 2.29, 72)">เป้า 2 (1.23M / 2.29%)</button>
+        </div>
+
+        <div class="form-group">
+          <label>ราคารถสุทธิหลังหักส่วนลด (บาท)</label>
+          <input type="number" id="inp-price" value="1269900" step="1000" oninput="calculate()">
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label>เงินดาวน์ (บาท)</label>
+            <input type="number" id="inp-down" value="500000" step="10000" oninput="calculate()">
+          </div>
+          <div class="form-group">
+            <label>ยอดจัดไฟแนนซ์ (บาท)</label>
+            <input type="number" id="inp-loan" readonly style="background: #f1f5f9;">
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label>ดอกเบี้ย Flat Rate ต่อปี (%)</label>
+            <input type="number" id="inp-rate" value="2.64" step="0.05" oninput="calculate()">
+          </div>
+          <div class="form-group">
+            <label>ระยะเวลาผ่อน</label>
+            <select id="inp-months" onchange="calculate()">
+              <option value="60">60 งวด (5 ปี)</option>
+              <option value="72">72 งวด (6 ปี)</option>
+              <option value="84" selected>84 งวด (7 ปี - แนะนำ)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 6px;">
+          <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <input type="checkbox" id="inp-vat-incl" checked onchange="calculate()" style="width: 16px; height: 16px;">
+            <span style="font-size: 0.8rem; color: var(--text);">ตัวเลขค่างวดเซลส์รวม VAT 7% แล้ว</span>
+          </label>
+        </div>
+
+        <div id="calc-status" class="status-badge warn">
+          <h3 id="status-title">กำลังคำนวณ...</h3>
+          <p id="status-desc">...</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>📊</span> ผลลัพธ์เปรียบเทียบกับกระเป๋าเงินคุณโอม
+        </div>
+
+        <div class="result-row">
+          <span class="label">ค่างวดสุทธิต่อเดือน</span>
+          <span class="val highlight" id="res-installment">0 บาท</span>
+        </div>
+        <div class="result-row">
+          <span class="label">เงินเดือนที่เหลือจ่ายค่างวด (หลังหักกองกลาง/ค่าใช้จ่าย)</span>
+          <span class="val" style="color: var(--success);">+8,237 บาท/เดือน</span>
+        </div>
+        <div class="result-row">
+          <span class="label">เงินเดือนขาดต่อเดือน (ต้องดึงจากเงินกันชน)</span>
+          <span class="val" id="res-gap" style="color: var(--danger);">-0 บาท</span>
+        </div>
+        <div class="result-row">
+          <span class="label">เงินพิเศษเฉลี่ยต่อเดือน (โบนัส 1ด. + ปันผล)</span>
+          <span class="val">+8,800 บาท/เดือน</span>
+        </div>
+        <div class="result-row">
+          <span class="label">กระแสเงินสดสุทธิหลังรวมเงินพิเศษต่อปี</span>
+          <span class="val" id="res-net-yearly" style="font-weight: 800;">+0 บาท/ปี</span>
+        </div>
+        <div class="result-row">
+          <span class="label">ดอกเบี้ยรวมทั้งสัญญา</span>
+          <span class="val" id="res-total-interest">0 บาท</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: CHECKLIST -->
+    <section id="view-check" class="view-section">
+      <div class="card">
+        <div class="card-title" style="justify-content: space-between;">
+          <span>📝 เช็กลิสต์ใบเสนอราคา (12 ข้อ)</span>
+          <span id="check-score" style="font-size: 0.8rem; background: #e0f2fe; color: #0284c7; padding: 2px 8px; border-radius: 10px;">0/12</span>
+        </div>
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px;">
+          ติ๊กให้ครบก่อนจ่ายเงินจอง หากข้อไหนเซลส์ไม่ยอมเขียนลงในใบจอง ห้ามโอนเงินเด็ดขาด!
+        </p>
+
+        <div id="checklist-container">
+          <!-- Item 1 -->
+          <div class="check-item">
+            <input type="checkbox" id="c1" onchange="updateChecklist()">
+            <label for="c1" class="check-text">
+              <strong>1. ราคารถสุทธิ ≤ 1,240,000 – 1,250,000 บาท</strong>
+              <span>หลังหักส่วนลดเงินสดมาร์จิ้นดีลเลอร์ + ส่วนลดพิเศษรัฐวิสาหกิจ กปภ.</span>
+            </label>
+          </div>
+          <!-- Item 2 -->
+          <div class="check-item">
+            <input type="checkbox" id="c2" onchange="updateChecklist()">
+            <label for="c2" class="check-text">
+              <strong>2. ดอกเบี้ยพิเศษรัฐวิสาหกิจ ≤ 2.39% (72-84งวด) หรือ ≤ 1.89% (60งวด)</strong>
+              <span>ระบุสถาบันไฟแนนซ์ชัดเจน (ttb DRIVE / กรุงศรี ออโต้ / KLeasing)</span>
+            </label>
+          </div>
+          <!-- Item 3 -->
+          <div class="check-item">
+            <input type="checkbox" id="c3" onchange="updateChecklist()">
+            <label for="c3" class="check-text">
+              <strong>3. ล็อตปีผลิตของตัวรถ (Model Year / Production Date)</strong>
+              <span>ต้องระบุปี/เดือนผลิต ไม่ใช่รถค้างสต็อกเกิน 6-8 เดือน (หากเกินต้องลดเพิ่ม)</span>
+            </label>
+          </div>
+          <!-- Item 4 -->
+          <div class="check-item">
+            <input type="checkbox" id="c4" onchange="updateChecklist()">
+            <label for="c4" class="check-text">
+              <strong>4. แบตเตอรี่ Lifetime Warranty สำหรับเจ้าของคนแรก</strong>
+              <span>ระบุเงื่อนไขรับประกันแบตเตอรี่แรงดันสูง + มอเตอร์ ตลอดอายุการใช้งาน</span>
+            </label>
+          </div>
+          <!-- Item 5 -->
+          <div class="check-item">
+            <input type="checkbox" id="c5" onchange="updateChecklist()">
+            <label for="c5" class="check-text">
+              <strong>5. ประกันภัยชั้น 1 พร้อม พ.ร.บ. (ระบุจำนวนปี & ซ่อมห้าง)</strong>
+              <span>เป้าหมายคือฟรี 2-3 ปี หรืออย่างน้อย 1 ปีแรกซ่อมห้าง ทุนประกันคุ้มครองแบต</span>
+            </label>
+          </div>
+          <!-- Item 6 -->
+          <div class="check-item">
+            <input type="checkbox" id="c6" onchange="updateChecklist()">
+            <label for="c6" class="check-text">
+              <strong>6. MG Home Charger + ค่าติดตั้งฟรี</strong>
+              <span>แถมระยะสายไฟมาตรฐาน (ถามเพิ่ม: ไม่รับลดเงินสดได้ไหม หรือขอตัวที่ 2)</span>
+            </label>
+          </div>
+          <!-- Item 7 -->
+          <div class="check-item">
+            <input type="checkbox" id="c7" onchange="updateChecklist()">
+            <label for="c7" class="check-text">
+              <strong>7. สาย V2L + V2V ระบุชัดเจนในใบจอง</strong>
+              <span>อุปกรณ์แปลงไฟจ่ายออกเครื่องใช้ไฟฟ้าภายนอก</span>
+            </label>
+          </div>
+          <!-- Item 8 -->
+          <div class="check-item">
+            <input type="checkbox" id="c8" onchange="updateChecklist()">
+            <label for="c8" class="check-text">
+              <strong>8. ฟรีค่าจดทะเบียน + ป้ายภาษีปีแรก</strong>
+              <span>มูลค่า ~3,500 บาท อย่าให้แอบคิดเงินเพิ่มวันรับรถ</span>
+            </label>
+          </div>
+          <!-- Item 9 -->
+          <div class="check-item">
+            <input type="checkbox" id="c9" onchange="updateChecklist()">
+            <label for="c9" class="check-text">
+              <strong>9. ฟิล์มเซรามิกเกรดแท้ ระบุยี่ห้อ/รุ่น (รวมหลังคาพาโนรามิก)</strong>
+              <span>ระบุยี่ห้อ (3M, Lamina, XUV) ห้ามเขียนแค่ "ฟิล์มเซรามิก" ลอยๆ ป้องกันโดนฟิล์มแถมเกรดต่ำ</span>
+            </label>
+          </div>
+          <!-- Item 10 -->
+          <div class="check-item">
+            <input type="checkbox" id="c10" onchange="updateChecklist()">
+            <label for="c10" class="check-text">
+              <strong>10. บริการช่วยเหลือฉุกเฉิน 5 ปี + Limousine Service</strong>
+              <span>บริการรถยกและรถสำรองระหว่างซ่อมฉุกเฉิน</span>
+            </label>
+          </div>
+          <!-- Item 11 -->
+          <div class="check-item">
+            <input type="checkbox" id="c11" onchange="updateChecklist()">
+            <label for="c11" class="check-text">
+              <strong>11. เงื่อนไขคืนเงินจอง 100%</strong>
+              <span>ระบุข้อความ "คืนเงินจองเต็มจำนวนหากไฟแนนซ์ไม่ผ่าน หรือส่งมอบรถไม่ตรงตามกำหนด"</span>
+            </label>
+          </div>
+          <!-- Item 12 -->
+          <div class="check-item">
+            <input type="checkbox" id="c12" onchange="updateChecklist()">
+            <label for="c12" class="check-text">
+              <strong>12. กำหนดวันและเดือนส่งมอบรถชัดเจน</strong>
+              <span>ระบุส่งมอบ ธ.ค. 2569 หรือ ม.ค. 2570 เพื่อไม่ให้ดีลเลอร์ดึงรถช้า</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: CHEAT SHEET & PROMPT -->
+    <section id="view-script" class="view-section">
+      <div class="card">
+        <div class="card-title">
+          <span>🗣️</span> บทพูดต่อรองหน้างาน (ต่อรองแบบมือโปร)
+        </div>
+        <div style="font-size: 0.8rem; line-height: 1.5; color: #334155;">
+          <p style="margin-bottom: 8px;"><strong>เปิดฉากคุย:</strong><br>
+          <em>"ผมดู MG Maxus 7 รุ่น X ไว้ ดาวน์ 500,000 บาท ทำงานรัฐวิสาหกิจ กปภ. เครดิตดีมาก ตอนนี้มีข้อเสนอในมือ 1,269,900 แล้ว กำลังเทียบ 3 เจ้าในงาน ถ้าพี่ทำราคาสุทธิ 1.23 - 1.24 ล้าน พร้อมดอกเบี้ยรัฐวิสาหกิจและฟิล์มเซรามิกรวมหลังคาได้ ผมพร้อมจองวันนี้เลยครับ"</em></p>
+          
+          <p style="margin-bottom: 8px;"><strong>ถ้าเซลส์บอกลดไม่ได้แล้ว:</strong><br>
+          <em>"ถ้าลดราคารถไม่ได้ ขอเปลี่ยนเป็น 'แคมเปญฟรีประกันชั้น 1 นาน 3 ปี' หรือ 'ฟรีค่าจดทะเบียน + ฟิล์ม 3M Ceramic แท้รอบคันรวมหลังคา' แทนได้ไหมครับ ถ้าได้ผมเซ็นใบจองเลย"</em></p>
+
+          <p><strong>ใช้คู่เทียบกดดัน:</strong><br>
+          <em>"จริงๆ ที่บ้านก็ดู BYD M6 ตัวท็อปไว้คู่กัน ประหยัดงบกว่า 3.5 แสน แต่ผมชอบประตูสไลด์ของ Maxus 7 ถ้าดีลเลอร์ช่วยดันค่างวดลงมาแตะ 10,xxx บาทได้ ผมตัดสินใจเลือกคันนี้ทันที"</em></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>📸</span> ข้อความก็อปปี้ใช้กับ AI (ส่งพร้อมรูปใบเสนอราคา)
+        </div>
+        <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">
+          กดปุ่มด้านล่างเพื่อคัดลอก แล้วเปิดแอป Gemini/ChatGPT ส่งรูปใบเสนอราคาคู่กับข้อความนี้:
+        </p>
+        <textarea id="ai-prompt-text" style="width: 100%; height: 110px; font-size: 0.75rem; padding: 8px; border-radius: 8px; border: 1px solid var(--border); color: var(--text); resize: none;" readonly>
+ช่วยตรวจใบเสนอราคา MG Maxus 7 ตามรูปนี้ให้หน่อยครับ
+- เงื่อนไขของผม: ดาวน์ 500,000 บาท, พนักงานรัฐวิสาหกิจ (กปภ.)
+- เป้าหมาย: ราคารถสุทธิ ≤ 1.24 ล้าน, ดอกเบี้ย ≤ 2.39% (84งวด), ค่างวดควรอยู่แถว 10,200 - 10,800 บาท
+- ของแถมต้องมี: ประกันชั้น 1, Home Charger+ติดตั้ง, สาย V2L, ฟรีจดทะเบียน, ฟิล์มเซรามิกรวมหลังคา, คืนเงินจองถ้าไฟแนนซ์ไม่ผ่าน
+ช่วยเช็กว่า: ใบนี้ผ่านเกณฑ์ไหม? ขาดอะไร? มีค่าใช้จ่ายแอบแฝงไหม? และผมควรต่อรองอะไรเพิ่มทันที?</textarea>
+        <button class="preset-btn" style="width: 100%; padding: 8px; margin-top: 6px; background: #2563eb; color: white; border: none; border-radius: 8px;" onclick="copyPrompt()">📋 คัดลอกข้อความ Prompt ไปใช้ในมือถือ</button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- NAVIGATION TABS -->
+  <nav class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('view-calc', this)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+      คำนวณดีล
+    </button>
+    <button class="tab-btn" onclick="switchTab('view-check', this)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+      เช็กลิสต์ (12 ข้อ)
+    </button>
+    <button class="tab-btn" onclick="switchTab('view-script', this)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+      บทพูด & AI
+    </button>
+  </nav>
+
+  <script>
+    function calculate() {
+      const price = parseFloat(document.getElementById('inp-price').value) || 0;
+      const down = parseFloat(document.getElementById('inp-down').value) || 0;
+      const rate = parseFloat(document.getElementById('inp-rate').value) || 0;
+      const months = parseInt(document.getElementById('inp-months').value) || 84;
+      const vatIncl = document.getElementById('inp-vat-incl').checked;
+
+      const loan = Math.max(0, price - down);
+      document.getElementById('inp-loan').value = loan.toLocaleString();
+
+      const years = months / 12;
+      const totalInterest = loan * (rate / 100) * years;
+      let totalAmount = loan + totalInterest;
+      
+      // If interest/loan hasn't included VAT
+      let installment = totalAmount / months;
+      if (!vatIncl) {
+        installment = installment * 1.07;
+      }
+
+      document.getElementById('res-installment').innerText = Math.round(installment).toLocaleString() + ' บาท';
+      document.getElementById('res-total-interest').innerText = Math.round(totalInterest).toLocaleString() + ' บาท';
+
+      // Compare with Ohm's finances:
+      // Monthly available before car = 8,237 THB
+      // Extra annual income = ~105,600 THB (~8,800/mo)
+      const monthlyGap = 8237 - installment;
+      const resGapEl = document.getElementById('res-gap');
+      if (monthlyGap >= 0) {
+        resGapEl.innerText = '+ ' + Math.round(monthlyGap).toLocaleString() + ' บาท (เงินเดือนพอ!)';
+        resGapEl.style.color = 'var(--success)';
+      } else {
+        resGapEl.innerText = '- ' + Math.abs(Math.round(monthlyGap)).toLocaleString() + ' บาท/เดือน';
+        resGapEl.style.color = 'var(--danger)';
+      }
+
+      const yearlyNet = 105600 + (monthlyGap * 12);
+      const resNetYearlyEl = document.getElementById('res-net-yearly');
+      if (yearlyNet >= 0) {
+        resNetYearlyEl.innerText = '+ ' + Math.round(yearlyNet).toLocaleString() + ' บาท/ปี (เหลือเงินสะสม)';
+        resNetYearlyEl.style.color = 'var(--success)';
+      } else {
+        resNetYearlyEl.innerText = '- ' + Math.abs(Math.round(yearlyNet)).toLocaleString() + ' บาท/ปี (ติดลบ!)';
+        resNetYearlyEl.style.color = 'var(--danger)';
+      }
+
+      // Evaluate status badge
+      const statusBadge = document.getElementById('calc-status');
+      const statusTitle = document.getElementById('status-title');
+      const statusDesc = document.getElementById('status-desc');
+
+      if (price <= 1240000 && rate <= 2.39 && months >= 72) {
+        statusBadge.className = 'status-badge pass';
+        statusTitle.innerText = '🟢 ดีลยอดเยี่ยม! (อยู่ในเกณฑ์เป้าหมายสูงสุด)';
+        statusDesc.innerText = 'ราคารถและดอกเบี้ยเข้าเกณฑ์ดีลคุ้มค่า ค่างวดปลอดภัยต่อกระแสเงินสดของคุณโอมมาก';
+      } else if (installment <= 11600 && yearlyNet >= 20000) {
+        statusBadge.className = 'status-badge warn';
+        statusTitle.innerText = '🟡 ดีลปานกลาง (พอรับได้ แต่ยังต่อรองได้อีก)';
+        statusDesc.innerText = 'ผ่อนไหวและมีเงินเหลือสิ้นปี แต่ลองขอดอกเบี้ยต่ำลงหรือขอของแถม/ประกัน 3 ปีเพิ่ม';
+      } else {
+        statusBadge.className = 'status-badge fail';
+        statusTitle.innerText = '🔴 ดีลยังตึงเกินไป หรือดอกเบี้ยสูงเกินเกณฑ์';
+        statusDesc.innerText = 'ค่างวดสูงเกินไป หรือราคารถยังไม่ได้ส่วนลดที่ดีพอ อย่าเพิ่งรีบจอง ให้เทียบกับเจ้าอื่นก่อน';
+      }
+    }
+
+    function applyPreset(p, r, m) {
+      document.getElementById('inp-price').value = p;
+      document.getElementById('inp-rate').value = r;
+      document.getElementById('inp-months').value = m;
+      calculate();
+    }
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function updateChecklist() {
+      const total = 12;
+      let checked = 0;
+      for (let i = 1; i <= total; i++) {
+        if (document.getElementById('c' + i).checked) checked++;
+      }
+      const scoreEl = document.getElementById('check-score');
+      scoreEl.innerText = checked + '/' + total;
+      if (checked === total) {
+        scoreEl.style.background = '#dcfce7';
+        scoreEl.style.color = '#15803d';
+      } else {
+        scoreEl.style.background = '#e0f2fe';
+        scoreEl.style.color = '#0284c7';
+      }
+    }
+
+    function copyPrompt() {
+      const text = document.getElementById('ai-prompt-text').value;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('คัดลอกข้อความ Prompt สำเร็จแล้ว! นำไปวางในแอป AI บนมือถือได้เลยครับ');
+      }).catch(err => {
+        alert('ไม่สามารถคัดลอกอัตโนมัติได้ ให้กดเลือกข้อความแล้วกด Copy ครับ');
+      });
+    }
+
+    // Run initial calculate
+    calculate();
+  </script>
+</body>
+</html>
