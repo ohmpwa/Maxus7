@@ -146,11 +146,32 @@
       align-items: center;
       gap: 3px;
       cursor: pointer;
-      width: 33%;
+      width: 25%;
     }
     .tab-btn.active { color: var(--primary); }
     .tab-btn svg { width: 20px; height: 20px; }
-    
+
+    .tbl-wrap { overflow-x: auto; margin: 0 -4px; }
+    .tbl { width: 100%; border-collapse: collapse; font-size: 0.74rem; line-height: 1.35; }
+    .tbl th, .tbl td { border-bottom: 1px solid var(--border); padding: 7px 5px; text-align: left; vertical-align: top; }
+    .tbl th { background: #eff6ff; color: #1e3a8a; font-weight: 700; white-space: nowrap; }
+    .tbl td.num { text-align: right; white-space: nowrap; font-weight: 700; }
+    .tbl input { width: 100%; min-width: 90px; border: 1px solid var(--border); border-radius: 5px; padding: 4px; font-size: 0.72rem; }
+    .prose { font-size: 0.8rem; line-height: 1.55; color: #334155; }
+    .prose p, .prose ul, .prose ol { margin-bottom: 8px; }
+    .prose ul, .prose ol { padding-left: 18px; }
+    .prose li { margin-bottom: 4px; }
+    .prose h4 { font-size: 0.85rem; color: #1e3a8a; margin: 12px 0 6px; }
+    .quote { background: #f8fafc; border-left: 3px solid var(--primary-light); padding: 8px 10px; border-radius: 6px; font-style: italic; margin-bottom: 8px; }
+    .warn-box { background: #fef3c7; border: 1px solid #fde047; color: #78350f; border-radius: 8px; padding: 10px; font-size: 0.78rem; line-height: 1.5; margin-top: 8px; }
+    .deal { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 10px; }
+    .deal h4 { margin-top: 0; }
+    .sub-tabs { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 12px; padding-bottom: 2px; }
+    .sub-tabs .preset-btn { white-space: nowrap; }
+    .sub-tabs .preset-btn.active { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .strat-part { display: none; }
+    .strat-part.active { display: block; }
+
     .view-section { display: none; }
     .view-section.active { display: block; }
   </style>
@@ -405,6 +426,157 @@
       </div>
     </section>
 
+    <!-- TAB 4: STRATEGY PLAYBOOK -->
+    <section id="view-strategy" class="view-section">
+      <div class="sub-tabs">
+        <button class="preset-btn active" onclick="switchStrat('s-price', this)">1. ราคา</button>
+        <button class="preset-btn" onclick="switchStrat('s-time', this)">2. จังหวะเวลา</button>
+        <button class="preset-btn" onclick="switchStrat('s-deal', this)">3. ดีลเป้าหมาย</button>
+        <button class="preset-btn" onclick="switchStrat('s-nego', this)">4. ต่อรอง</button>
+        <button class="preset-btn" onclick="switchStrat('s-prep', this)">5. เตรียมตัว</button>
+        <button class="preset-btn" onclick="switchStrat('s-compare', this)">6. เทียบ 3 โชว์รูม</button>
+      </div>
+
+      <!-- 1. PRICE STRUCTURE -->
+      <div id="s-price" class="strat-part active">
+        <div class="card">
+          <div class="card-title"><span>💰</span> โครงสร้างราคาจริง (ทำไมห้ามซื้อราคาหน้าเว็บ)</div>
+          <div class="tbl-wrap"><table class="tbl">
+            <tr><th>ระดับราคา</th><th>บาท</th><th>ความหมาย</th></tr>
+            <tr><td>1. ราคาเปิดตัว (MSRP เดิม)</td><td class="num">1,769,000</td><td>ตั้งเผื่อสงครามราคา</td></tr>
+            <tr><td>2. ราคาป้ายหน้าเว็บปัจจุบัน</td><td class="num">1,399,000</td><td>ราคาตั้งปกติหลังปรับฐาน</td></tr>
+            <tr><td>3. ราคาแคมเปญ (EV 3.5)</td><td class="num">1,299,000</td><td>บริษัทแม่ลด 100,000 (ทูโทน +20,000 = 1,319,000)</td></tr>
+            <tr><td>4. ข้อเสนอเซลส์ที่ได้มา</td><td class="num">1,269,900</td><td>เฉือน Dealer Margin มาลดเพิ่ม ~29,100</td></tr>
+            <tr><td><strong>5. ราคาเป้าหมายจริง</strong></td><td class="num" style="color: var(--success);">1.23–1.25M</td><td>ตัด Margin + Volume Bonus ช่วง Motor Expo (หรือเทียบเท่าเป็นดอกเบี้ยต่ำ/ประกัน 3 ปี)</td></tr>
+          </table></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span>🤫</span> ความลับแคมเปญ MG (งบซับพอร์ตเลือกสลับได้)</div>
+          <div class="prose">
+            <ol>
+              <li><strong>ทางเลือก A (ดอกเบี้ยต่ำ):</strong> 0.99%–1.89% (ดาวน์ ≥ 25%, 48–60 งวด) + ประกันชั้น 1 ฟรี 1 ปี</li>
+              <li><strong>ทางเลือก B (MG Premium Shield):</strong> ฟรีประกันชั้น 1 + พ.ร.บ. 3 ปีเต็ม (~75,000–77,700 บาท) แต่ได้ดอกเบี้ยเรทปกติ ~2.39%–2.64%</li>
+              <li><strong>กลยุทธ์คุณโอม:</strong> ข้อเสนอเดิม (1,269,900 + 2.64% + ประกัน 1 ปี) = <strong>โดนเรทปกติแต่ได้ประกันแค่ปีเดียว!</strong> ถ้าใช้เรท 2.40%–2.64% (72–84 งวด) ต้องดึงงบนี้มาเป็น <strong>ส่วนลดเงินสดเพิ่ม 30,000–40,000</strong> หรือ <strong>ประกันชั้น 1 ฟรี 2–3 ปี</strong> แทน</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. TIMING -->
+      <div id="s-time" class="strat-part">
+        <div class="card">
+          <div class="card-title"><span>📅</span> จังหวะเวลาที่ดีที่สุด</div>
+          <div class="prose">
+            <div class="deal"><h4>⭐⭐⭐⭐ 15–25 พ.ย. 2569 · เก็บข้อมูล &amp; เทียบใบเสนอราคา</h4>
+              โชว์รูมรู้แคมเปญ Motor Expo ล่วงหน้าแล้ว ขอใบเสนอราคาออนไลน์จากเซลส์ 4–5 ดีลเลอร์ใหญ่มาเทียบก่อนเข้างาน</div>
+            <div class="deal"><h4>⭐⭐⭐⭐⭐ Motor Expo (ปลาย พ.ย. – 10 ธ.ค. 2569) · จองช่วงนี้</h4>
+              <ul><li>ช่วงปิดยอด Year-End Quota ของ MG และดีลเลอร์</li>
+              <li>ดีลเลอร์ที่ขาดอีกไม่กี่คันเพื่อรับ <strong>Volume Rebate</strong> จะลดลึกสุดใน <strong>3 วันสุดท้ายของงาน</strong></li></ul></div>
+            <div class="deal"><h4>⭐⭐⭐⭐ ม.ค. 2570 · รับรถ</h4>
+              <ul><li>จอง ธ.ค. รับ ม.ค. → งวดแรก ก.พ. 2570 ใกล้ช่วงปันผลสหกรณ์/โบนัส มี.ค.–เม.ย.</li>
+              <li>ยกเว้นดีลเลอร์เสนอ "รับรถและตัดยอดภายใน ธ.ค. ลดเพิ่ม 20,000–30,000" ค่อยรับ ธ.ค.</li></ul></div>
+          </div>
+          <div class="warn-box">⚠️ <strong>ปีผลิต (VIN / Model Year):</strong> ถามตรงๆ ว่า "รถที่ส่งมอบเป็นล็อตผลิตเดือน/ปีไหน?" ถ้าค้างสต็อกเกิน 6–8 เดือน ต่อรองลดเพิ่มได้ <strong>20,000–40,000 บาท</strong> และวันรับรถต้องเช็กแบต 12V กับยางให้ละเอียด</div>
+        </div>
+      </div>
+
+      <!-- 3. TARGET DEALS -->
+      <div id="s-deal" class="strat-part">
+        <div class="card">
+          <div class="card-title"><span>🎯</span> ดีลเป้าหมาย 3 รูปแบบ</div>
+          <p class="prose">ดาวน์ 500,000 (~40%) + พนักงาน กปภ. = ลูกค้าเกรด <strong>A+</strong> บีบให้เข้า 1 ใน 3 แพ็กเกจนี้:</p>
+          <div class="deal prose"><h4>🏆 1. กดราคาสุทธิต่ำสุด + ผ่อน 72–84 งวด (แนะนำอันดับ 1)</h4>
+            <ul><li>ราคาสุทธิ <strong>1,230,000–1,240,000</strong> → ยอดจัด 730,000–740,000</li>
+            <li>ดอกเบี้ยรัฐวิสาหกิจ <strong>2.20%–2.39%</strong> (จากเดิม 2.64%)</li>
+            <li>72 งวด (735,000 @ 2.29%): <strong>~11,610/เดือน</strong> (ลด ~777/เดือน ประหยัด ~56,000)</li>
+            <li>84 งวด (735,000 @ 2.39%): <strong>~10,215/เดือน</strong> (ลด ~644/เดือน ประหยัด ~54,000)</li>
+            <li>ของแถมบังคับ: ประกันชั้น 1 + พ.ร.บ. 1 ปี, Home Charger + ติดตั้ง, V2L, ฟิล์มเซรามิกรอบคัน+ซันรูฟ, ฟรีจดทะเบียน</li></ul>
+            <button class="preset-btn" onclick="openDeal(1235000, 2.39, 84)">คำนวณดีลนี้ →</button></div>
+          <div class="deal prose"><h4>🛡️ 2. ล็อกค่าใช้จ่าย 3 ปีแรก (ฟรีประกันชั้น 1 นาน 3 ปี)</h4>
+            <ul><li>ราคาสุทธิ <strong>1,260,000–1,269,900</strong></li>
+            <li>ประหยัดค่าประกันปีที่ 2–3 ปีละ ~25,000 รวม <strong>~50,000 บาท</strong></li>
+            <li>21 เดือนแรกที่ตึงที่สุด (2570–2571) ไม่ต้องจ่ายค่าประกัน → ถังที่ 2 (กองทุนรถ 60,000) แทบไม่พร่อง</li></ul></div>
+          <div class="deal prose"><h4>⚡ 3. ดอกเบี้ยต่ำพิเศษ 1.59%–1.89% ผ่อน 60 งวด</h4>
+            <ul><li>ราคาสุทธิ <strong>1,240,000</strong> → ยอดจัด 740,000 @ <strong>1.69%</strong></li>
+            <li>ค่างวด <strong>~13,375/เดือน</strong> (จาก 14,525) จบเร็วขึ้น 1 ปี ดอกเบี้ยรวม ~62,500 (ประหยัดเกือบ 80,000)</li></ul>
+            <button class="preset-btn" onclick="openDeal(1240000, 1.69, 60)">คำนวณดีลนี้ →</button></div>
+        </div>
+      </div>
+
+      <!-- 4. NEGOTIATION -->
+      <div id="s-nego" class="strat-part">
+        <div class="card">
+          <div class="card-title"><span>🤝</span> ต่อรองแบบ Reverse Auction 4 ขั้น</div>
+          <div class="prose">
+            <p>ห้ามเดินเข้าบูธแล้วถามว่า "ลดได้เท่าไหร่ครับ?"</p>
+            <h4>ขั้น 1: แยกดีลเลอร์คนละเครือข่าย</h4>
+            <ul><li><strong>MG Best Auto Sales</strong> (เพชรเกษม 65 — ใกล้บ้านที่สุด)</li>
+            <li>MG Able Auto / MG มหานคร / MG อารีมิตร / MG แจ้งวัฒนะ–หลักสี่ (ใกล้ที่ทำงาน กปภ.)</li>
+            <li>ทักเพจ/LINE เซลส์ <strong>อย่างน้อย 3–4 เครือข่ายต่างกัน</strong> (สาขาในเครือเดียวกันใช้ราคาเดียวกัน)</li></ul>
+            <h4>ขั้น 2: เปิดไพ่ "ลูกค้าเกรด A+ พร้อมจบ"</h4>
+            <div class="quote">"ผมวางแผนออก MG Maxus 7 รุ่น X สี... ดาวน์เงินสด 500,000 บาท (เกือบ 40%) ทำงานรัฐวิสาหกิจ กปภ. เครดิตดีมาก ไม่มีภาระหนี้บัตร ตอนนี้มีใบเสนอราคาในมือ 1,269,900 แล้ว กำลังเทียบข้อเสนอสุดท้ายจาก 3 โชว์รูมก่อนจองในงาน Motor Expo ถ้าทำราคาสุทธิ 1,23x,xxx บาท (หรือแถมประกันชั้น 1 ฟรี 2–3 ปี + ฟรีจดทะเบียน + ฟิล์มเซรามิก XUV/3M) พร้อมเรทดอกเบี้ยรัฐวิสาหกิจได้ ส่งใบเสนอราคามาได้เลยครับ ถ้าดีลจบสวย ผมพร้อมวางจองทันที"</div>
+            <h4>ขั้น 3: แยกก้อนต่อรอง (Unbundling)</h4>
+            <ul><li>เซลส์มักซอยงบ Margin ~60,000–80,000 เป็นของแถมราคาคุย (เคลือบแก้ว, ฟิล์มไม่ระบุรุ่น, พรม)</li>
+            <li><strong>กฎเหล็ก:</strong> "ไม่เอาของแถมจุกจิก ขอเป็นส่วนลดเงินสดตัดราคารถทั้งหมด" เหลือแค่ประกันชั้น 1, Home Charger + ติดตั้ง, V2L</li>
+            <li>ได้ Bottom Price แล้ว ค่อยขอ <strong>ฟิล์มเซรามิกเกรดดี + ฟรีจดทะเบียน</strong> เป็นเงื่อนไขปิดการขาย</li></ul>
+            <h4>ขั้น 4: ใช้คู่เทียบ (BATNA) — BYD M6</h4>
+            <div class="quote">"ที่บ้านดู BYD M6 ตัวท็อปไว้คู่กันเพราะประหยัดงบเกือบ 4 แสน แต่ผมชอบประตูสไลด์ไฟฟ้ากับความกว้างของ Maxus 7 มากกว่า ถ้าทำค่างวดลงมาแตะ 10,xxx – 11,xxx บาท (หรือราคา 1.23–1.24 ล้าน) ได้ ผมเลือก Maxus 7 ทันทีครับ"</div>
+            <p>เซลส์และผู้จัดการจะรู้ว่า <strong>ถ้าไม่ลดเพิ่ม จะเสียลูกค้าให้คู่แข่งทันที</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. PREPARATION -->
+      <div id="s-prep" class="strat-part">
+        <div class="card">
+          <div class="card-title"><span>🏠</span> เช็กจากบ้าน (เพชรเกษม 64)</div>
+          <div class="prose"><ul>
+            <li><strong>ถ่ายรูปมิเตอร์ กฟน. + ตู้ Consumer Unit:</strong> เป็น 30(100)A แล้วหรือยัง (มี Wallbox 6.6 kW อยู่ 1 ตัว)</li>
+            <li>วัดระยะตู้เมนถึงจุดติด Charger ใหม่ (แถมสายฟรี 15–20 ม. เกินคิด ~300–500/ม.)</li>
+            <li><strong>ทางเลือกทำกำไร:</strong> ถาม "ถ้าไม่รับ Home Charger พร้อมติดตั้ง ลดเป็นเงินสดได้กี่บาท?" (บางเจ้าคืน 15,000–20,000 หรือรับมาเป็นเครื่องสำรอง/จุดที่ 2)</li>
+            <li><strong>ที่จอดรถ:</strong> Maxus 7 = 4,907 × 1,885 × 1,756 มม. (ยาวกว่า City ~35 ซม. กว้างกว่า ~14 ซม.) — ประตูสไลด์ไฟฟ้า 2 ข้างช่วยตอนที่จอดแคบ</li>
+          </ul></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span>👨‍👩‍👧</span> ทดลองขับกับครอบครัว</div>
+          <div class="check-item"><input type="checkbox" id="p1"><label for="p1" class="check-text"><strong>แม่ยายลองขึ้น-ลงเบาะแถว 2 (Captain Seat)</strong><span>ความสูงพื้นรถ + มือจับเสา B จับถนัดไหม</span></label></div>
+          <div class="check-item"><input type="checkbox" id="p2"><label for="p2" class="check-text"><strong>นั่งครบ 5 คนรวมแถว 3</strong><span>Legroom + ท้ายรถตอนกาง 3 แถวใส่รถเข็นเด็ก/กระเป๋าได้ไหม</span></label></div>
+          <div class="check-item"><input type="checkbox" id="p3"><label for="p3" class="check-text"><strong>ฟังเสียงลม + ความเย็นแอร์แถว 2–3</strong><span>Panoramic Sunroof ใหญ่ ต้องติดฟิล์มเซรามิก IR ≥ 85% ที่หลังคาด้วย</span></label></div>
+        </div>
+        <div class="card">
+          <div class="card-title"><span>🏦</span> ไฟแนนซ์ &amp; สวัสดิการ กปภ.</div>
+          <div class="check-item"><input type="checkbox" id="p4"><label for="p4" class="check-text"><strong>เช็กเรท EV พนักงานรัฐวิสาหกิจ</strong><span>ttb DRIVE / กรุงศรี ออโต้ / KLeasing: ดาวน์ 40% ลดจากตารางปกติอีก 0.10%–0.25% ได้ไหม?</span></label></div>
+          <div class="check-item"><input type="checkbox" id="p5"><label for="p5" class="check-text"><strong>สำเนาบัตรประชาชน / บัตรพนักงาน กปภ.</strong><span>ถามส่วนลดข้าราชการ/รัฐวิสาหกิจ 10,000–20,000 — ห้ามลืม!</span></label></div>
+          <div class="check-item"><input type="checkbox" id="p6"><label for="p6" class="check-text"><strong>สลิปเงินเดือนย้อนหลัง 3–6 เดือน</strong><span>ฐานใหม่ ต.ค. 2569 = 45,290 บาท</span></label></div>
+          <div class="check-item"><input type="checkbox" id="p7"><label for="p7" class="check-text"><strong>Statement ย้อนหลัง 6 เดือน</strong><span>ใส่แฟ้มไปงาน</span></label></div>
+        </div>
+      </div>
+
+      <!-- 6. COMPARISON TABLE -->
+      <div id="s-compare" class="strat-part">
+        <div class="card">
+          <div class="card-title"><span>📋</span> เทียบใบเสนอราคา 3 โชว์รูม</div>
+          <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 8px;">กรอกได้เลย ข้อมูลบันทึกไว้ในเครื่องนี้ (เลื่อนตารางซ้าย-ขวาได้)</p>
+          <div class="tbl-wrap"><table class="tbl" id="cmp-table">
+            <tr><th>รายการ</th><th>เป้าหมาย</th><th>เพชรเกษม 65</th><th>แจ้งวัฒนะ</th><th>Motor Expo</th></tr>
+            <tr><td>1. ราคาตั้งต้นโปรโมชัน</td><td>1,299,000</td><td></td><td></td><td></td></tr>
+            <tr><td>2. ส่วนลด Margin ดีลเลอร์</td><td>−50,000 ถึง −60,000</td><td data-v="−29,100"></td><td></td><td></td></tr>
+            <tr><td>3. ส่วนลดรัฐวิสาหกิจ (กปภ.)</td><td>−10,000 ถึง −20,000</td><td></td><td></td><td></td></tr>
+            <tr><td><strong>4. ราคาสุทธิ</strong></td><td><strong>1,230,000–1,250,000</strong></td><td data-v="1,269,900"></td><td></td><td></td></tr>
+            <tr><td>5. ดาวน์ / ยอดจัด</td><td>500,000 / ≤ 750,000</td><td data-v="จัด 769,900"></td><td></td><td></td></tr>
+            <tr><td>6. ดอกเบี้ย (60/72/84)</td><td>≤ 1.89 / 2.29 / 2.39%</td><td data-v="2.64%"></td><td></td><td></td></tr>
+            <tr><td>7. ค่างวด/เดือน (รวม VAT?)</td><td><strong>≤ 10,300 (84) / ≤ 11,600 (72)</strong></td><td data-v="10,859 / 12,387"></td><td></td><td></td></tr>
+            <tr><td>8. ประกันชั้น 1 + พ.ร.บ.</td><td>ฟรี 2–3 ปี (หรือซ่อมห้าง 1 ปี)</td><td data-v="ฟรี 1 ปี"></td><td></td><td></td></tr>
+            <tr><td>9. ฟรีจดทะเบียน + ภาษีปีแรก</td><td>ฟรี (~3,500)</td><td data-v="ยังไม่แถม"></td><td></td><td></td></tr>
+            <tr><td>10. ฟิล์มเซรามิก (ยี่ห้อ/รุ่น)</td><td>3M / Lamina / XUV แท้</td><td data-v="ยังไม่ระบุ"></td><td></td><td></td></tr>
+            <tr><td>11. ล็อตปีผลิต</td><td>ล็อตใหม่ล่าสุด</td><td></td><td></td><td></td></tr>
+            <tr><td>12. คืนเงินจอง 100%</td><td>ระบุในใบจอง</td><td></td><td></td><td></td></tr>
+          </table></div>
+          <button class="preset-btn" style="margin-top: 10px;" onclick="resetCompare()">ล้างข้อมูลที่กรอก</button>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <!-- NAVIGATION TABS -->
@@ -420,6 +592,10 @@
     <button class="tab-btn" onclick="switchTab('view-script', this)">
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
       บทพูด & AI
+    </button>
+    <button class="tab-btn" onclick="switchTab('view-strategy', this)">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+      กลยุทธ์
     </button>
   </nav>
 
@@ -530,6 +706,48 @@
         alert('ไม่สามารถคัดลอกอัตโนมัติได้ ให้กดเลือกข้อความแล้วกด Copy ครับ');
       });
     }
+
+    function switchStrat(id, btn) {
+      document.querySelectorAll('.strat-part').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.sub-tabs .preset-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function openDeal(p, r, m) {
+      applyPreset(p, r, m);
+      switchTab('view-calc', document.querySelector('.tab-btn'));
+    }
+
+    // Comparison table: showroom cells become inputs, saved on this device
+    const CMP_KEY = 'maxus7-compare';
+    function readCompare() {
+      try { return JSON.parse(localStorage.getItem(CMP_KEY)) || {}; } catch (e) { return {}; }
+    }
+    function loadCompare() {
+      const saved = readCompare();
+      document.querySelectorAll('#cmp-table tr').forEach((tr, r) => {
+        tr.querySelectorAll('td').forEach((td, c) => {
+          if (c < 2) return;
+          const key = r + '-' + c;
+          const inp = document.createElement('input');
+          inp.value = key in saved ? saved[key] : (td.dataset.v || '');
+          inp.oninput = () => {
+            const s = readCompare();
+            s[key] = inp.value;
+            try { localStorage.setItem(CMP_KEY, JSON.stringify(s)); } catch (e) {}
+          };
+          td.textContent = '';
+          td.appendChild(inp);
+        });
+      });
+    }
+    function resetCompare() {
+      if (!confirm('ล้างข้อมูลที่กรอกในตารางทั้งหมด?')) return;
+      try { localStorage.removeItem(CMP_KEY); } catch (e) {}
+      loadCompare();
+    }
+    loadCompare();
 
     // Run initial calculate
     calculate();
